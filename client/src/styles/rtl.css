@@ -1,0 +1,591 @@
+/* ===================================================================
+   AVIATION INTELLIGENCE PLATFORM - BIDIRECTIONAL SYSTEM (LTR/RTL)
+   Complete directional transformation for English ↔ Arabic
+   =================================================================== */
+
+/* ROOT DIRECTIONAL SYSTEM */
+:root {
+  --text-align-start: left;
+  --text-align-end: right;
+  --margin-start: margin-left;
+  --margin-end: margin-right;
+  --padding-start: padding-left;
+  --padding-end: padding-right;
+  --border-start: border-left;
+  --border-end: border-right;
+  --transform-x: scaleX(1);
+}
+
+/* RTL ROOT OVERRIDES */
+html[dir="rtl"] {
+  --text-align-start: right;
+  --text-align-end: left;
+  --margin-start: margin-right;
+  --margin-end: margin-left;
+  --padding-start: padding-right;
+  --padding-end: padding-left;
+  --border-start: border-right;
+  --border-end: border-left;
+  --transform-x: scaleX(-1);
+}
+
+/* ===================================================================
+   GLOBAL LAYOUT TRANSFORMATION
+   =================================================================== */
+
+/* Document and Body RTL Setup */
+html[dir="rtl"],
+html[dir="rtl"] body {
+  text-align: right;
+  direction: rtl;
+}
+
+html[dir="ltr"],
+html[dir="ltr"] body {
+  text-align: left;
+  direction: ltr;
+}
+
+/* App Container Directional Flow */
+.rtl #root,
+.rtl .App {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr #root,
+.ltr .App {
+  direction: ltr;
+  text-align: left;
+}
+
+/* ===================================================================
+   MATERIAL-UI COMPONENT TRANSFORMATIONS
+   =================================================================== */
+
+/* Container and Grid System */
+[dir="rtl"] .MuiContainer-root {
+  direction: rtl;
+}
+
+[dir="rtl"] .MuiGrid-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .MuiGrid-item {
+  text-align: right;
+}
+
+/* Typography Alignment */
+[dir="rtl"] .MuiTypography-root {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiTypography-alignLeft {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiTypography-alignRight {
+  text-align: left;
+}
+
+/* Button System */
+[dir="rtl"] .MuiButton-root {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .MuiButton-startIcon {
+  margin-left: 8px;
+  margin-right: -4px;
+}
+
+[dir="rtl"] .MuiButton-endIcon {
+  margin-left: -4px;
+  margin-right: 8px;
+}
+
+/* Card System */
+[dir="rtl"] .MuiCard-root {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiCardContent-root {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiCardActions-root {
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+}
+
+/* ===================================================================
+   DRAWER & MOBILE NAVIGATION
+   =================================================================== */
+
+[dir="rtl"] .MuiDrawer-paperAnchorLeft {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .MuiDrawer-paperAnchorRight {
+  right: auto;
+  left: 0;
+}
+
+[dir="rtl"] .MuiList-root {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiListItem-root {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .MuiListItemIcon-root {
+  margin-left: 16px;
+  margin-right: 0;
+  min-width: auto;
+}
+
+[dir="rtl"] .MuiListItemText-root {
+  text-align: right;
+}
+
+/* ===================================================================
+   HERO SECTION TRANSFORMATION
+   =================================================================== */
+
+/* Hero Layout */
+[dir="rtl"] .hero-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero-content {
+  text-align: right;
+}
+
+[dir="rtl"] .hero-grid {
+  flex-direction: row-reverse;
+}
+
+/* Hero Text Alignment */
+[dir="rtl"] .hero-title,
+[dir="rtl"] .hero-subtitle,
+[dir="rtl"] .hero-description {
+  text-align: right;
+}
+
+/* Hero Actions */
+[dir="rtl"] .hero-actions {
+  justify-content: flex-end;
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .hero-actions .MuiButton-root:first-child {
+  margin-left: 16px;
+  margin-right: 0;
+}
+
+/* Hero Metrics */
+[dir="rtl"] .hero-metrics {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+[dir="rtl"] .metric-item {
+  text-align: right;
+}
+
+/* ===================================================================
+   CONTENT SECTIONS TRANSFORMATION
+   =================================================================== */
+
+/* Platform Divisions */
+[dir="rtl"] .platform-divisions {
+  direction: rtl;
+}
+
+[dir="rtl"] .division-card {
+  text-align: right;
+}
+
+[dir="rtl"] .division-features {
+  text-align: right;
+}
+
+[dir="rtl"] .division-features li {
+  text-align: right;
+}
+
+/* Executive Metrics */
+[dir="rtl"] .executive-metrics {
+  direction: rtl;
+}
+
+[dir="rtl"] .metric-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .metric-card {
+  text-align: right;
+}
+
+/* ===================================================================
+   FORM SYSTEM TRANSFORMATION
+   =================================================================== */
+
+/* Input Fields */
+[dir="rtl"] .MuiTextField-root {
+  direction: rtl;
+}
+
+[dir="rtl"] .MuiInputBase-root {
+  direction: rtl;
+}
+
+[dir="rtl"] .MuiInputBase-input {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiInputLabel-root {
+  right: 14px;
+  left: auto;
+  transform-origin: top right;
+}
+
+[dir="rtl"] .MuiInputLabel-shrink {
+  transform: translate(0, -9px) scale(0.75);
+}
+
+/* Form Actions */
+[dir="rtl"] .form-actions {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .form-actions .MuiButton-root:first-child {
+  margin-left: 16px;
+  margin-right: 0;
+}
+
+/* ===================================================================
+   AI ASSISTANT TRANSFORMATION
+   =================================================================== */
+
+/* AI Assistant FAB */
+[dir="rtl"] .ai-assistant-fab {
+  left: 24px;
+  right: auto;
+}
+
+[dir="ltr"] .ai-assistant-fab {
+  right: 24px;
+  left: auto;
+}
+
+/* Chat Interface */
+[dir="rtl"] .chat-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .message-bubble {
+  text-align: right;
+}
+
+[dir="rtl"] .message-bubble.user {
+  margin-left: 0;
+  margin-right: 48px;
+  text-align: left;
+}
+
+[dir="rtl"] .message-bubble.ai {
+  margin-left: 48px;
+  margin-right: 0;
+  text-align: right;
+}
+
+[dir="rtl"] .chat-input {
+  direction: rtl;
+}
+
+[dir="rtl"] .chat-input .MuiInputBase-root {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .send-button {
+  order: -1;
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+/* ===================================================================
+   MENU & DROPDOWN TRANSFORMATION
+   =================================================================== */
+
+[dir="rtl"] .MuiMenu-paper {
+  transform-origin: top left !important;
+}
+
+[dir="rtl"] .MuiMenuItem-root {
+  flex-direction: row-reverse;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+[dir="rtl"] .MuiSelect-root {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiSelect-icon {
+  left: 7px;
+  right: auto;
+}
+
+/* ===================================================================
+   ICON TRANSFORMATIONS
+   =================================================================== */
+
+/* Directional Icons (arrows, chevrons) */
+[dir="rtl"] .icon-arrow-right {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .icon-arrow-left {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .icon-chevron-right {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .icon-chevron-left {
+  transform: scaleX(-1);
+}
+
+/* Icons that should NOT flip */
+[dir="rtl"] .icon-no-flip {
+  transform: none !important;
+}
+
+/* ===================================================================
+   ANIMATION TRANSFORMATIONS
+   =================================================================== */
+
+/* Slide Animations */
+[dir="rtl"] .slide-enter {
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .slide-enter-active {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .slide-exit {
+  transform: translateX(0);
+}
+
+[dir="rtl"] .slide-exit-active {
+  transform: translateX(-100%);
+}
+
+/* Fade Slide Animations */
+[dir="rtl"] .fade-slide-enter {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+[dir="rtl"] .fade-slide-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ===================================================================
+   TABLE & DATA DISPLAY TRANSFORMATION
+   =================================================================== */
+
+[dir="rtl"] .MuiTable-root {
+  direction: rtl;
+}
+
+[dir="rtl"] .MuiTableCell-root {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiTableCell-alignLeft {
+  text-align: right;
+}
+
+[dir="rtl"] .MuiTableCell-alignRight {
+  text-align: left;
+}
+
+/* ===================================================================
+   BREADCRUMB TRANSFORMATION
+   =================================================================== */
+
+[dir="rtl"] .MuiBreadcrumbs-root {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .MuiBreadcrumbs-separator {
+  transform: scaleX(-1);
+}
+
+/* ===================================================================
+   FOOTER TRANSFORMATION
+   =================================================================== */
+
+[dir="rtl"] .footer-container {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer-section {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-links {
+  text-align: right;
+}
+
+[dir="rtl"] .social-links {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* ===================================================================
+   RESPONSIVE RTL ADJUSTMENTS
+   =================================================================== */
+
+@media (max-width: 768px) {
+  [dir="rtl"] .mobile-nav {
+    right: 0;
+    left: auto;
+  }
+  
+  [dir="rtl"] .mobile-menu-button {
+    order: 1;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  [dir="rtl"] .mobile-logo {
+    order: 2;
+    margin: 0 auto;
+  }
+  
+  [dir="rtl"] .mobile-actions {
+    order: 3;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+/* ===================================================================
+   UTILITY CLASSES
+   =================================================================== */
+
+/* Text Alignment Utilities */
+.text-start {
+  text-align: var(--text-align-start);
+}
+
+.text-end {
+  text-align: var(--text-align-end);
+}
+
+/* Margin Utilities */
+.ms-auto {
+  margin-inline-start: auto;
+}
+
+.me-auto {
+  margin-inline-end: auto;
+}
+
+/* Padding Utilities */
+.ps-0 { padding-inline-start: 0; }
+.ps-1 { padding-inline-start: 8px; }
+.ps-2 { padding-inline-start: 16px; }
+.ps-3 { padding-inline-start: 24px; }
+.ps-4 { padding-inline-start: 32px; }
+
+.pe-0 { padding-inline-end: 0; }
+.pe-1 { padding-inline-end: 8px; }
+.pe-2 { padding-inline-end: 16px; }
+.pe-3 { padding-inline-end: 24px; }
+.pe-4 { padding-inline-end: 32px; }
+
+/* Border Utilities */
+.border-start {
+  border-inline-start: 1px solid;
+}
+
+.border-end {
+  border-inline-end: 1px solid;
+}
+
+/* Flex Direction Utilities */
+.flex-row-reverse-rtl {
+  flex-direction: row;
+}
+
+[dir="rtl"] .flex-row-reverse-rtl {
+  flex-direction: row-reverse;
+}
+
+/* ===================================================================
+   PERFORMANCE OPTIMIZATIONS
+   =================================================================== */
+
+/* Smooth transitions for direction changes */
+.direction-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent layout shift during direction change */
+.direction-stable {
+  contain: layout style;
+}
+
+/* GPU acceleration for smooth animations */
+[dir="rtl"] * {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ===================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   =================================================================== */
+
+/* Focus indicators respect direction */
+[dir="rtl"] *:focus {
+  outline-offset: -2px;
+}
+
+/* Screen reader support */
+[dir="rtl"] .sr-only {
+  direction: rtl;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  [dir="rtl"] .border-start,
+  [dir="rtl"] .border-end {
+    border-color: currentColor;
+  }
+}
+
+/* ===================================================================
+   PRINT STYLES
+   =================================================================== */
+
+@media print {
+  [dir="rtl"] * {
+    direction: rtl !important;
+    text-align: right !important;
+  }
+}
