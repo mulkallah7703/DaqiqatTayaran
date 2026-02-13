@@ -1,5 +1,9 @@
 import React from 'react';
-import { Box, Button, Menu, MenuItem, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import LanguageIcon from '@mui/icons-material/Language';

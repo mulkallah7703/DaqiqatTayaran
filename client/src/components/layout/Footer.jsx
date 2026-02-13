@@ -1,13 +1,11 @@
 import React from 'react';
-import {
-  Box,
-  Container,
-  Grid,
-  Typography,
-  Link,
-  IconButton,
-  Divider,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import IconButton from '@mui/material/IconButton';
+import Divider from '@mui/material/Divider';
 import FlightTakeoff from '@mui/icons-material/FlightTakeoff';
 import Email from '@mui/icons-material/Email';
 import Phone from '@mui/icons-material/Phone';
@@ -27,7 +25,6 @@ const Footer = () => {
 
   const footerLinks = {
     [t('footer.platform')]: [
-      { label: t('nav.company'), path: '/company' },
       { label: t('nav.avtech'), path: '/avtech' },
       { label: t('nav.academy'), path: '/academy' },
     ],
@@ -239,4 +236,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

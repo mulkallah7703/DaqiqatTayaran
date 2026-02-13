@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -50,10 +51,18 @@ app.use('/api/ai', require('./routes/ai'));
 
 // Serve static files from React build
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-  
+  app.use(express.static(path.join(__dirname, 'client/dist'), {
+    maxAge: '1y',
+    immutable: true,
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache');
+      }
+    },
+  }));
+
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
   });
 }
 

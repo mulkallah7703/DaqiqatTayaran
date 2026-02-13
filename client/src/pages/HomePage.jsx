@@ -1,15 +1,13 @@
-import React from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Button,
-  Grid,
-  Card,
-  CardContent,
-  CardActions,
-  useTheme,
-} from '@mui/material';
+import React, { useMemo } from 'react';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import useTheme from '@mui/material/styles/useTheme';
 import Business from '@mui/icons-material/Business';
 import Psychology from '@mui/icons-material/Psychology';
 import School from '@mui/icons-material/School';
@@ -20,27 +18,12 @@ import Security from '@mui/icons-material/Security';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useRTL } from '../hooks/useRTL';
 
 const HomePage = () => {
   const theme = useTheme();
   const { t } = useTranslation();
-  const { isRTL } = useRTL();
 
-  const sections = [
-    {
-      title: t('platformDivisions.company.title'),
-      description: t('platformDivisions.company.description'),
-      icon: <Business sx={{ fontSize: 48 }} />,
-      path: '/company',
-      color: theme.palette.primary.main,
-      features: [
-        t('platformDivisions.company.features.leadership'),
-        t('platformDivisions.company.features.vision'),
-        t('platformDivisions.company.features.excellence'),
-        t('platformDivisions.company.features.network')
-      ]
-    },
+  const sections = useMemo(() => ([
     {
       title: t('platformDivisions.avtech.title'),
       description: t('platformDivisions.avtech.description'),
@@ -67,30 +50,30 @@ const HomePage = () => {
         t('platformDivisions.academy.features.learning')
       ]
     },
-  ];
+  ]), [t, theme.palette.primary.main]);
 
-  const stats = [
+  const stats = useMemo(() => ([
     { label: t('pages.home.stats.activeUsers'), value: '10,000+', icon: <TrendingUp /> },
     { label: t('pages.home.stats.coursesAvailable'), value: '150+', icon: <School /> },
     { label: t('pages.home.stats.industryPartners'), value: '50+', icon: <Business /> },
     { label: t('pages.home.stats.successRate'), value: '98%', icon: <Security /> },
-  ];
+  ]), [t]);
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
+      <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
       {/* Hero Section */}
       <Box
         sx={{
           background: 'linear-gradient(135deg, rgb(11, 11, 11) 0%, rgb(11, 11, 11) 50%, rgb(11, 11, 11) 100%)',
-          minHeight: '80vh',
+            minHeight: '70vh',
           display: 'flex',
           alignItems: 'center',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
+        <Container maxWidth="xl" sx={{ py: { xs: 6, md: 8 }, px: { xs: 2, sm: 3, md: 4 } }}>
+          <Grid container spacing={{ xs: 3, md: 4 }} alignItems="center">
             <Grid item xs={12} md={6}>
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -136,10 +119,10 @@ const HomePage = () => {
                     size="large"
                     endIcon={<ArrowForward />}
                     component={Link}
-                    to="/company"
+                    to="/avtech"
                     sx={{
-                      px: 4,
-                      py: 1.5,
+                      px: 3.5,
+                      py: 1.25,
                       fontSize: '1.1rem',
                     }}
                   >
@@ -151,8 +134,8 @@ const HomePage = () => {
                     component={Link}
                     to="/academy"
                     sx={{
-                      px: 4,
-                      py: 1.5,
+                      px: 3.5,
+                      py: 1.25,
                       fontSize: '1.1rem',
                     }}
                   >
@@ -172,12 +155,12 @@ const HomePage = () => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    height: 400,
+                    height: { xs: 280, md: 320 },
                   }}
                 >
                   <FlightTakeoff
                     sx={{
-                      fontSize: 200,
+                      fontSize: 180,
                       color: 'primary.main',
                       opacity: 0.8,
                       transform: 'rotate(-15deg)',
@@ -191,10 +174,10 @@ const HomePage = () => {
       </Box>
 
       {/* Stats Section */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <Grid container spacing={4}>
+      <Container maxWidth="xl" sx={{ py: { xs: 5, md: 6 }, px: { xs: 2, sm: 3, md: 4 } }}>
+        <Grid container spacing={{ xs: 2, md: 3 }} justifyContent="center">
           {stats.map((stat, index) => (
-            <Grid item xs={6} md={3} key={stat.label}>
+            <Grid item xs={12} sm={6} md={3} key={stat.label}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -203,7 +186,7 @@ const HomePage = () => {
                 <Box
                   sx={{
                     textAlign: 'center',
-                    p: 3,
+                    p: { xs: 2.5, md: 3 },
                     borderRadius: 2,
                     backgroundColor: 'rgba(230, 126, 34, 0.05)',
                     border: '1px solid rgba(230, 126, 34, 0.2)',
@@ -226,7 +209,7 @@ const HomePage = () => {
       </Container>
 
       {/* Sections Overview */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth="xl" sx={{ py: { xs: 6, md: 7 }, px: { xs: 2, sm: 3, md: 4 } }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -249,9 +232,9 @@ const HomePage = () => {
           </Typography>
         </motion.div>
 
-        <Grid container spacing={4}>
+        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
           {sections.map((section, index) => (
-            <Grid item xs={12} md={4} key={section.title}>
+            <Grid item xs={12} sm={6} md={6} key={section.title}>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -259,21 +242,22 @@ const HomePage = () => {
               >
                 <Card
                   sx={{
+                    width: '100%',
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 20px 40px rgba(230, 126, 34, 0.3)',
+                      transform: 'translateY(-6px)',
+                      boxShadow: '0 18px 32px rgba(230, 126, 34, 0.25)',
                     },
                   }}
                 >
-                  <CardContent sx={{ flexGrow: 1, p: 4 }}>
+                  <CardContent sx={{ flexGrow: 1, p: { xs: 3, md: 3.5 } }}>
                     <Box
                       sx={{
                         color: section.color,
-                        mb: 3,
+                        mb: 2.5,
                         display: 'flex',
                         justifyContent: 'center',
                       }}
@@ -283,7 +267,7 @@ const HomePage = () => {
                     <Typography
                       variant="h5"
                       align="center"
-                      sx={{ mb: 2, fontWeight: 600 }}
+                      sx={{ mb: 1.5, fontWeight: 600 }}
                     >
                       {section.title}
                     </Typography>
@@ -291,11 +275,11 @@ const HomePage = () => {
                       variant="body1"
                       color="text.secondary"
                       align="center"
-                      sx={{ mb: 3, lineHeight: 1.6 }}
+                      sx={{ mb: 2.5, lineHeight: 1.6 }}
                     >
                       {section.description}
                     </Typography>
-                    <Box sx={{ mb: 3 }}>
+                    <Box sx={{ mb: 2.5 }}>
                       {section.features.map((feature, idx) => (
                         <Typography
                           key={idx}
@@ -303,7 +287,7 @@ const HomePage = () => {
                           sx={{
                             display: 'flex',
                             alignItems: 'center',
-                            mb: 1,
+                            mb: 0.75,
                             color: 'text.secondary',
                           }}
                         >
@@ -321,7 +305,7 @@ const HomePage = () => {
                       ))}
                     </Box>
                   </CardContent>
-                  <CardActions sx={{ p: 4, pt: 0 }}>
+                  <CardActions sx={{ p: { xs: 3, md: 3.5 }, pt: 0 }}>
                     <Button
                       component={Link}
                       to={section.path}
@@ -350,12 +334,12 @@ const HomePage = () => {
       <Box
         sx={{
           backgroundColor: 'rgba(230, 126, 34, 0.05)',
-          py: 8,
+          py: { xs: 6, md: 7 },
           borderTop: '1px solid rgba(230, 126, 34, 0.2)',
           borderBottom: '1px solid rgba(230, 126, 34, 0.2)',
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -383,4 +367,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default React.memo(HomePage);

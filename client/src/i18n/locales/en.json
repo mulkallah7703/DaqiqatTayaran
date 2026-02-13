@@ -1,7 +1,6 @@
 {
   "nav": {
     "home": "Home",
-    "company": "Company",
     "avtech": "AvTech",
     "academy": "Academy",
     "login": "Login",
@@ -35,17 +34,6 @@
     "bottomDescription": "Experience the integrated power of AI-driven aviation excellence",
     "accessButton": "Access Platform",
     "exploreButton": "Explore Division",
-    "company": {
-      "title": "Company Profile",
-      "subtitle": "Company Profile",
-      "description": "Corporate foundation, vision, and strategic enablers driving aviation transformation.",
-      "features": {
-        "leadership": "Executive Leadership",
-        "vision": "Strategic Vision",
-        "excellence": "Organizational Excellence",
-        "network": "Partnership Network"
-      }
-    },
     "avtech": {
       "title": "AvTech Solutions",
       "subtitle": "AvTech Solutions",
@@ -188,83 +176,6 @@
     "location": "Riyadh, Saudi Arabia",
     "copyright": "© {{year}} Aviation Platform. All rights reserved.",
     "builtWith": "Built with ❤️ for Saudi Vision 2030"
-  },
-  "company": {
-    "performanceTitle": "2025 Performance & Growth",
-    "strategicEnablers": "Strategic Enablers",
-    "leadershipTeam": "Leadership Team",
-    "trustedByIndustry": "Trusted by Industry Leaders",
-    "hero": {
-      "title": "Aviation Media & Platform",
-      "subtitle": "Leading the Future of Aviation",
-      "description": "We are a premium aviation-focused company driving innovation, digital transformation, and excellence in the aviation industry, aligned with Saudi Vision 2030."
-    },
-    "vision": {
-      "title": "Our Vision",
-      "content": "To be the leading aviation platform that empowers professionals with cutting-edge AI technology and comprehensive learning solutions, contributing to Saudi Arabia's vision of a thriving, diversified economy."
-    },
-    "mission": {
-      "title": "Our Mission",
-      "content": "We provide innovative aviation solutions, world-class education, and AI-powered tools that enable aviation professionals to excel in their careers while supporting the Kingdom's digital transformation goals."
-    },
-    "metrics": {
-      "growthTarget": "2025 Growth Target",
-      "activeUsers": "Active Users",
-      "globalReach": "Global Reach",
-      "clientSatisfaction": "Client Satisfaction"
-    },
-    "enablers": {
-      "digitalInnovation": {
-        "title": "Digital Innovation",
-        "description": "Leveraging AI and advanced technologies to transform aviation operations"
-      },
-      "humanCapital": {
-        "title": "Human Capital Development",
-        "description": "Building skilled aviation professionals through comprehensive education"
-      },
-      "industryPartnerships": {
-        "title": "Industry Partnerships",
-        "description": "Collaborating with leading aviation companies and institutions"
-      },
-      "sustainableGrowth": {
-        "title": "Sustainable Growth",
-        "description": "Ensuring long-term value creation and environmental responsibility"
-      }
-    },
-    "team": {
-      "ceo": {
-        "name": "Ahmed Al-Rashid",
-        "position": "Chief Executive Officer",
-        "bio": "Visionary leader with 15+ years in aviation industry"
-      },
-      "cto": {
-        "name": "Sarah Al-Mahmoud",
-        "position": "Chief Technology Officer",
-        "bio": "AI and technology expert driving digital transformation"
-      },
-      "headOperations": {
-        "name": "Mohammed Al-Qahtani",
-        "position": "Head of Aviation Operations",
-        "bio": "Aviation specialist with extensive industry experience"
-      },
-      "directorLearning": {
-        "name": "Fatima Al-Zahra",
-        "position": "Director of Learning & Development",
-        "bio": "Education leader focused on professional development"
-      }
-    },
-    "clients": {
-      "saudiAirlines": "Saudi Arabian Airlines",
-      "emirates": "Emirates",
-      "qatarAirways": "Qatar Airways",
-      "etihadAirways": "Etihad Airways",
-      "flynas": "Flynas",
-      "saudiAerospace": "Saudi Aerospace Engineering Industries",
-      "kingAbdulazizAirport": "King Abdulaziz International Airport",
-      "riyadhAir": "Riyadh Air",
-      "neomAviation": "NEOM Aviation",
-      "saudiAviationAcademy": "Saudi Aviation Academy"
-    }
   },
   "avtech": {
     "aiPoweredTools": "AI-Powered Tools",

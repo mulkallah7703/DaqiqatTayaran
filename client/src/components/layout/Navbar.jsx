@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-  IconButton,
-  Menu,
-  MenuItem,
-  Avatar,
-  useMediaQuery,
-  useTheme,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-} from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Avatar from '@mui/material/Avatar';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import FlightTakeoff from '@mui/icons-material/FlightTakeoff';
-import Business from '@mui/icons-material/Business';
 import Psychology from '@mui/icons-material/Psychology';
 import School from '@mui/icons-material/School';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
@@ -74,7 +71,6 @@ const LuxuryNavbar = () => {
 
   const navItems = [
     { label: t('nav.home'), path: '/', icon: <FlightTakeoff fontSize="small" /> },
-    { label: t('nav.company'), path: '/company', icon: <Business fontSize="small" /> },
     { label: t('nav.avtech'), path: '/avtech', icon: <Psychology fontSize="small" /> },
     { label: t('nav.academy'), path: '/academy', icon: <School fontSize="small" /> },
   ];
@@ -87,7 +83,7 @@ const LuxuryNavbar = () => {
   };
 
   const drawer = (
-    <Box sx={{ width: 280, pt: 3 }}>
+    <Box sx={{ width: 280, pt: 3, direction: isRTL ? 'rtl' : 'ltr' }}>
       <Box sx={{ px: 3, mb: 4 }}>
         <Typography
           variant="h6"
@@ -129,7 +125,7 @@ const LuxuryNavbar = () => {
               transition: 'all 0.3s ease',
             }}
           >
-            <Box sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>{item.icon}</Box>
+            <Box sx={{ marginInlineEnd: 2, display: 'flex', alignItems: 'center' }}>{item.icon}</Box>
             <ListItemText
               primary={item.label}
               primaryTypographyProps={{
@@ -179,106 +175,115 @@ const LuxuryNavbar = () => {
         }}
       >
         <Toolbar sx={{
-          px: { xs: 2, md: 4 },
-          py: { xs: 0.5, md: 0.75 },
+          px: { xs: 2.5, md: 5 },
+          py: { xs: 0.25, md: 0.5 },
           minHeight: { xs: 56, md: 64 },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
           flexDirection: isRTL ? 'row-reverse' : 'row',
         }}>
-          {/* Mobile Menu Button - Position 1 in RTL, Position 1 in LTR */}
-          {isMobile && (
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{
-                marginInlineEnd: 2,
-                color: 'rgb(245, 243, 238)',
-                '&:hover': {
-                  background: 'rgba(230, 126, 34, 0.1)',
-                },
-              }}
-            >
-              <MenuIcon sx={{ fontSize: 20 }} />
-            </IconButton>
-          )}
-
-          {/* Logo - Position 2 in RTL, Position 1 in LTR */}
-          <motion.div
-            initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{}}
+          {/* Brand Section */}
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+              flexDirection: isRTL ? 'row-reverse' : 'row',
+              marginInlineEnd: { xs: 2, md: 5 },
+            }}
           >
-            <Box
-              component={Link}
-              to="/"
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 2,
-                textDecoration: 'none',
-                color: 'inherit',
-                flexDirection: isRTL ? 'row-reverse' : 'row',
-              }}
-            >
-              <Box
-                component="img"
-                src={logo}
-                alt="Brand logo"
+            {isMobile && (
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                edge="start"
+                onClick={handleDrawerToggle}
                 sx={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: '50%',
-                  objectFit: 'contain',
-                  boxShadow: '0 8px 24px rgba(11, 11, 11, 0.35)',
-                }}
-              />
-              <Box
-                sx={{
-                  textAlign: isRTL ? 'right' : 'left',
-                  minWidth: 180,
-                  maxWidth: 180,
-                  flexShrink: 0,
+                  color: 'rgb(245, 243, 238)',
+                  '&:hover': {
+                    background: 'rgba(230, 126, 34, 0.1)',
+                  },
                 }}
               >
-                <Typography
-                  variant="h6"
+                <MenuIcon sx={{ fontSize: 20 }} />
+              </IconButton>
+            )}
+
+            <motion.div
+              initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{}}
+            >
+              <Box
+                component={Link}
+                to="/"
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 2,
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  flexDirection: isRTL ? 'row-reverse' : 'row',
+                }}
+              >
+                <Box
+                  component="img"
+                  src={logo}
+                  alt="Brand logo"
                   sx={{
-                    fontWeight: 700,
-                    fontSize: '1.1rem',
-                    background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 100%)',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    lineHeight: 1.2,
+                    width: 28,
+                    height: 28,
+                    borderRadius: '50%',
+                    objectFit: 'contain',
+                    boxShadow: '0 8px 24px rgba(11, 11, 11, 0.35)',
+                  }}
+                />
+                <Box
+                  sx={{
+                    textAlign: isRTL ? 'right' : 'left',
+                    minWidth: 150,
+                    maxWidth: 150,
+                    flexShrink: 0,
                   }}
                 >
-                  {t('nav.brand')}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    color: 'rgb(245, 243, 238)',
-                    fontSize: '0.75rem',
-                    letterSpacing: '1px',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {t('nav.tagline')}
-                </Typography>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: '1.1rem',
+                      background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 100%)',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {t('nav.brand')}
+                  </Typography>
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      color: 'rgb(245, 243, 238)',
+                      fontSize: '0.75rem',
+                      letterSpacing: '1px',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {t('nav.tagline')}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
-          </motion.div>
+            </motion.div>
+          </Box>
 
-          {/* Spacer */}
-          <Box sx={{ flexGrow: 1 }} />
-
-          {/* Navigation Items - Desktop Only */}
+          {/* Links Section */}
           {!isMobile && (
             <Box sx={{
               display: 'flex',
-              gap: 1,
+              alignItems: 'center',
+              gap: { xs: 2, md: 3.5 },
               flexDirection: isRTL ? 'row-reverse' : 'row',
             }}>
               {navItems.map((item, index) => (
@@ -291,15 +296,17 @@ const LuxuryNavbar = () => {
                   <Button
                     component={Link}
                     to={item.path}
-                    startIcon={isRTL ? null : item.icon}
-                    endIcon={isRTL ? item.icon : null}
+                    startIcon={item.icon}
                     sx={{
                       color: isActive(item.path) ? 'rgb(230, 126, 34)' : 'rgb(245, 243, 238)',
                       fontWeight: isActive(item.path) ? 600 : 400,
-                      px: 2.5,
-                      py: 0.5,
+                      px: { md: 2, lg: 2.5 },
+                      py: { md: 0.3, lg: 0.35 },
                       borderRadius: 2,
                       position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 1,
                       flexDirection: isRTL ? 'row-reverse' : 'row',
                       '&::after': {
                         content: '""',
@@ -329,17 +336,15 @@ const LuxuryNavbar = () => {
             </Box>
           )}
 
-          {/* Language Switcher */}
+          {/* Actions Section */}
           <Box sx={{
-            marginInlineStart: 2,
+            display: 'flex',
+            alignItems: 'center',
+            gap: { xs: 2, md: 2.5 },
+            flexDirection: isRTL ? 'row-reverse' : 'row',
           }}>
             <LanguageSwitcher />
-          </Box>
 
-          {/* User Menu */}
-          <Box sx={{
-            marginInlineStart: 3,
-          }}>
             {isAuthenticated ? (
               <>
                 <IconButton
@@ -436,7 +441,7 @@ const LuxuryNavbar = () => {
               </>
             ) : (
               !isMobile && (
-                <Box sx={{ display: 'flex', gap: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                   <Button
                     component={Link}
                     to="/login"
@@ -445,7 +450,7 @@ const LuxuryNavbar = () => {
                     sx={{
                       borderColor: 'rgba(230, 126, 34, 0.3)',
                       color: 'rgb(245, 243, 238)',
-                      py: 0.5,
+                      py: 0.35,
                       '&:hover': {
                         borderColor: 'rgba(230, 126, 34, 0.6)',
                         background: 'rgba(230, 126, 34, 0.1)',
@@ -488,4 +493,4 @@ const LuxuryNavbar = () => {
   );
 };
 
-export default LuxuryNavbar;
+export default React.memo(LuxuryNavbar);

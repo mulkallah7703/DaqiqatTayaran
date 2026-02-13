@@ -22,8 +22,8 @@ const seedData = async () => {
     // Create admin user
     const adminUser = new User({
       name: 'Admin User',
-      email: process.env.ADMIN_EMAIL || 'admin@aviationplatform.com',
-      password: process.env.ADMIN_PASSWORD || 'AdminPass123!',
+      email: process.env.ADMIN_EMAIL || 'admin@dagigattayran.com',
+      password: process.env.ADMIN_PASSWORD || 'Admin@123',
       role: 'admin'
     });
     await adminUser.save();
@@ -230,7 +230,7 @@ const seedData = async () => {
     console.log('Seed data created successfully!');
     console.log(`Admin login: ${adminUser.email}`);
     console.log(`Admin password: ${process.env.ADMIN_PASSWORD || 'AdminPass123!'}`);
-    
+
   } catch (error) {
     console.error('Error seeding data:', error);
   } finally {

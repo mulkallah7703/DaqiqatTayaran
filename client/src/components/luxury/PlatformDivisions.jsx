@@ -1,10 +1,14 @@
-import React from 'react';
-import { Box, Container, Typography, Grid, Card, CardContent, Button } from '@mui/material';
+import React, { useMemo } from 'react';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useRTL } from '../../hooks/useRTL';
-import Business from '@mui/icons-material/Business';
 import Psychology from '@mui/icons-material/Psychology';
 import School from '@mui/icons-material/School';
 
@@ -12,22 +16,7 @@ const PlatformDivisions = () => {
   const { t } = useTranslation();
   const { isRTL } = useRTL();
   
-  const divisions = [
-    {
-      title: t('platformDivisions.company.title'),
-      subtitle: t('platformDivisions.company.subtitle'),
-      description: t('platformDivisions.company.description'),
-      icon: <Business sx={{ fontSize: 48 }} />,
-      path: '/company',
-      gradient: 'linear-gradient(135deg, rgba(230, 126, 34, 0.15) 0%, rgba(230, 126, 34, 0.05) 100%)',
-      borderColor: 'rgba(230, 126, 34, 0.2)',
-      features: [
-        t('platformDivisions.company.features.leadership'),
-        t('platformDivisions.company.features.vision'),
-        t('platformDivisions.company.features.excellence'),
-        t('platformDivisions.company.features.network')
-      ]
-    },
+  const divisions = useMemo(() => ([
     {
       title: t('platformDivisions.avtech.title'),
       subtitle: t('platformDivisions.avtech.subtitle'),
@@ -58,7 +47,7 @@ const PlatformDivisions = () => {
         t('platformDivisions.academy.features.learning')
       ]
     }
-  ];
+  ]), [t]);
 
   return (
     <Box
@@ -81,7 +70,10 @@ const PlatformDivisions = () => {
         }}
       />
 
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{ px: { xs: 2, sm: 3, md: 4 } }}
+      >
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -140,47 +132,58 @@ const PlatformDivisions = () => {
         </motion.div>
 
         {/* Divisions Grid */}
-        <Grid container spacing={4}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: { xs: 3, md: 4 },
+            maxWidth: 1200,
+            mx: 'auto',
+          }}
+        >
           {divisions.map((division, index) => (
-            <Grid item xs={12} lg={4} key={division.title}>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.8, 
-                  ease: "easeOut", 
-                  delay: index * 0.2 
+            <Box
+              key={division.title}
+              component={motion.div}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                ease: 'easeOut',
+                delay: index * 0.2,
+              }}
+              viewport={{ once: true }}
+              sx={{ display: 'flex' }}
+            >
+              <Card
+                sx={{
+                  flex: 1,
+                  height: '100%',
+                  background: division.gradient,
+                  border: `1px solid ${division.borderColor}`,
+                  position: 'relative',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '4px',
+                    background: `linear-gradient(90deg, ${division.borderColor} 0%, transparent 100%)`,
+                  },
+                  '&:hover': {
+                    '& .division-icon': {
+                      transform: 'scale(1.1) rotate(5deg)',
+                    },
+                    '& .division-features': {
+                      transform: 'translateY(0)',
+                      opacity: 1,
+                    },
+                  },
                 }}
-                viewport={{ once: true }}
               >
-                <Card
-                  sx={{
-                    height: '100%',
-                    background: division.gradient,
-                    border: `1px solid ${division.borderColor}`,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    cursor: 'pointer',
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '4px',
-                      background: `linear-gradient(90deg, ${division.borderColor} 0%, transparent 100%)`,
-                    },
-                    '&:hover': {
-                      '& .division-icon': {
-                        transform: 'scale(1.1) rotate(5deg)',
-                      },
-                      '& .division-features': {
-                        transform: 'translateY(0)',
-                        opacity: 1,
-                      },
-                    },
-                  }}
-                >
                   <CardContent sx={{ 
                     p: 4, 
                     height: '100%', 
@@ -302,11 +305,10 @@ const PlatformDivisions = () => {
                       {t('platformDivisions.exploreButton')}
                     </Button>
                   </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
+              </Card>
+            </Box>
           ))}
-        </Grid>
+        </Box>
 
         {/* Bottom CTA */}
         <motion.div
@@ -352,4 +354,4 @@ const PlatformDivisions = () => {
   );
 };
 
-export default PlatformDivisions;
+export default React.memo(PlatformDivisions);

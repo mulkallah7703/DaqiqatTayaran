@@ -1,33 +1,27 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Container,
-  Paper,
-  TextField,
-  Button,
-  Typography,
-  Alert,
-  Link as MuiLink,
-} from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Alert from '@mui/material/Alert';
+import Link from '@mui/material/Link';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { useRTL } from '../../hooks/useRTL';
 import { useAuth } from '../../context/AuthContext';
 
-const Register = () => {
+const Login = () => {
   const { t } = useTranslation();
-  const { isRTL } = useRTL();
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
-    confirmPassword: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { register } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -40,28 +34,17 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
-    if (formData.password !== formData.confirmPassword) {
-      setError(t('auth.register.errors.passwordMismatch'));
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      setError(t('auth.register.errors.passwordLength'));
-      return;
-    }
-
     setLoading(true);
 
     try {
-      const result = await register(formData.name, formData.email, formData.password);
+      const result = await login(formData.email, formData.password);
       if (result.success) {
         navigate('/');
       } else {
         setError(result.message);
       }
     } catch (err) {
-      setError(t('auth.register.errors.failed'));
+      setError(t('auth.login.errors.failed'));
     } finally {
       setLoading(false);
     }
@@ -91,7 +74,7 @@ const Register = () => {
             }}
           >
             <Typography variant="h4" sx={{ mb: 4 }}>
-              {t('auth.register.title')}
+              {t('auth.login.title')}
             </Typography>
             
             {error && (
@@ -105,22 +88,11 @@ const Register = () => {
                 margin="normal"
                 required
                 fullWidth
-                id="name"
-                label={t('auth.register.name')}
-                name="name"
-                autoComplete="name"
-                autoFocus
-                value={formData.name}
-                onChange={handleChange}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
                 id="email"
-                label={t('auth.register.email')}
+                label={t('auth.login.email')}
                 name="email"
                 autoComplete="email"
+                autoFocus
                 value={formData.email}
                 onChange={handleChange}
               />
@@ -129,22 +101,11 @@ const Register = () => {
                 required
                 fullWidth
                 name="password"
-                label={t('auth.register.password')}
+                label={t('auth.login.password')}
                 type="password"
                 id="password"
-                autoComplete="new-password"
+                autoComplete="current-password"
                 value={formData.password}
-                onChange={handleChange}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="confirmPassword"
-                label={t('auth.register.confirmPassword')}
-                type="password"
-                id="confirmPassword"
-                value={formData.confirmPassword}
                 onChange={handleChange}
               />
               <Button
@@ -154,12 +115,12 @@ const Register = () => {
                 sx={{ mt: 3, mb: 2 }}
                 disabled={loading}
               >
-                {loading ? t('auth.register.creatingAccount') : t('auth.register.createAccount')}
+                {loading ? t('auth.login.signingIn') : t('auth.login.signIn')}
               </Button>
               <Box sx={{ textAlign: 'center' }}>
-                <MuiLink component={Link} to="/login" variant="body2">
-                  {t('auth.register.haveAccount')} {t('auth.register.signIn')}
-                </MuiLink>
+                <Link component={RouterLink} to="/register" variant="body2">
+                  {t('auth.login.noAccount')} {t('auth.login.signUp')}
+                </Link>
               </Box>
             </Box>
           </Paper>
@@ -169,4 +130,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

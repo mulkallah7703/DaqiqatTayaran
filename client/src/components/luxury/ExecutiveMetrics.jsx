@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Container, Typography, Grid } from '@mui/material';
+import React, { useEffect, useState, useMemo } from 'react';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useRTL } from '../../hooks/useRTL';
+
+const ACCENT_COLOR = 'rgb(230, 126, 34)';
 
 const ExecutiveMetrics = () => {
   const { t } = useTranslation();
@@ -11,51 +16,50 @@ const ExecutiveMetrics = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.3 });
 
-  const accentColor = 'rgb(230, 126, 34)';
-  const metrics = [
+  const metrics = useMemo(() => ([
     {
       value: 2030,
       suffix: '',
       label: t('executiveMetrics.vision2030'),
       description: t('executiveMetrics.visionDescription'),
-      color: accentColor,
+      color: ACCENT_COLOR,
     },
     {
       value: 150,
       suffix: '+',
       label: t('executiveMetrics.aiModels'),
       description: t('executiveMetrics.aiDescription'),
-      color: accentColor,
+      color: ACCENT_COLOR,
     },
     {
       value: 500,
       suffix: '+',
       label: t('executiveMetrics.activeProjects'),
       description: t('executiveMetrics.projectsDescription'),
-      color: accentColor,
+      color: ACCENT_COLOR,
     },
     {
       value: 98,
       suffix: '%',
       label: t('executiveMetrics.successRate'),
       description: t('executiveMetrics.successDescription'),
-      color: accentColor,
+      color: ACCENT_COLOR,
     },
     {
       value: 24,
       suffix: '/7',
       label: t('executiveMetrics.operations'),
       description: t('executiveMetrics.operationsDescription'),
-      color: accentColor,
+      color: ACCENT_COLOR,
     },
     {
       value: 1000,
       suffix: '+',
       label: t('executiveMetrics.digitalSolutions'),
       description: t('executiveMetrics.solutionsDescription'),
-      color: accentColor,
+      color: ACCENT_COLOR,
     },
-  ];
+  ]), [t]);
 
   const AnimatedCounter = ({ value, suffix, isVisible, delay = 0 }) => {
     const [count, setCount] = useState(0);
@@ -147,7 +151,7 @@ const ExecutiveMetrics = () => {
         }}
       />
 
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -382,4 +386,4 @@ const ExecutiveMetrics = () => {
   );
 };
 
-export default ExecutiveMetrics;
+export default React.memo(ExecutiveMetrics);

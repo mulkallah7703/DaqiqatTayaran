@@ -1,17 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {
-  Box,
-  Fab,
-  Dialog,
-  DialogContent,
-  TextField,
-  IconButton,
-  Typography,
-  Paper,
-  CircularProgress,
-  Chip,
-  Slide,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import CircularProgress from '@mui/material/CircularProgress';
+import Chip from '@mui/material/Chip';
+import Slide from '@mui/material/Slide';
 import SmartToy from '@mui/icons-material/SmartToy';
 import Close from '@mui/icons-material/Close';
 import Send from '@mui/icons-material/Send';
@@ -554,4 +552,4 @@ const LuxuryAIAssistant = () => {
   );
 };
 
-export default LuxuryAIAssistant;
+export default React.memo(LuxuryAIAssistant);

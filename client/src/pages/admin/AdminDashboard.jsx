@@ -1,19 +1,23 @@
 import React from 'react';
-import { Box, Container, Typography, Paper, Grid, Card, CardContent } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import Dashboard from '@mui/icons-material/Dashboard';
 import People from '@mui/icons-material/People';
 import School from '@mui/icons-material/School';
 import Article from '@mui/icons-material/Article';
 import TrendingUp from '@mui/icons-material/TrendingUp';
 import { useTranslation } from 'react-i18next';
-import { useRTL } from '../../hooks/useRTL';
 import { useAuth } from '../../context/AuthContext';
 import { Navigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const { user, isAuthenticated } = useAuth();
   const { t } = useTranslation();
-  const { isRTL } = useRTL();
 
   if (!isAuthenticated || (user?.role !== 'admin' && user?.role !== 'editor')) {
     return <Navigate to="/login" replace />;

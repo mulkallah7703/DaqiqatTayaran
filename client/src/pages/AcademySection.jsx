@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  CardMedia,
-  Button,
-  Chip,
-  Rating,
-  LinearProgress,
-  TextField,
-  InputAdornment,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import Rating from '@mui/material/Rating';
+import LinearProgress from '@mui/material/LinearProgress';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import School from '@mui/icons-material/School';
 import Search from '@mui/icons-material/Search';
 import PlayArrow from '@mui/icons-material/PlayArrow';
@@ -29,12 +27,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
-import { useRTL } from '../hooks/useRTL';
 import axios from 'axios';
 
 const AcademySection = () => {
   const { t } = useTranslation();
-  const { isRTL } = useRTL();
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [levelFilter, setLevelFilter] = useState('');

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 const AuthContext = createContext();
@@ -68,6 +68,15 @@ export const AuthProvider = ({ children }) => {
     }
   }, [state.token]);
 
+  const loadUser = useCallback(async () => {
+    try {
+      const res = await axios.get('/api/auth/me');
+      dispatch({ type: 'LOAD_USER', payload: res.data });
+    } catch (error) {
+      dispatch({ type: 'AUTH_ERROR' });
+    }
+  }, [dispatch]);
+
   // Load user on app start
   useEffect(() => {
     if (state.token) {
@@ -75,16 +84,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       dispatch({ type: 'SET_LOADING', payload: false });
     }
-  }, []);
-
-  const loadUser = async () => {
-    try {
-      const res = await axios.get('/api/auth/me');
-      dispatch({ type: 'LOAD_USER', payload: res.data });
-    } catch (error) {
-      dispatch({ type: 'AUTH_ERROR' });
-    }
-  };
+  }, [state.token, loadUser, dispatch]);
 
   const login = async (email, password) => {
     try {

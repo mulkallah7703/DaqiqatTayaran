@@ -1,18 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {
-  Box,
-  Fab,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  TextField,
-  IconButton,
-  Typography,
-  Paper,
-  CircularProgress,
-  Chip,
-} from '@mui/material';
-import SmartToy from '@mui/icons-material/SmartToy';
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import CircularProgress from '@mui/material/CircularProgress';
+import Chip from '@mui/material/Chip';
 import Close from '@mui/icons-material/Close';
 import Send from '@mui/icons-material/Send';
 import Person from '@mui/icons-material/Person';
@@ -37,7 +34,6 @@ const AIAssistant = () => {
   const quickQuestions = [
     "How do I enroll in a course?",
     "What AI tools are available?",
-    "Tell me about the company",
     "Show me aviation courses",
     "How does the platform work?",
   ];

@@ -1,21 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Grid,
-  Card,
-  CardContent,
-  Button,
-  Chip,
-  LinearProgress,
-  Paper,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@mui/material';
-import Psychology from '@mui/icons-material/Psychology';
+import React, { useState, useEffect, useCallback } from 'react';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import LinearProgress from '@mui/material/LinearProgress';
+import Paper from '@mui/material/Paper';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
 import AutoAwesome from '@mui/icons-material/AutoAwesome';
 import Speed from '@mui/icons-material/Speed';
 import Security from '@mui/icons-material/Security';
@@ -26,10 +23,96 @@ import ArrowForward from '@mui/icons-material/ArrowForward';
 import Code from '@mui/icons-material/Code';
 import SmartToy from '@mui/icons-material/SmartToy';
 import Engineering from '@mui/icons-material/Engineering';
+import Psychology from '@mui/icons-material/Psychology';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useRTL } from '../hooks/useRTL';
 import axios from 'axios';
+
+const TOOL_CARD_PADDING = { xs: 2.5, sm: 3, md: 4 };
+
+const ToolCard = React.memo(({ tool, t, isRTL }) => (
+  <Card
+    sx={{
+      width: '100%',
+      maxWidth: 640,
+      mx: 'auto',
+      height: '100%',
+      borderRadius: 2,
+      background: 'linear-gradient(180deg, rgba(11, 11, 11, 0.9) 0%, rgba(11, 11, 11, 0.75) 100%)',
+      border: '1px solid rgba(230, 126, 34, 0.4)',
+      boxShadow: '0 12px 28px rgba(230, 126, 34, 0.2)',
+      transition: 'all 0.3s ease',
+      '&:hover': {
+        transform: 'translateY(-6px)',
+        borderColor: 'rgba(230, 126, 34, 0.6)',
+        boxShadow: '0 16px 32px rgba(230, 126, 34, 0.28)',
+      },
+    }}
+  >
+    <CardContent
+      sx={{
+        p: TOOL_CARD_PADDING,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2.5, gap: 1.5, flexDirection: isRTL ? 'row-reverse' : 'row' }}>
+          <Box sx={{ color: tool.color }}>{tool.icon}</Box>
+          <Typography variant="h5">{tool.title}</Typography>
+        </Box>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 2.5 }}>
+          {tool.description}
+        </Typography>
+        <Box sx={{ mb: 2.5, display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+          {tool.features.map((feature, idx) => (
+            <Chip
+              key={idx}
+              label={feature}
+              size="small"
+              sx={{
+                backgroundColor: 'rgba(230, 126, 34, 0.2)',
+                color: tool.color,
+                border: '1px solid rgba(230, 126, 34, 0.5)',
+              }}
+            />
+          ))}
+        </Box>
+      </Box>
+      <Box sx={{ mt: 1.5 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+          <LinearProgress
+            variant="determinate"
+            value={tool.progress}
+            sx={{
+              flexGrow: 1,
+              height: 8,
+              borderRadius: 4,
+              backgroundColor: 'rgba(11, 11, 11, 0.1)',
+              '& .MuiLinearProgress-bar': {
+                backgroundColor: tool.color,
+              },
+            }}
+          />
+          <Typography variant="body2" sx={{ minWidth: 40 }}>
+            {tool.progress}%
+          </Typography>
+        </Box>
+        <Button
+          fullWidth
+          variant="contained"
+          endIcon={isRTL ? undefined : <ArrowForward />}
+          startIcon={isRTL ? <ArrowForward /> : undefined}
+        >
+          {t('avtech.cta.button')}
+        </Button>
+      </Box>
+    </CardContent>
+  </Card>
+));
 
 const AvTechSection = () => {
   const { t } = useTranslation();
@@ -37,11 +120,7 @@ const AvTechSection = () => {
   const [content, setContent] = useState({});
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchContent();
-  }, []);
-
-  const fetchContent = async () => {
+  const fetchContent = useCallback(async () => {
     try {
       const response = await axios.get('/api/content/avtech');
       const contentData = {};
@@ -50,7 +129,6 @@ const AvTechSection = () => {
       });
       setContent(contentData);
     } catch (error) {
-      console.error('Error fetching content:', error);
       setContent({
         hero: {
           title: t('avtech.hero.title'),
@@ -61,7 +139,11 @@ const AvTechSection = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [t]);
+
+  useEffect(() => {
+    fetchContent();
+  }, [fetchContent]);
 
   const aiTools = [
     {
@@ -255,82 +337,32 @@ const AvTechSection = () => {
       </Box>
 
       {/* AI Tools Section */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
+      <Container maxWidth="xl" sx={{ py: { xs: 8, md: 10 }, px: { xs: 2, sm: 3, md: 4 } }}>
         <Typography variant="h3" align="center" sx={{ mb: 6 }}>
           {t('avtech.aiPoweredTools')}
         </Typography>
-        <Grid container spacing={4}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: { xs: 3, md: 4 },
+            maxWidth: 1200,
+            mx: 'auto',
+          }}
+        >
           {aiTools.map((tool, index) => (
-            <Grid item xs={12} md={6} key={tool.title}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Card
-                  sx={{
-                    height: '100%',
-                    background: 'linear-gradient(135deg, rgba(230, 126, 34, 0.15) 0%, rgba(230, 126, 34, 0.05) 100%)',
-                    border: '1px solid rgba(230, 126, 34, 0.3)',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
-                      boxShadow: '0 20px 40px rgba(230, 126, 34, 0.3)',
-                    },
-                  }}
-                >
-                  <CardContent sx={{ p: 4 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                      <Box sx={{ color: tool.color, mr: 2 }}>
-                        {tool.icon}
-                      </Box>
-                      <Typography variant="h5">
-                        {tool.title}
-                      </Typography>
-                    </Box>
-                    <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                      {tool.description}
-                    </Typography>
-                    <Box sx={{ mb: 3 }}>
-                      {tool.features.map((feature, idx) => (
-                        <Chip
-                          key={idx}
-                          label={feature}
-                          size="small"
-                          sx={{
-                            mr: 1,
-                            mb: 1,
-                            backgroundColor: 'rgba(230, 126, 34, 0.2)',
-                            color: tool.color,
-                            border: '1px solid rgba(230, 126, 34, 0.5)',
-                          }}
-                        />
-                      ))}
-                    </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                      <LinearProgress
-                        variant="determinate"
-                        value={tool.progress}
-                        sx={{
-                          flexGrow: 1,
-                          height: 8,
-                          borderRadius: 4,
-                          backgroundColor: 'rgba(11, 11, 11, 0.1)',
-                          '& .MuiLinearProgress-bar': {
-                            backgroundColor: tool.color,
-                          },
-                        }}
-                      />
-                      <Typography variant="body2" sx={{ minWidth: 40 }}>
-                        {tool.progress}%
-                      </Typography>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
+            <Box
+              key={tool.title}
+              component={motion.div}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              sx={{ display: 'flex' }}
+            >
+              <ToolCard tool={tool} t={t} isRTL={isRTL} />
+            </Box>
           ))}
-        </Grid>
+        </Box>
       </Container>
 
       {/* Use Cases Section */}

@@ -1,5 +1,9 @@
 import React from 'react';
-import { Box, Container, Typography, Button, Grid } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -190,9 +194,17 @@ const ExecutiveHero = () => {
     >
       <AISkySphere />
       
-      <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 2 }}>
+      <Container
+        maxWidth="xl"
+        sx={{ position: 'relative', zIndex: 2, px: { xs: 2, sm: 3, md: 4 } }}
+      >
         <motion.div style={{ y, opacity }}>
-          <Grid container spacing={8} alignItems="center" sx={{ minHeight: '80vh' }}>
+          <Grid
+            container
+            spacing={{ xs: 4, md: 8 }}
+            alignItems="center"
+            sx={{ minHeight: { xs: 'auto', md: '80vh' }, py: { xs: 6, md: 0 } }}
+          >
             {/* Content - Strategically Positioned with RTL Support */}
             <Grid item xs={12} lg={7}>
               <Box sx={{ 
@@ -329,7 +341,7 @@ const ExecutiveHero = () => {
                   }}>
                     <Button
                       component={Link}
-                      to="/company"
+                      to="/avtech"
                       variant="contained"
                       size="large"
                       sx={{
