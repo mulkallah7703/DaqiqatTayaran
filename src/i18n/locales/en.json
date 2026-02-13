@@ -1,0 +1,353 @@
+{
+  "nav": {
+    "home": "Home",
+    "avtech": "AvTech",
+    "academy": "Academy",
+    "login": "Login",
+    "register": "Register",
+    "admin": "Admin",
+    "logout": "Logout",
+    "brand": "Dagigat Tayran",
+    "tagline": "Platform",
+    "executiveAccess": "Executive Access",
+    "executiveDashboard": "Executive Dashboard",
+    "signOut": "Sign Out"
+  },
+  "hero": {
+    "badge": "Saudi Vision 2030 • Executive AI Platform",
+    "title": "Aviation",
+    "titleHighlight": "Intelligence",
+    "subtitle": "The Kingdom's flagship AI-powered aviation ecosystem, orchestrating digital transformation and technological excellence across aerospace operations.",
+    "exploreButton": "Explore Platform",
+    "aiSolutionsButton": "AI Solutions",
+    "metrics": {
+      "aiSystems": "AI Systems",
+      "aviationPartners": "Aviation Partners",
+      "successRate": "Success Rate"
+    }
+  },
+  "platformDivisions": {
+    "sectionTitle": "Platform Architecture",
+    "mainTitle": "Three Pillars of",
+    "mainTitleHighlight": "Excellence",
+    "description": "Integrated divisions working in harmony to advance the Kingdom's aviation capabilities and digital transformation goals.",
+    "bottomDescription": "Experience the integrated power of AI-driven aviation excellence",
+    "accessButton": "Access Platform",
+    "exploreButton": "Explore Division",
+    "avtech": {
+      "title": "AvTech Solutions",
+      "subtitle": "AvTech Solutions",
+      "description": "AI-powered technology wing delivering innovation and digital solutions.",
+      "features": {
+        "analytics": "AI-Powered Analytics",
+        "intelligence": "Predictive Intelligence",
+        "automation": "Automation Systems",
+        "innovation": "Digital Innovation"
+      }
+    },
+    "academy": {
+      "title": "Digital Academy",
+      "subtitle": "Digital Academy",
+      "description": "Comprehensive learning management system for aviation professionals.",
+      "features": {
+        "curriculum": "Expert Curriculum",
+        "certification": "Professional Certification",
+        "standards": "Industry Standards",
+        "learning": "Continuous Learning"
+      }
+    }
+  },
+  "executiveMetrics": {
+    "sectionTitle": "Executive Dashboard",
+    "mainTitle": "Platform",
+    "mainTitleHighlight": "Performance",
+    "description": "Real-time metrics demonstrating our commitment to excellence and strategic alignment with national objectives.",
+    "bottomTitle": "Driving Digital Transformation",
+    "bottomDescription": "These metrics reflect our unwavering commitment to excellence, innovation, and the successful implementation of Saudi Vision 2030's digital transformation objectives across the aviation sector.",
+    "vision2030": "Vision Alignment",
+    "visionDescription": "Strategic roadmap integration",
+    "aiModels": "AI Models Deployed",
+    "aiDescription": "Advanced intelligence systems",
+    "activeProjects": "Active Projects",
+    "projectsDescription": "Industry collaboration network",
+    "successRate": "Success Rate",
+    "successDescription": "Mission-critical reliability",
+    "operations": "Operations",
+    "operationsDescription": "Continuous system availability",
+    "digitalSolutions": "Digital Solutions",
+    "solutionsDescription": "Transformation initiatives"
+  },
+  "aiAssistant": {
+    "title": "Aviation AI Assistant",
+    "status": "Executive Intelligence Active",
+    "welcomeMessage": "Hello! I'm your Aviation AI Assistant. How can I help you today?",
+    "placeholder": "Ask about platform capabilities, strategic insights, or technical guidance...",
+    "quickAccess": "Executive Quick Access:",
+    "analyzing": "Analyzing...",
+    "send": "Send",
+    "thinking": "Thinking...",
+    "quickQuestions": {
+      "capabilities": "Platform capabilities overview",
+      "solutions": "AI solutions for aviation",
+      "partnerships": "Strategic partnership opportunities",
+      "transformation": "Digital transformation roadmap",
+      "vision2030": "Vision 2030 alignment"
+    }
+  },
+  "pages": {
+    "home": {
+      "title": "Future of Aviation",
+      "subtitle": "AI-Powered Platform",
+      "description": "Empowering aviation professionals with cutting-edge AI technology, comprehensive learning solutions, and innovative digital transformation aligned with Saudi Vision 2030.",
+      "exploreButton": "Explore Platform",
+      "startLearning": "Start Learning",
+      "stats": {
+        "activeUsers": "Active Users",
+        "coursesAvailable": "Courses Available",
+        "industryPartners": "Industry Partners",
+        "successRate": "Success Rate"
+      },
+      "sectionsTitle": "Platform Sections",
+      "sectionsSubtitle": "Three integrated wings designed to elevate your aviation journey",
+      "vision2030Title": "Aligned with Saudi Vision 2030",
+      "vision2030Description": "Our platform embodies the principles of digital transformation, innovation, and excellence that drive the Kingdom's ambitious vision for the future."
+    },
+    "simple": {
+      "title": "Aviation AI Platform",
+      "subtitle": "Leading the Future of Aviation",
+      "description": "Empowering aviation professionals with cutting-edge AI technology, comprehensive learning solutions, and innovative digital transformation aligned with Saudi Vision 2030."
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "email": "Email Address",
+      "password": "Password",
+      "signIn": "Sign In",
+      "signingIn": "Signing In...",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign Up",
+      "errors": {
+        "failed": "Login failed. Please try again."
+      }
+    },
+    "register": {
+      "title": "Sign Up",
+      "name": "Full Name",
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "createAccount": "Sign Up",
+      "creatingAccount": "Creating Account...",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign In",
+      "errors": {
+        "passwordMismatch": "Passwords do not match",
+        "passwordLength": "Password must be at least 6 characters",
+        "failed": "Registration failed. Please try again."
+      }
+    }
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "welcome": "Welcome back, {{name}}! Here's your platform overview.",
+    "stats": {
+      "totalUsers": "Total Users",
+      "activeCourses": "Active Courses",
+      "contentItems": "Content Items",
+      "monthlyGrowth": "Monthly Growth"
+    }
+  },
+  "footer": {
+    "platform": "Platform",
+    "resources": "Resources",
+    "legal": "Legal",
+    "description": "Leading the future of aviation with AI-powered solutions, comprehensive learning, and innovative technology aligned with Saudi Vision 2030.",
+    "documentation": "Documentation",
+    "apiReference": "API Reference",
+    "supportCenter": "Support Center",
+    "community": "Community",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "gdprCompliance": "GDPR Compliance",
+    "email": "info@aviationplatform.com",
+    "phone": "+966 11 123 4567",
+    "location": "Riyadh, Saudi Arabia",
+    "copyright": "© {{year}} Aviation Platform. All rights reserved.",
+    "builtWith": "Built with ❤️ for Saudi Vision 2030"
+  },
+  "avtech": {
+    "aiPoweredTools": "AI-Powered Tools",
+    "aiUseCases": "AI Use Cases in Aviation",
+    "coreTechnologies": "Core Technologies",
+    "hero": {
+      "title": "AvTech Solutions",
+      "subtitle": "AI-Powered Aviation Technology",
+      "description": "Revolutionary AI and technology solutions designed specifically for aviation professionals. Enhance productivity, streamline operations, and drive innovation with our cutting-edge tools."
+    },
+    "tools": {
+      "flightPlanning": {
+        "title": "Flight Planning AI",
+        "description": "Intelligent route optimization and weather analysis for efficient flight planning",
+        "features": {
+          "routeOptimization": "Route Optimization",
+          "weatherIntegration": "Weather Integration",
+          "fuelEfficiency": "Fuel Efficiency",
+          "realTimeUpdates": "Real-time Updates"
+        }
+      },
+      "maintenancePredictor": {
+        "title": "Maintenance Predictor",
+        "description": "Predictive maintenance using machine learning to prevent aircraft downtime",
+        "features": {
+          "predictiveAnalytics": "Predictive Analytics",
+          "costReduction": "Cost Reduction",
+          "safetyEnhancement": "Safety Enhancement",
+          "automatedAlerts": "Automated Alerts"
+        }
+      },
+      "safetyAnalytics": {
+        "title": "Safety Analytics",
+        "description": "Advanced safety analysis and risk assessment powered by AI algorithms",
+        "features": {
+          "riskAssessment": "Risk Assessment",
+          "incidentAnalysis": "Incident Analysis",
+          "safetyScoring": "Safety Scoring",
+          "complianceTracking": "Compliance Tracking"
+        }
+      },
+      "operationsDashboard": {
+        "title": "Operations Dashboard",
+        "description": "Real-time operational insights and performance monitoring",
+        "features": {
+          "realTimeMonitoring": "Real-time Monitoring",
+          "performanceMetrics": "Performance Metrics",
+          "customReports": "Custom Reports",
+          "dataVisualization": "Data Visualization"
+        }
+      }
+    },
+    "useCases": {
+      "designCreativity": {
+        "title": "Design & Creativity",
+        "description": "AI-assisted aircraft design, livery creation, and creative visualization tools",
+        "examples": {
+          "liveryDesign": "Aircraft livery design automation",
+          "interiorLayout": "Interior layout optimization",
+          "marketingMaterial": "Marketing material generation",
+          "technicalDocumentation": "Technical documentation creation"
+        }
+      },
+      "analysisInsights": {
+        "title": "Analysis & Insights",
+        "description": "Deep data analysis and business intelligence for aviation operations",
+        "examples": {
+          "performanceTrends": "Performance trend analysis",
+          "marketResearch": "Market research automation",
+          "competitiveIntelligence": "Competitive intelligence",
+          "financialForecasting": "Financial forecasting"
+        }
+      },
+      "problemSolving": {
+        "title": "Problem Solving",
+        "description": "AI-powered troubleshooting and solution recommendation systems",
+        "examples": {
+          "technicalDiagnosis": "Technical issue diagnosis",
+          "maintenanceScheduling": "Maintenance scheduling optimization",
+          "resourceAllocation": "Resource allocation planning",
+          "emergencyResponse": "Emergency response protocols"
+        }
+      },
+      "automation": {
+        "title": "Automation",
+        "description": "Streamlined workflows and automated processes for efficiency",
+        "examples": {
+          "documentProcessing": "Document processing automation",
+          "complianceChecking": "Compliance checking systems",
+          "inventoryManagement": "Inventory management",
+          "qualityAssurance": "Quality assurance processes"
+        }
+      }
+    },
+    "promptEngineering": {
+      "title": "Prompt Engineering for Aviation",
+      "description": "Master the art of communicating with AI to maximize productivity and achieve precise results in aviation contexts.",
+      "benefitsTitle": "Productivity Benefits",
+      "examplesTitle": "Example Prompts",
+      "benefits": {
+        "productivity": "Increase productivity by 300%",
+        "manualWork": "Reduce manual work by 80%",
+        "accuracy": "Improve accuracy and consistency",
+        "decisionMaking": "Accelerate decision-making processes"
+      },
+      "examples": {
+        "flightOperations": {
+          "category": "Flight Operations",
+          "prompt": "Analyze weather patterns for route KJFK-EGLL and suggest optimal departure time considering fuel efficiency and passenger comfort"
+        },
+        "maintenance": {
+          "category": "Maintenance",
+          "prompt": "Generate a predictive maintenance schedule for Boeing 737-800 based on flight hours, cycles, and historical data patterns"
+        },
+        "safety": {
+          "category": "Safety",
+          "prompt": "Create a comprehensive safety briefing for ground crew working on wide-body aircraft during adverse weather conditions"
+        }
+      }
+    },
+    "technologies": {
+      "machineLearning": "Machine Learning",
+      "nlp": "Natural Language Processing",
+      "computerVision": "Computer Vision",
+      "predictiveAnalytics": "Predictive Analytics",
+      "cloudComputing": "Cloud Computing",
+      "iotIntegration": "IoT Integration"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Operations?",
+      "subtitle": "Discover how AI can revolutionize your aviation workflows",
+      "button": "Explore AI Tools"
+    }
+  },
+  "academy": {
+    "featuredCourses": "Featured Courses",
+    "allCourses": "All Courses",
+    "category": "Category",
+    "level": "Level",
+    "viewCourse": "View Course",
+    "students": "students",
+    "noCourses": "No courses found matching your criteria.",
+    "hero": {
+      "title": "Digital Academy",
+      "subtitle": "Comprehensive Aviation Learning Platform",
+      "description": "Master aviation skills with our comprehensive LMS featuring expert-led courses, certifications, and hands-on learning experiences designed for professionals."
+    },
+    "stats": {
+      "activeCourses": "Active Courses",
+      "studentsEnrolled": "Students Enrolled",
+      "completionRate": "Completion Rate",
+      "averageRating": "Average Rating"
+    },
+    "search": {
+      "placeholder": "Search courses..."
+    },
+    "filters": {
+      "allCategories": "All Categories",
+      "allLevels": "All Levels"
+    },
+    "categories": {
+      "aviation-basics": "Aviation Basics",
+      "ai-tools": "AI Tools",
+      "safety": "Safety",
+      "regulations": "Regulations",
+      "technology": "Technology",
+      "leadership": "Leadership"
+    },
+    "levels": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    }
+  }
+}
