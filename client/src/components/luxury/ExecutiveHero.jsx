@@ -70,14 +70,14 @@ const ExecutiveHero = () => {
             <stop offset="100%" stopColor="rgba(230, 126, 34, 0.1)" />
           </linearGradient>
           <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
+            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
         </defs>
-        
+
         {/* Slow-moving neural pathways */}
         <motion.path
           d="M-200,400 Q400,200 800,300 T1600,250 Q1800,200 2200,300"
@@ -87,11 +87,11 @@ const ExecutiveHero = () => {
           filter="url(#glow)"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 0.7 }}
-          transition={{ 
-            duration: 8, 
-            ease: "easeInOut", 
-            repeat: Infinity, 
-            repeatType: "reverse" 
+          transition={{
+            duration: 8,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse"
           }}
         />
         <motion.path
@@ -102,12 +102,12 @@ const ExecutiveHero = () => {
           filter="url(#glow)"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 0.5 }}
-          transition={{ 
-            duration: 12, 
-            ease: "easeInOut", 
-            repeat: Infinity, 
-            repeatType: "reverse", 
-            delay: 2 
+          transition={{
+            duration: 12,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: 2
           }}
         />
         <motion.path
@@ -118,12 +118,12 @@ const ExecutiveHero = () => {
           filter="url(#glow)"
           initial={{ pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 0.3 }}
-          transition={{ 
-            duration: 15, 
-            ease: "easeInOut", 
-            repeat: Infinity, 
-            repeatType: "reverse", 
-            delay: 4 
+          transition={{
+            duration: 15,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: 4
           }}
         />
       </svg>
@@ -136,9 +136,8 @@ const ExecutiveHero = () => {
             position: 'absolute',
             width: Math.random() * 6 + 3,
             height: Math.random() * 6 + 3,
-            background: `radial-gradient(circle, ${
-              Math.random() > 0.5 ? 'rgba(230, 126, 34, 0.8)' : 'rgba(230, 126, 34, 0.6)'
-            } 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${Math.random() > 0.5 ? 'rgba(230, 126, 34, 0.8)' : 'rgba(230, 126, 34, 0.6)'
+              } 0%, transparent 70%)`,
             borderRadius: '50%',
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -193,7 +192,7 @@ const ExecutiveHero = () => {
       }}
     >
       <AISkySphere />
-      
+
       <Container
         maxWidth="xl"
         sx={{ position: 'relative', zIndex: 2, px: { xs: 2, sm: 3, md: 4 } }}
@@ -207,8 +206,8 @@ const ExecutiveHero = () => {
           >
             {/* Content - Strategically Positioned with RTL Support */}
             <Grid item xs={12} lg={7}>
-              <Box sx={{ 
-                maxWidth: 800, 
+              <Box sx={{
+                maxWidth: 800,
                 pl: { xs: 0, md: 4, lg: isRTL ? 0 : 8 },
                 pr: { xs: 0, md: isRTL ? 4 : 2, lg: isRTL ? 8 : 0 },
                 textAlign: isRTL ? 'right' : 'left',
@@ -280,7 +279,7 @@ const ExecutiveHero = () => {
                   >
                     {t('hero.title')}
                     <br />
-                    <Box component="span" sx={{ 
+                    <Box component="span" sx={{
                       background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 50%, rgb(245, 243, 238) 100%)',
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
@@ -331,10 +330,10 @@ const ExecutiveHero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, ease: "easeOut", delay: 0.9 }}
                 >
-                  <Box sx={{ 
-                    display: 'flex', 
-                    gap: 4, 
-                    flexWrap: 'wrap', 
+                  <Box sx={{
+                    display: 'flex',
+                    gap: 4,
+                    flexWrap: 'wrap',
                     mb: 8,
                     flexDirection: isRTL ? 'row-reverse' : 'row',
                     justifyContent: isRTL ? 'flex-end' : 'flex-start',
@@ -378,17 +377,17 @@ const ExecutiveHero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, ease: "easeOut", delay: 1.2 }}
                 >
-                  <Box sx={{ 
-                    display: 'flex', 
-                    gap: 8, 
+                  <Box sx={{
+                    display: 'flex',
+                    gap: 8,
                     flexWrap: 'wrap',
                     flexDirection: isRTL ? 'row-reverse' : 'row',
                     justifyContent: isRTL ? 'flex-end' : 'flex-start',
                   }}>
                     {[
-                      { label: t('hero.metrics.aiSystems'), value: '150+' },
-                      { label: t('hero.metrics.aviationPartners'), value: '500+' },
-                      { label: t('hero.metrics.successRate'), value: '99.8%' },
+                      { label: t('hero.metrics.aiSystems'), value: '4M+' },
+                      { label: t('hero.metrics.aviationPartners'), value: '50K+' },
+                      { label: t('hero.metrics.successRate'), value: '60%' },
                     ].map((metric) => (
                       <Box key={metric.label} sx={{ textAlign: isRTL ? 'right' : 'left' }}>
                         <Typography
@@ -479,17 +478,17 @@ const ExecutiveHero = () => {
                         },
                       }}
                     >
-                      AI
+                      DAQIQAT
                       <br />
-                      CORE
+                      TAYARAN
                     </Typography>
                   </Box>
 
                   {/* Orbiting Intelligence Nodes */}
                   {[
-                    { label: 'AVIATION', angle: 0, radius: 180, color: 'rgb(245, 243, 238)' },
-                    { label: 'INTELLIGENCE', angle: 120, radius: 180, color: 'rgb(245, 243, 238)' },
-                    { label: 'VISION 2030', angle: 240, radius: 180, color: 'rgb(245, 243, 238)' },
+                    { label: 'Tech Division', angle: 0, radius: 180, color: 'rgb(245, 243, 238)' },
+                    { label: 'Media Division', angle: 120, radius: 180, color: 'rgb(245, 243, 238)' },
+                    { label: 'Academy Division', angle: 240, radius: 180, color: 'rgb(245, 243, 238)' },
                   ].map((node, index) => (
                     <Box
                       key={node.label}

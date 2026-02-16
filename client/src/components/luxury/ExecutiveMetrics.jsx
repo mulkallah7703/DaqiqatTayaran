@@ -18,43 +18,43 @@ const ExecutiveMetrics = () => {
 
   const metrics = useMemo(() => ([
     {
-      value: 2030,
-      suffix: '',
+      value: 4,
+      suffix: 'M+',
       label: t('executiveMetrics.vision2030'),
       description: t('executiveMetrics.visionDescription'),
       color: ACCENT_COLOR,
     },
     {
-      value: 150,
-      suffix: '+',
+      value: 3,
+      suffix: 'M+',
       label: t('executiveMetrics.aiModels'),
       description: t('executiveMetrics.aiDescription'),
       color: ACCENT_COLOR,
     },
     {
-      value: 500,
+      value: 50000,
       suffix: '+',
       label: t('executiveMetrics.activeProjects'),
       description: t('executiveMetrics.projectsDescription'),
       color: ACCENT_COLOR,
     },
     {
-      value: 98,
-      suffix: '%',
+      value: 100,
+      suffix: '+',
       label: t('executiveMetrics.successRate'),
       description: t('executiveMetrics.successDescription'),
       color: ACCENT_COLOR,
     },
     {
-      value: 24,
-      suffix: '/7',
+      value: 170,
+      suffix: '+',
       label: t('executiveMetrics.operations'),
       description: t('executiveMetrics.operationsDescription'),
       color: ACCENT_COLOR,
     },
     {
-      value: 1000,
-      suffix: '+',
+      value: 60,
+      suffix: '%',
       label: t('executiveMetrics.digitalSolutions'),
       description: t('executiveMetrics.solutionsDescription'),
       color: ACCENT_COLOR,
@@ -158,8 +158,8 @@ const ExecutiveMetrics = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Box sx={{ 
-            textAlign: 'center', 
+          <Box sx={{
+            textAlign: 'center',
             mb: 10,
             direction: isRTL ? 'rtl' : 'ltr',
           }}>
@@ -184,7 +184,7 @@ const ExecutiveMetrics = () => {
               }}
             >
               {t('executiveMetrics.mainTitle')}
-              <Box component="span" sx={{ 
+              <Box component="span" sx={{
                 background: 'linear-gradient(135deg, rgb(230, 126, 34) 0%, rgb(230, 126, 34) 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
@@ -215,10 +215,10 @@ const ExecutiveMetrics = () => {
               <motion.div
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{ 
-                  duration: 0.8, 
-                  ease: "easeOut", 
-                  delay: index * 0.1 
+                transition={{
+                  duration: 0.8,
+                  ease: "easeOut",
+                  delay: index * 0.1
                 }}
               >
                 <Box
@@ -264,7 +264,7 @@ const ExecutiveMetrics = () => {
                 >
                   <Box sx={{ position: 'relative', zIndex: 1 }}>
                     {/* Metric Value */}
-                    <Box sx={{ 
+                    <Box sx={{
                       mb: 2,
                       textAlign: isRTL ? 'right' : 'left',
                     }}>

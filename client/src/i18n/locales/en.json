@@ -7,75 +7,75 @@
     "register": "Register",
     "admin": "Admin",
     "logout": "Logout",
-    "brand": "Dagigat Tayran",
+    "brand": "Daqiqat Tayaran",
     "tagline": "Platform",
     "executiveAccess": "Executive Access",
     "executiveDashboard": "Executive Dashboard",
     "signOut": "Sign Out"
   },
   "hero": {
-    "badge": "Saudi Vision 2030 • Executive AI Platform",
-    "title": "Aviation",
-    "titleHighlight": "Intelligence",
-    "subtitle": "The Kingdom's flagship AI-powered aviation ecosystem, orchestrating digital transformation and technological excellence across aerospace operations.",
+    "badge": "Saudi Vision 2030 • The Kingdom’s Leading Aviation Media Platform",
+    "title": "Daqiqat",
+    "titleHighlight": "Tayaran",
+    "subtitle": "The Kingdom’s leading aviation media platform, delivering specialized industry content, cinematic production, and strategic storytelling that supports the transformation of Saudi Arabia’s aviation sector in alignment with Vision 2030.",
     "exploreButton": "Explore Platform",
     "aiSolutionsButton": "AI Solutions",
     "metrics": {
-      "aiSystems": "AI Systems",
-      "aviationPartners": "Aviation Partners",
-      "successRate": "Success Rate"
+      "aiSystems": "TOTAL PROGRAM VIEWS",
+      "aviationPartners": "MINUTES OF AVIATION CONTENT",
+      "successRate": "MONTHLY GROWTH RATE"
     }
   },
   "platformDivisions": {
-    "sectionTitle": "Platform Architecture",
-    "mainTitle": "Three Pillars of",
+    "sectionTitle": "Daqiqat Tayaran Ecosystem",
+    "mainTitle": "Three Pillars Driving Impact & Leadership",
     "mainTitleHighlight": "Excellence",
-    "description": "Integrated divisions working in harmony to advance the Kingdom's aviation capabilities and digital transformation goals.",
-    "bottomDescription": "Experience the integrated power of AI-driven aviation excellence",
+    "description": "Specialized Aviation Media, Premium Creative Production, and Strategic Digital Reach — seamlessly integrated to shape the most influential Arabic aviation content platform, strengthening the Kingdom’s position as a regional leader in aviation knowledge and media innovation, aligned with Saudi Vision 2030.",
+    "bottomDescription": "Discover the integrated power of aviation media, professional production, and strategic digital reach.",
     "accessButton": "Access Platform",
     "exploreButton": "Explore Division",
     "avtech": {
-      "title": "AvTech Solutions",
-      "subtitle": "AvTech Solutions",
-      "description": "AI-powered technology wing delivering innovation and digital solutions.",
+      "title": "Technology Division",
+      "subtitle": "Digital Platform Management & Strategic Growth",
+      "description": "The Technology Division delivers integrated digital solutions, including platform development and management, audience analytics, targeted distribution strategies, and automated content deployment. We empower aviation media with scalable digital infrastructure that enhances reach, performance, and long-term growth in alignment with Saudi Vision 2030.",
       "features": {
-        "analytics": "AI-Powered Analytics",
-        "intelligence": "Predictive Intelligence",
-        "automation": "Automation Systems",
-        "innovation": "Digital Innovation"
+        "platforms": "Digital Platform Development & Management",
+        "analytics": "Audience Data & Growth Analytics",
+        "distribution": "Targeted Digital Distribution Strategies",
+        "optimization": "Performance & UX Optimization"
       }
     },
     "academy": {
-      "title": "Digital Academy",
-      "subtitle": "Digital Academy",
-      "description": "Comprehensive learning management system for aviation professionals.",
+      "title": "Dagigat Tayaran Academy",
+      "subtitle": "Aviation Knowledge & Professional Excellence",
+      "description": "An advanced aviation learning ecosystem providing structured training, expert-led programs, and strategic industry insights to empower professionals and support the Kingdom’s aviation transformation.",
       "features": {
-        "curriculum": "Expert Curriculum",
-        "certification": "Professional Certification",
-        "standards": "Industry Standards",
-        "learning": "Continuous Learning"
+        "programs": "Expert-Led Training Programs",
+        "certification": "Professional Certification Pathways",
+        "standards": "Aligned with Industry Standards",
+        "leadership": "Future Aviation Leadership Development"
       }
     }
   },
   "executiveMetrics": {
-    "sectionTitle": "Executive Dashboard",
+    "sectionTitle": "Impact & Performance Metrics",
     "mainTitle": "Platform",
-    "mainTitleHighlight": "Performance",
-    "description": "Real-time metrics demonstrating our commitment to excellence and strategic alignment with national objectives.",
-    "bottomTitle": "Driving Digital Transformation",
-    "bottomDescription": "These metrics reflect our unwavering commitment to excellence, innovation, and the successful implementation of Saudi Vision 2030's digital transformation objectives across the aviation sector.",
-    "vision2030": "Vision Alignment",
-    "visionDescription": "Strategic roadmap integration",
-    "aiModels": "AI Models Deployed",
-    "aiDescription": "Advanced intelligence systems",
-    "activeProjects": "Active Projects",
-    "projectsDescription": "Industry collaboration network",
-    "successRate": "Success Rate",
-    "successDescription": "Mission-critical reliability",
-    "operations": "Operations",
-    "operationsDescription": "Continuous system availability",
-    "digitalSolutions": "Digital Solutions",
-    "solutionsDescription": "Transformation initiatives"
+    "mainTitleHighlight": "Impact",
+    "description": "Data-driven insights reflecting content growth, audience reach, and media influence across the aviation sector, aligned with Saudi Vision 2030 objectives.",
+    "bottomTitle": "Driving Aviation Media Impact",
+    "bottomDescription": "These metrics demonstrate our leadership in specialized aviation storytelling, cinematic production, and strategic digital expansion — contributing to the Kingdom’s aviation transformation under Saudi Vision 2030.",
+    "vision2030": "Total Program Views",
+    "visionDescription": "Audience impact within less than one year",
+    "aiModels": "TikTok Views",
+    "aiDescription": "Rapid digital reach and engagement",
+    "activeProjects": "Minutes of Specialized Aviation Content",
+    "projectsDescription": "Deep industry-focused knowledge",
+    "successRate": "Live Industry Interviews",
+    "successDescription": "Professional aviation dialogues",
+    "operations": "Published Content Pieces",
+    "operationsDescription": "Consistent premium production",
+    "digitalSolutions": "Monthly Growth Rate",
+    "solutionsDescription": "Sustained digital expansion"
   },
   "aiAssistant": {
     "title": "Aviation AI Assistant",
@@ -178,136 +178,136 @@
     "builtWith": "Built with ❤️ for Saudi Vision 2030"
   },
   "avtech": {
-    "aiPoweredTools": "AI-Powered Tools",
-    "aiUseCases": "AI Use Cases in Aviation",
-    "coreTechnologies": "Core Technologies",
+    "aiPoweredTools": "Technology & Digital Platform Division",
+    "aiUseCases": "Daqiqat Tayaran Impact Areas",
+    "coreTechnologies": "Performance Indicators",
     "hero": {
-      "title": "AvTech Solutions",
-      "subtitle": "AI-Powered Aviation Technology",
-      "description": "Revolutionary AI and technology solutions designed specifically for aviation professionals. Enhance productivity, streamline operations, and drive innovation with our cutting-edge tools."
+      "title": "Technology & Digital Platform Division",
+      "subtitle": "Digital Platform Management & Strategic Expansion",
+      "description": "The digital engine powering Daqiqat Tayaran’s aviation media ecosystem through platform management, audience intelligence, and strategic digital expansion aligned with Saudi Vision 2030."
     },
     "tools": {
       "flightPlanning": {
-        "title": "Flight Planning AI",
-        "description": "Intelligent route optimization and weather analysis for efficient flight planning",
+        "title": "Digital Platform Management",
+        "description": "Development and management of specialized aviation media platforms with scalable infrastructure and performance optimization.",
         "features": {
-          "routeOptimization": "Route Optimization",
-          "weatherIntegration": "Weather Integration",
-          "fuelEfficiency": "Fuel Efficiency",
-          "realTimeUpdates": "Real-time Updates"
+          "routeOptimization": "Platform Architecture",
+          "weatherIntegration": "Content Infrastructure",
+          "fuelEfficiency": "Performance Optimization",
+          "realTimeUpdates": "Scalable Digital Systems"
         }
       },
       "maintenancePredictor": {
-        "title": "Maintenance Predictor",
-        "description": "Predictive maintenance using machine learning to prevent aircraft downtime",
+        "title": "Audience Intelligence",
+        "description": "Advanced audience analytics and behavioral insights to enhance reach, engagement, and strategic positioning.",
         "features": {
-          "predictiveAnalytics": "Predictive Analytics",
-          "costReduction": "Cost Reduction",
-          "safetyEnhancement": "Safety Enhancement",
-          "automatedAlerts": "Automated Alerts"
+          "predictiveAnalytics": "Audience Data Analysis",
+          "costReduction": "Growth Metrics Tracking",
+          "safetyEnhancement": "Engagement Optimization",
+          "automatedAlerts": "Digital Expansion Strategy"
         }
       },
       "safetyAnalytics": {
-        "title": "Safety Analytics",
-        "description": "Advanced safety analysis and risk assessment powered by AI algorithms",
+        "title": "Strategic Digital Distribution",
+        "description": "Targeted multi-platform distribution strategies designed to maximize impact across aviation-focused audiences.",
         "features": {
-          "riskAssessment": "Risk Assessment",
-          "incidentAnalysis": "Incident Analysis",
-          "safetyScoring": "Safety Scoring",
-          "complianceTracking": "Compliance Tracking"
+          "riskAssessment": "Multi-Channel Publishing",
+          "incidentAnalysis": "Targeted Campaign Deployment",
+          "safetyScoring": "Performance Monitoring",
+          "complianceTracking": "Reach Optimization"
         }
       },
       "operationsDashboard": {
-        "title": "Operations Dashboard",
-        "description": "Real-time operational insights and performance monitoring",
+        "title": "Digital Performance & Optimization",
+        "description": "Continuous digital refinement ensuring sustainable growth, brand authority, and measurable impact.",
         "features": {
-          "realTimeMonitoring": "Real-time Monitoring",
-          "performanceMetrics": "Performance Metrics",
-          "customReports": "Custom Reports",
-          "dataVisualization": "Data Visualization"
+          "realTimeMonitoring": "Content Performance Analytics",
+          "performanceMetrics": "Conversion Optimization",
+          "customReports": "Platform Enhancements",
+          "dataVisualization": "Strategic Scaling"
         }
       }
     },
     "useCases": {
       "designCreativity": {
-        "title": "Design & Creativity",
-        "description": "AI-assisted aircraft design, livery creation, and creative visualization tools",
+        "title": "Specialized Aviation Media",
+        "description": "Professional content delivering deep aviation insights through powerful storytelling.",
         "examples": {
-          "liveryDesign": "Aircraft livery design automation",
-          "interiorLayout": "Interior layout optimization",
-          "marketingMaterial": "Marketing material generation",
-          "technicalDocumentation": "Technical documentation creation"
+          "liveryDesign": "Executive aviation interviews",
+          "interiorLayout": "Industry-focused coverage",
+          "marketingMaterial": "Market transformation analysis",
+          "technicalDocumentation": "Highlighting sector success stories"
         }
       },
       "analysisInsights": {
-        "title": "Analysis & Insights",
-        "description": "Deep data analysis and business intelligence for aviation operations",
+        "title": "Cinematic Production Excellence",
+        "description": "High-quality aviation programs and media productions executed to premium standards.",
         "examples": {
-          "performanceTrends": "Performance trend analysis",
-          "marketResearch": "Market research automation",
-          "competitiveIntelligence": "Competitive intelligence",
-          "financialForecasting": "Financial forecasting"
+          "performanceTrends": "Daqiqat Tayaran Program Production",
+          "marketResearch": "Happiness Corridor Podcast",
+          "competitiveIntelligence": "Documentary-style storytelling",
+          "financialForecasting": "Advanced visual & narrative execution"
         }
       },
       "problemSolving": {
-        "title": "Problem Solving",
-        "description": "AI-powered troubleshooting and solution recommendation systems",
+        "title": "Strategic Digital Expansion",
+        "description": "Development and management of specialized aviation digital platforms.",
         "examples": {
-          "technicalDiagnosis": "Technical issue diagnosis",
-          "maintenanceScheduling": "Maintenance scheduling optimization",
-          "resourceAllocation": "Resource allocation planning",
-          "emergencyResponse": "Emergency response protocols"
+          "technicalDiagnosis": "Sahaab Channel management",
+          "maintenanceScheduling": "Multi-platform distribution",
+          "resourceAllocation": "Audience analytics & growth",
+          "emergencyResponse": "Sustainable digital expansion"
         }
       },
       "automation": {
-        "title": "Automation",
-        "description": "Streamlined workflows and automated processes for efficiency",
+        "title": "Industry Knowledge Leadership",
+        "description": "Building a trusted Arabic aviation reference supporting the Kingdom’s transformation.",
         "examples": {
-          "documentProcessing": "Document processing automation",
-          "complianceChecking": "Compliance checking systems",
-          "inventoryManagement": "Inventory management",
-          "qualityAssurance": "Quality assurance processes"
+          "documentProcessing": "50,000+ minutes of aviation content",
+          "complianceChecking": "4M+ total program views",
+          "inventoryManagement": "Rapid monthly growth",
+          "qualityAssurance": "Alignment with Saudi Vision 2030"
         }
       }
     },
     "promptEngineering": {
-      "title": "Prompt Engineering for Aviation",
-      "description": "Master the art of communicating with AI to maximize productivity and achieve precise results in aviation contexts.",
-      "benefitsTitle": "Productivity Benefits",
-      "examplesTitle": "Example Prompts",
+      "title": "Strategic Content Briefing for Aviation",
+      "description": "Executive-grade briefing that shapes aviation narratives, guides cinematic production, and positions digital impact in alignment with Saudi Vision 2030.",
+      "benefitsTitle": "Strategic Value",
+      "examplesTitle": "Example Briefs",
       "benefits": {
-        "productivity": "Increase productivity by 300%",
-        "manualWork": "Reduce manual work by 80%",
-        "accuracy": "Improve accuracy and consistency",
-        "decisionMaking": "Accelerate decision-making processes"
+        "productivity": "Strengthen aviation knowledge dissemination",
+        "manualWork": "Elevate storytelling impact and production clarity",
+        "accuracy": "Expand digital reach with strategic positioning",
+        "decisionMaking": "Enhance professional industry awareness"
       },
       "examples": {
         "flightOperations": {
-          "category": "Flight Operations",
-          "prompt": "Analyze weather patterns for route KJFK-EGLL and suggest optimal departure time considering fuel efficiency and passenger comfort"
+          "category": "Aviation Media Strategy",
+          "prompt": "Draft a strategic content narrative for Daqiqat Tayaran that highlights Saudi aviation transformation, executive insights, and Vision 2030 alignment across multi-platform distribution."
         },
         "maintenance": {
-          "category": "Maintenance",
-          "prompt": "Generate a predictive maintenance schedule for Boeing 737-800 based on flight hours, cycles, and historical data patterns"
+          "category": "Production Planning",
+          "prompt": "Create a cinematic production plan for a flagship aviation episode, including interview flow, key story beats, and visual direction that reinforces industry authority."
         },
         "safety": {
-          "category": "Safety",
-          "prompt": "Create a comprehensive safety briefing for ground crew working on wide-body aircraft during adverse weather conditions"
+          "category": "Industry Interviews & Campaigns",
+          "prompt": "Prepare executive interview questions and a digital campaign angle that positions Daqiqat Tayaran as the leading Arabic aviation knowledge platform."
         }
       }
     },
     "technologies": {
-      "machineLearning": "Machine Learning",
-      "nlp": "Natural Language Processing",
-      "computerVision": "Computer Vision",
-      "predictiveAnalytics": "Predictive Analytics",
-      "cloudComputing": "Cloud Computing",
-      "iotIntegration": "IoT Integration"
+      "machineLearning": "Digital Audience Growth",
+      "nlp": "Content Engagement Rate",
+      "computerVision": "Platform Expansion",
+      "predictiveAnalytics": "Industry Partnerships",
+      "cloudComputing": "Monthly Growth Rate",
+      "iotIntegration": "Published Content Volume"
     },
     "cta": {
-      "title": "Ready to Transform Your Operations?",
-      "subtitle": "Discover how AI can revolutionize your aviation workflows",
-      "button": "Explore AI Tools"
+      "title": "Lead Aviation Media Transformation",
+      "subtitle": "Advance strategic digital storytelling and industry impact aligned with Vision 2030",
+      "button": "Explore Impact"
     }
   },
   "academy": {
