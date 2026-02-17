@@ -43,7 +43,7 @@ const AcademySection = () => {
       if (categoryFilter) params.append('category', categoryFilter);
       if (levelFilter) params.append('level', levelFilter);
       
-      const response = await axios.get(`/api/courses?${params}`);
+      const response = await axios.get(`/courses?${params}`);
       return response.data;
     },
   });
@@ -51,7 +51,7 @@ const AcademySection = () => {
   const { data: featuredCourses } = useQuery({
     queryKey: ['featured-courses'],
     queryFn: async () => {
-      const response = await axios.get('/api/courses/featured');
+      const response = await axios.get('/courses/featured');
       return response.data;
     },
   });

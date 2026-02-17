@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "Home",
-    "avtech": "AvTech",
-    "academy": "Academy",
+    "avtech": "Technology Division",
+    "academy": "Daqiqat Tayaran Academy",
     "login": "Login",
     "register": "Register",
     "admin": "Admin",
@@ -161,21 +161,21 @@
   "footer": {
     "platform": "Platform",
     "resources": "Resources",
-    "legal": "Legal",
-    "description": "Leading the future of aviation with AI-powered solutions, comprehensive learning, and innovative technology aligned with Saudi Vision 2030.",
-    "documentation": "Documentation",
-    "apiReference": "API Reference",
+    "legal": "Media Production",
+    "description": "A Saudi-based aviation media platform dedicated to producing high-impact, specialized aviation content through cinematic production, strategic storytelling, and targeted digital expansion — supporting the Kingdom’s aviation transformation in alignment with Saudi Vision 2030.",
+    "documentation": "Media Documentation",
+    "apiReference": "Strategic Partnerships",
     "supportCenter": "Support Center",
     "community": "Community",
-    "privacyPolicy": "Privacy Policy",
-    "termsOfService": "Terms of Service",
-    "cookiePolicy": "Cookie Policy",
-    "gdprCompliance": "GDPR Compliance",
-    "email": "info@aviationplatform.com",
+    "privacyPolicy": "Media Production",
+    "termsOfService": "Aviation Podcast",
+    "cookiePolicy": "Industry Partnerships",
+    "gdprCompliance": "Aviation Knowledge Leadership",
+    "email": "info@daqiqattayaran.com",
     "phone": "+966 11 123 4567",
-    "location": "Riyadh, Saudi Arabia",
-    "copyright": "© {{year}} Aviation Platform. All rights reserved.",
-    "builtWith": "Built with ❤️ for Saudi Vision 2030"
+    "location": "Riyadh, Kingdom of Saudi Arabia",
+    "copyright": "© {{year}} Daqiqat Tayaran. All Rights Reserved.",
+    "builtWith": "Shaping the Future of Aviation Media in the Arab World"
   },
   "avtech": {
     "aiPoweredTools": "Technology & Digital Platform Division",
@@ -319,9 +319,9 @@
     "students": "students",
     "noCourses": "No courses found matching your criteria.",
     "hero": {
-      "title": "Digital Academy",
-      "subtitle": "Comprehensive Aviation Learning Platform",
-      "description": "Master aviation skills with our comprehensive LMS featuring expert-led courses, certifications, and hands-on learning experiences designed for professionals."
+      "title": "Daqiqat Tayaran Digital Academy",
+      "subtitle": "A Specialized Aviation Knowledge Platform",
+      "description": "A dedicated aviation learning ecosystem focused on developing professional capabilities knowledge through expert-led programs and structured learning experiences — supporting the Kingdom’s aviation transformation and aligned with Saudi Vision 2030 objectives."
     },
     "stats": {
       "activeCourses": "Active Courses",

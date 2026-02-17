@@ -73,7 +73,7 @@ const LuxuryAIAssistant = () => {
     setIsTyping(true);
 
     try {
-      const response = await axios.post('/api/ai/chat', {
+      const response = await axios.post('/ai/chat', {
         message: message,
         context: `Aviation AI Platform - Executive Level Assistant. Current page: ${window.location.pathname}`,
       });

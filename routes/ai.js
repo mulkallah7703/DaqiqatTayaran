@@ -3,9 +3,20 @@ const OpenAI = require('openai');
 
 const router = express.Router();
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+let openaiClient = null;
+
+const getOpenAIClient = () => {
+  if (openaiClient) {
+    return openaiClient;
+  }
+  if (!process.env.OPENAI_API_KEY) {
+    return null;
+  }
+  openaiClient = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+  return openaiClient;
+};
 
 // AI Assistant endpoint
 router.post('/chat', async (req, res) => {
@@ -14,6 +25,13 @@ router.post('/chat', async (req, res) => {
 
     if (!message) {
       return res.status(400).json({ message: 'Message is required' });
+    }
+
+    const client = getOpenAIClient();
+    if (!client) {
+      return res.status(503).json({ 
+        message: 'AI assistant is currently unavailable. Please try again later.' 
+      });
     }
 
     const systemPrompt = `You are an AI assistant for a premium aviation platform. You help users with:
@@ -33,7 +51,7 @@ Be professional, concise, and helpful. Use aviation terminology appropriately an
 
 ${context ? `Additional context: ${context}` : ''}`;
 
-    const completion = await openai.chat.completions.create({
+    const completion = await client.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         { role: "system", content: systemPrompt },
@@ -66,6 +84,11 @@ router.post('/suggest', async (req, res) => {
   try {
     const { type, topic, section } = req.body;
 
+    const client = getOpenAIClient();
+    if (!client) {
+      return res.status(503).json({ message: 'Suggestion service unavailable' });
+    }
+
     const prompt = `Generate professional content suggestions for an aviation platform:
     
 Type: ${type}
@@ -74,7 +97,7 @@ Section: ${section}
 
 Provide 3 concise, professional suggestions that align with aviation industry standards and Saudi Vision 2030 innovation goals.`;
 
-    const completion = await openai.chat.completions.create({
+    const completion = await client.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         { role: "user", content: prompt }

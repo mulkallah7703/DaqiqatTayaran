@@ -61,7 +61,7 @@ const AIAssistant = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('/api/ai/chat', {
+      const response = await axios.post('/ai/chat', {
         message: message,
         context: window.location.pathname,
       });

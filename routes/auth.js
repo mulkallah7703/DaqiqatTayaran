@@ -48,16 +48,25 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+
     // Find user
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     // Check password
-    const isMatch = await user.comparePassword(password);
+    const isHashed = typeof user.password === 'string' && user.password.startsWith('$2');
+    const isMatch = isHashed ? await user.comparePassword(password) : user.password === password;
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid email or password' });
+    }
+
+    if (!isHashed) {
+      user.password = password;
     }
 
     // Update last login

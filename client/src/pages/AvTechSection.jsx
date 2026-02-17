@@ -122,7 +122,7 @@ const AvTechSection = () => {
 
   const fetchContent = useCallback(async () => {
     try {
-      const response = await axios.get('/api/content/avtech');
+      const response = await axios.get('/content/avtech');
       const contentData = {};
       response.data.forEach(item => {
         contentData[item.type] = item;

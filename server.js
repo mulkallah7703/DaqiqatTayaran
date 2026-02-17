@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const User = require('./models/User');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
@@ -21,9 +22,19 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // CORS configuration
+const allowedOrigins = (process.env.CLIENT_URLS || process.env.CLIENT_URL || 'http://localhost:5173,http://localhost:3000')
+  .split(',')
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true,
 }));
 
 // Body parsing middleware
@@ -34,12 +45,37 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use('/uploads', express.static('uploads'));
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/aviation-platform', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected successfully'))
-.catch(err => console.error('MongoDB connection error:', err));
+mongoose.connection.on('connected', () => {
+  console.log('MongoDB connected successfully');
+});
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
+});
+
+const ensureAdminUser = async () => {
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@daqiqattayaran.com';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
+
+  const adminExists = await User.exists({ role: 'admin' });
+  if (adminExists) {
+    return;
+  }
+
+  const emailInUse = await User.findOne({ email: adminEmail });
+  if (emailInUse) {
+    console.warn('Admin email is already in use; skipping default admin creation.');
+    return;
+  }
+
+  const adminUser = new User({
+    name: 'Admin',
+    email: adminEmail,
+    password: adminPassword,
+    role: 'admin',
+  });
+  await adminUser.save();
+  console.log('Default admin user created.');
+};
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
@@ -73,6 +109,34 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+
+const startServer = async () => {
+  try {
+    if (!process.env.JWT_SECRET) {
+      console.warn('JWT_SECRET is not set. Authentication will fail until it is provided.');
+    }
+
+    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/aviation-platform', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    await ensureAdminUser();
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Server startup error:', err);
+  }
+};
+
+process.on('unhandledRejection', (reason) => {
+  console.error('Unhandled Rejection:', reason);
 });
+
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+});
+
+startServer();

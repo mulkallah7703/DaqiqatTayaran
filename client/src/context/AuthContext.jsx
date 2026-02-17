@@ -1,6 +1,13 @@
 import React, { createContext, useContext, useReducer, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
+const apiBase = import.meta.env.VITE_API_URL;
+const normalizedBase = apiBase ? apiBase.replace(/\/$/, '') : '';
+axios.defaults.baseURL = apiBase
+  ? (normalizedBase.endsWith('/api') ? normalizedBase : `${normalizedBase}/api`)
+  : '/api';
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+
 const AuthContext = createContext();
 
 const initialState = {
@@ -70,7 +77,7 @@ export const AuthProvider = ({ children }) => {
 
   const loadUser = useCallback(async () => {
     try {
-      const res = await axios.get('/api/auth/me');
+      const res = await axios.get('/auth/me');
       dispatch({ type: 'LOAD_USER', payload: res.data });
     } catch (error) {
       dispatch({ type: 'AUTH_ERROR' });
@@ -88,9 +95,9 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post('/api/auth/login', { email, password });
+      const res = await axios.post('/auth/login', { email, password });
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
-      return { success: true };
+      return { success: true, user: res.data.user };
     } catch (error) {
       dispatch({ type: 'AUTH_ERROR' });
       return { 
@@ -102,7 +109,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password) => {
     try {
-      const res = await axios.post('/api/auth/register', { name, email, password });
+      const res = await axios.post('/auth/register', { name, email, password });
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       return { success: true };
     } catch (error) {

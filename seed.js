@@ -22,7 +22,7 @@ const seedData = async () => {
     // Create admin user
     const adminUser = new User({
       name: 'Admin User',
-      email: process.env.ADMIN_EMAIL || 'admin@dagigattayran.com',
+      email: process.env.ADMIN_EMAIL || 'admin@daqiqattayaran.com',
       password: process.env.ADMIN_PASSWORD || 'Admin@123',
       role: 'admin'
     });
