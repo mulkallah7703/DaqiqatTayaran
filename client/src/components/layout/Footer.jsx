@@ -14,6 +14,8 @@ import LinkedIn from '@mui/icons-material/LinkedIn';
 import Twitter from '@mui/icons-material/Twitter';
 import Facebook from '@mui/icons-material/Facebook';
 import Instagram from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import { FaTiktok } from 'react-icons/fa';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useRTL } from '../../hooks/useRTL';
@@ -44,7 +46,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: <LinkedIn />, url: '#', label: 'LinkedIn' },
-    { icon: <Twitter />, url: '#', label: 'Twitter' },
+    { icon: <Twitter />, url: 'https://x.com/avsahaab?s=21', label: 'Twitter' },
     { icon: <Facebook />, url: '#', label: 'Facebook' },
     { icon: <Instagram />, url: '#', label: 'Instagram' },
   ];
@@ -63,77 +65,77 @@ const Footer = () => {
         <Grid container spacing={4}>
           {/* Brand Section */}
           <Grid item xs={12} md={4}>
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
+            <Box sx={{
+              display: 'flex',
+              alignItems: 'center',
               mb: 2,
               flexDirection: isRTL ? 'row-reverse' : 'row',
             }}>
-              <FlightTakeoff sx={{ 
-                color: 'primary.main', 
+              <FlightTakeoff sx={{
+                color: 'primary.main',
                 mr: isRTL ? 0 : 1,
                 ml: isRTL ? 1 : 0,
               }} />
-              <Typography variant="h6" sx={{ 
-                color: 'primary.main', 
+              <Typography variant="h6" sx={{
+                color: 'primary.main',
                 fontWeight: 700,
                 textAlign: isRTL ? 'right' : 'left',
               }}>
                 {t('nav.brand')}
               </Typography>
             </Box>
-            <Typography variant="body2" color="text.secondary" sx={{ 
-              mb: 3, 
+            <Typography variant="body2" color="text.secondary" sx={{
+              mb: 3,
               lineHeight: 1.6,
               textAlign: isRTL ? 'right' : 'left',
             }}>
               {t('footer.description')}
             </Typography>
-            
+
             {/* Contact Info */}
             <Box sx={{ mb: 2 }}>
-              <Box sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+              <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
                 mb: 1,
                 flexDirection: isRTL ? 'row-reverse' : 'row',
               }}>
-                <Email sx={{ 
-                  fontSize: 16, 
+                <Email sx={{
+                  fontSize: 16,
                   mr: isRTL ? 0 : 1,
                   ml: isRTL ? 1 : 0,
-                  color: 'text.secondary' 
+                  color: 'text.secondary'
                 }} />
                 <Typography variant="body2" color="text.secondary">
                   {t('footer.email')}
                 </Typography>
               </Box>
-              <Box sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
+              <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
                 mb: 1,
                 flexDirection: isRTL ? 'row-reverse' : 'row',
               }}>
-                <Phone sx={{ 
-                  fontSize: 16, 
+                <Phone sx={{
+                  fontSize: 16,
                   mr: isRTL ? 0 : 1,
                   ml: isRTL ? 1 : 0,
-                  color: 'text.secondary' 
+                  color: 'text.secondary'
                 }} />
                 <Typography variant="body2" color="text.secondary">
                   {t('footer.phone')}
                 </Typography>
               </Box>
-              <Box sx={{ 
-                display: 'flex', 
+              <Box sx={{
+                display: 'flex',
                 alignItems: 'center',
                 flexDirection: isRTL ? 'row-reverse' : 'row',
               }}>
-                <LocationOn sx={{ 
-                  fontSize: 16, 
+                <LocationOn sx={{
+                  fontSize: 16,
                   mr: isRTL ? 0 : 1,
                   ml: isRTL ? 1 : 0,
-                  color: 'text.secondary' 
+                  color: 'text.secondary'
                 }} />
                 <Typography variant="body2" color="text.secondary">
                   {t('footer.location')}
@@ -167,14 +169,48 @@ const Footer = () => {
                   {social.icon}
                 </IconButton>
               ))}
+              <IconButton
+                href="https://m.youtube.com/watch?v=aCr0jjI_lDU&t=874s&pp=2AHqBpACAcoFHtiz2K3Yp9ioINi32KfYTYudmK_Zig%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: 'text.secondary',
+                  mr: isRTL ? 0 : 1,
+                  ml: isRTL ? 1 : 0,
+                  '&:hover': {
+                    color: 'primary.main',
+                    backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                  },
+                }}
+                aria-label="YouTube"
+              >
+                <YouTubeIcon fontSize="medium" />
+              </IconButton>
+              <IconButton
+                href="https://www.tiktok.com/@avsahaab?_r=1&_t=ZS-93xKQHZr5PB"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  color: 'text.secondary',
+                  mr: isRTL ? 0 : 1,
+                  ml: isRTL ? 1 : 0,
+                  '&:hover': {
+                    color: 'primary.main',
+                    backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                  },
+                }}
+                aria-label="TikTok"
+              >
+                <FaTiktok size={20} />
+              </IconButton>
             </Box>
           </Grid>
 
           {/* Links Sections */}
           {Object.entries(footerLinks).map(([title, links]) => (
             <Grid item xs={12} sm={4} md={2.67} key={title}>
-              <Typography variant="h6" sx={{ 
-                mb: 2, 
+              <Typography variant="h6" sx={{
+                mb: 2,
                 color: 'text.primary',
                 textAlign: isRTL ? 'right' : 'left',
               }}>
@@ -218,12 +254,12 @@ const Footer = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box sx={{ 
-              display: 'flex', 
-              justifyContent: { 
-                xs: isRTL ? 'flex-end' : 'flex-start', 
-                md: isRTL ? 'flex-start' : 'flex-end' 
-              } 
+            <Box sx={{
+              display: 'flex',
+              justifyContent: {
+                xs: isRTL ? 'flex-end' : 'flex-start',
+                md: isRTL ? 'flex-start' : 'flex-end'
+              }
             }}>
               <Typography variant="body2" color="text.secondary">
                 {t('footer.builtWith')}
