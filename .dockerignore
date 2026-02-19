@@ -1,0 +1,12 @@
+node_modules
+client/node_modules
+client/dist
+npm-debug.log
+yarn-error.log
+.git
+.gitignore
+.env
+Dockerfile
+docker-compose.yml
+.DS_Store
+Thumbs.db

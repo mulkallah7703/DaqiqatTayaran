@@ -11,7 +11,7 @@
     "start": "node server.js",
     "install-all": "npm install && cd client && npm install",
     "seed": "node seed.js",
-    "postinstall": "cd client && npm install"
+    "postinstall": "if [ -d client ]; then cd client && npm install; fi"
   },
   "dependencies": {
     "express": "^4.18.2",
