@@ -108,24 +108,22 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/ai', require('./routes/ai'));
 
 /* =========================
-   Serve Frontend (Production)
+   Serve Frontend
 ========================= */
 
-if (process.env.NODE_ENV === 'production') {
-  const distPath = path.join(__dirname, 'client', 'dist');
+const distPath = path.join(__dirname, 'client', 'dist');
 
-  // Serve static files
-  app.use(express.static(distPath));
+// Serve static files
+app.use(express.static(distPath));
 
-  // React SPA fallback (ONLY non-API routes)
-  app.get('*', (req, res, next) => {
-    if (req.originalUrl.startsWith('/api')) {
-      return next();
-    }
+// React SPA fallback (ONLY non-API routes)
+app.get('*', (req, res, next) => {
+  if (req.originalUrl.startsWith('/api')) {
+    return next();
+  }
 
-    res.sendFile(path.join(distPath, 'index.html'));
-  });
-}
+  res.sendFile(path.join(distPath, 'index.html'));
+});
 
 
 /* =========================
