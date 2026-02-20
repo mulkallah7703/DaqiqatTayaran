@@ -14,7 +14,13 @@ const app = express();
    Security Middleware
 ========================= */
 
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginOpenerPolicy: false,
+    crossOriginEmbedderPolicy: false,
+    originAgentCluster: false,
+  })
+);
 app.use(compression());
 
 const limiter = rateLimit({
