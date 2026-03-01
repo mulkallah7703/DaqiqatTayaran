@@ -10,7 +10,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use('/scorm', express.static('uploads/scorm'));
+app.use('/scorm', express.static(path.join(__dirname, 'uploads/scorm')));
 
 /* =========================
    Security Middleware
