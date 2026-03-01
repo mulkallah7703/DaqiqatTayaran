@@ -10,6 +10,8 @@ require('dotenv').config();
 
 const app = express();
 
+app.use('/scorm', express.static('uploads/scorm'));
+
 /* =========================
    Security Middleware
 ========================= */
@@ -118,7 +120,10 @@ app.use(express.static(distPath));
 
 // React SPA fallback (ONLY non-API routes)
 app.get('*', (req, res, next) => {
-  if (req.originalUrl.startsWith('/api')) {
+  if (
+    req.originalUrl.startsWith('/api') ||
+    req.originalUrl.startsWith('/scorm')
+  ) {
     return next();
   }
 
