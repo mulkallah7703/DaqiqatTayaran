@@ -313,6 +313,19 @@
   "academy": {
     "featuredCourses": "Featured Courses",
     "allCourses": "All Courses",
+    "openCourses": "Click to open the courses",
+    "openCourse": "Click to open the course",
+    "authTitle": "Course Access",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Continue",
+    "cancel": "Cancel",
+    "authError": "Invalid username or password.",
+    "singleCourse": {
+      "title": "Apron Safety",
+      "description": "Safety first: essential guidelines for working safely on the airport apron.",
+      "level": "Beginner"
+    },
     "category": "Category",
     "level": "Level",
     "viewCourse": "View Course",
