@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -20,7 +20,9 @@ import './styles/rtl.css';
 const LuxuryHomePage = React.lazy(() => import('./pages/LuxuryHomePage'));
 const AvTechSection = React.lazy(() => import('./pages/AvTechSection'));
 const AcademySection = React.lazy(() => import('./pages/AcademySection'));
-const CourseDetail = React.lazy(() => import('./pages/CourseDetail'));
+const AcademyLogin = React.lazy(() => import('./pages/AcademyLogin'));
+const AcademyCourses = React.lazy(() => import('./pages/AcademyCourses'));
+const CourseViewer = React.lazy(() => import('./pages/CourseViewer'));
 const Login = React.lazy(() => import('./pages/auth/Login'));
 const Register = React.lazy(() => import('./pages/auth/Register'));
 const AdminDashboard = React.lazy(() => import('./pages/admin/AdminDashboard'));
@@ -417,31 +419,42 @@ function App() {
     document.documentElement.lang = isArabic ? 'ar' : 'en';
   }, [i18n.language]);
 
+  const Layout = () => {
+    const location = useLocation();
+    const isViewer = location.pathname === '/course-viewer';
+
+    return (
+      <div className="App" dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
+        {!isViewer && <LuxuryNavbar />}
+        <main>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<LuxuryHomePage />} />
+              <Route path="/company" element={<Navigate to="/" replace />} />
+              <Route path="/avtech" element={<AvTechSection />} />
+              <Route path="/academy" element={<AcademySection />} />
+              <Route path="/academy-login" element={<AcademyLogin />} />
+              <Route path="/academy-courses" element={<AcademyCourses />} />
+              <Route path="/course-viewer" element={<CourseViewer />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/admin/*" element={<AdminDashboard />} />
+            </Routes>
+          </Suspense>
+        </main>
+        {!isViewer && <Footer />}
+        {!isViewer && <LuxuryAIAssistant />}
+      </div>
+    );
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <AuthProvider>
           <Router>
-            <div className="App" dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
-              <LuxuryNavbar />
-              <main>
-                <Suspense fallback={null}>
-                  <Routes>
-                    <Route path="/" element={<LuxuryHomePage />} />
-                    <Route path="/company" element={<Navigate to="/" replace />} />
-                    <Route path="/avtech" element={<AvTechSection />} />
-                    <Route path="/academy" element={<AcademySection />} />
-                    <Route path="/course/:id" element={<CourseDetail />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/admin/*" element={<AdminDashboard />} />
-                  </Routes>
-                </Suspense>
-              </main>
-              <Footer />
-              <LuxuryAIAssistant />
-            </div>
+            <Layout />
           </Router>
         </AuthProvider>
       </ThemeProvider>

@@ -311,43 +311,15 @@
     }
   },
   "academy": {
-    "featuredCourses": "Featured Courses",
-    "allCourses": "All Courses",
-    "category": "Category",
-    "level": "Level",
-    "viewCourse": "View Course",
-    "students": "students",
-    "noCourses": "No courses found matching your criteria.",
-    "hero": {
-      "title": "Daqiqat Tayaran Digital Academy",
-      "subtitle": "A Specialized Aviation Knowledge Platform",
-      "description": "A dedicated aviation learning ecosystem focused on developing professional capabilities knowledge through expert-led programs and structured learning experiences — supporting the Kingdom’s aviation transformation and aligned with Saudi Vision 2030 objectives."
-    },
-    "stats": {
-      "activeCourses": "Active Courses",
-      "studentsEnrolled": "Students Enrolled",
-      "completionRate": "Completion Rate",
-      "averageRating": "Average Rating"
-    },
-    "search": {
-      "placeholder": "Search courses..."
-    },
-    "filters": {
-      "allCategories": "All Categories",
-      "allLevels": "All Levels"
-    },
-    "categories": {
-      "aviation-basics": "Aviation Basics",
-      "ai-tools": "AI Tools",
-      "safety": "Safety",
-      "regulations": "Regulations",
-      "technology": "Technology",
-      "leadership": "Leadership"
-    },
-    "levels": {
-      "beginner": "Beginner",
-      "intermediate": "Intermediate",
-      "advanced": "Advanced"
+    "entryButton": "Click to See the Courses",
+    "courseTitle": "Apron Safety",
+    "courseButton": "Go to Course",
+    "login": {
+      "title": "Course Login",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Login",
+      "error": "Invalid username or password."
     }
   }
 }
