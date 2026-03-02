@@ -313,19 +313,6 @@
   "academy": {
     "featuredCourses": "الدورات المميزة",
     "allCourses": "جميع الدورات",
-    "openCourses": "اضغط لفتح الدورات",
-    "openCourse": "اضغط لفتح الدورة",
-    "authTitle": "دخول الدورات",
-    "username": "اسم المستخدم",
-    "password": "كلمة المرور",
-    "submit": "متابعة",
-    "cancel": "إلغاء",
-    "authError": "اسم المستخدم أو كلمة المرور غير صحيحة.",
-    "singleCourse": {
-      "title": "السلامة في ساحة الطيران",
-      "description": "سلامتك أولاً: إرشادات أساسية للعمل بأمان في ساحة المطار.",
-      "level": "مبتدئ"
-    },
     "category": "الفئة",
     "level": "المستوى",
     "viewCourse": "عرض الدورة",

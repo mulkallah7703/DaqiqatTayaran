@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Rating from '@mui/material/Rating';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -16,11 +16,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Alert from '@mui/material/Alert';
 import School from '@mui/icons-material/School';
 import Search from '@mui/icons-material/Search';
 import PlayArrow from '@mui/icons-material/PlayArrow';
@@ -29,35 +24,48 @@ import People from '@mui/icons-material/People';
 import Star from '@mui/icons-material/Star';
 import EmojiEvents from '@mui/icons-material/EmojiEvents';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
 const AcademySection = () => {
   const { t } = useTranslation();
-  const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false);
-  const [authUsername, setAuthUsername] = useState('');
-  const [authPassword, setAuthPassword] = useState('');
-  const [authError, setAuthError] = useState('');
-  const [isAuthorized, setIsAuthorized] = useState(false);
-
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [levelFilter, setLevelFilter] = useState('');
 
-  const { isLoading } = useQuery({
+  const { data: coursesData, isLoading } = useQuery({
     queryKey: ['courses', searchTerm, categoryFilter, levelFilter],
-    enabled: false,
     queryFn: async () => {
       const params = new URLSearchParams();
       if (searchTerm) params.append('search', searchTerm);
       if (categoryFilter) params.append('category', categoryFilter);
       if (levelFilter) params.append('level', levelFilter);
 
-      const response = await axios.get(`/courses?${params}`);
+      const response = await axios.get(`/api/courses?${params}`);
       return response.data;
     },
   });
+
+  const { data: featuredCourses } = useQuery({
+    queryKey: ['featured-courses'],
+    queryFn: async () => {
+      const response = await axios.get('/api/courses/featured');
+      return response.data;
+    },
+  });
+
+  const categories = [
+    'aviation-basics',
+    'ai-tools',
+    'safety',
+    'regulations',
+    'technology',
+    'leadership'
+  ];
+
+  const levels = ['beginner', 'intermediate', 'advanced'];
 
   const stats = [
     { label: t('academy.stats.activeCourses'), value: '150+', icon: <School /> },
@@ -66,33 +74,13 @@ const AcademySection = () => {
     { label: t('academy.stats.averageRating'), value: '4.8', icon: <Star /> },
   ];
 
-  const courseCard = {
-    title: t('academy.singleCourse.title'),
-    description: t('academy.singleCourse.description'),
-    level: t('academy.singleCourse.level'),
-    url: 'https://aviationsminute.com/scorm/index.html',
-  };
-
-  const handleAuthOpen = () => {
-    setAuthError('');
-    setIsAuthDialogOpen(true);
-  };
-
-  const handleAuthClose = () => {
-    setIsAuthDialogOpen(false);
-  };
-
-  const handleAuthSubmit = () => {
-    if (authUsername === 'daqiqattayaran' && authPassword === 'daqiqattayaran1234') {
-      setIsAuthorized(true);
-      setIsAuthDialogOpen(false);
-      setAuthError('');
-      setAuthUsername('');
-      setAuthPassword('');
-      return;
-    }
-    setAuthError(t('academy.authError'));
-  };
+  if (isLoading) {
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
+        <LinearProgress sx={{ width: '50%' }} />
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
@@ -141,118 +129,276 @@ const AcademySection = () => {
         </Container>
       </Box>
 
-      {!isAuthorized && (
-        <Container maxWidth="lg" sx={{ py: 10 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Button variant="contained" size="large" onClick={handleAuthOpen}>
-              {t('academy.openCourses')}
-            </Button>
-          </Box>
-        </Container>
-      )}
+      {/* Stats Section */}
+      <Container maxWidth="lg" sx={{ py: 8 }}>
+        <Grid container spacing={4}>
+          {stats.map((stat, index) => (
+            <Grid item xs={6} md={3} key={stat.label}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card
+                  sx={{
+                    textAlign: 'center',
+                    background: 'linear-gradient(135deg, rgba(230, 126, 34, 0.08) 0%, rgba(230, 126, 34, 0.02) 100%)',
+                    border: '1px solid rgba(230, 126, 34, 0.19)',
+                  }}
+                >
+                  <CardContent sx={{ p: 3 }}>
+                    <Box sx={{ color: 'rgb(230, 126, 34)', mb: 2 }}>
+                      {stat.icon}
+                    </Box>
+                    <Typography variant="h4" sx={{ mb: 1, fontWeight: 700 }}>
+                      {stat.value}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {stat.label}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
 
-      <Dialog open={isAuthDialogOpen} onClose={handleAuthClose} maxWidth="xs" fullWidth>
-        <DialogTitle>{t('academy.authTitle')}</DialogTitle>
-        <DialogContent sx={{ pt: 2 }}>
-          {authError && <Alert severity="error" sx={{ mb: 2 }}>{authError}</Alert>}
-          <TextField
-            label={t('academy.username')}
-            value={authUsername}
-            onChange={(e) => setAuthUsername(e.target.value)}
-            fullWidth
-            margin="dense"
-          />
-          <TextField
-            label={t('academy.password')}
-            type="password"
-            value={authPassword}
-            onChange={(e) => setAuthPassword(e.target.value)}
-            fullWidth
-            margin="dense"
-          />
-        </DialogContent>
-        <DialogActions sx={{ px: 3, pb: 3 }}>
-          <Button variant="outlined" onClick={handleAuthClose}>
-            {t('academy.cancel')}
-          </Button>
-          <Button variant="contained" onClick={handleAuthSubmit}>
-            {t('academy.submit')}
-          </Button>
-        </DialogActions>
-      </Dialog>
-
-      {isAuthorized && isLoading && (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
-          <LinearProgress sx={{ width: '50%' }} />
+      {/* Featured Courses */}
+      {featuredCourses && featuredCourses.length > 0 && (
+        <Box sx={{ backgroundColor: 'rgba(230, 126, 34, 0.05)', py: 8 }}>
+          <Container maxWidth="lg">
+            <Typography variant="h3" align="center" sx={{ mb: 6 }}>
+              {t('academy.featuredCourses')}
+            </Typography>
+            <Grid container spacing={4}>
+              {featuredCourses.slice(0, 3).map((course, index) => (
+                <Grid item xs={12} md={4} key={course._id}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  >
+                    <Card
+                      sx={{
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        transition: 'all 0.3s ease',
+                        '&:hover': {
+                          transform: 'translateY(-8px)',
+                          boxShadow: '0 20px 40px rgba(230, 126, 34, 0.3)',
+                        },
+                      }}
+                    >
+                      <CardMedia
+                        component="div"
+                        sx={{
+                          height: 200,
+                          backgroundColor: 'rgb(230, 126, 34)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <PlayArrow sx={{ fontSize: 60, color: 'rgb(245, 243, 238)' }} />
+                      </CardMedia>
+                      <CardContent sx={{ flexGrow: 1, p: 3 }}>
+                        <Chip
+                          label={course.category?.replace('-', ' ').toUpperCase()}
+                          size="small"
+                          sx={{ mb: 2, backgroundColor: 'rgb(230, 126, 34)', color: 'rgb(245, 243, 238)' }}
+                        />
+                        <Typography variant="h6" sx={{ mb: 2 }}>
+                          {course.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                          {course.shortDescription || course.description?.substring(0, 100) + '...'}
+                        </Typography>
+                        <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                          <Rating value={course.rating?.average || 4.5} readOnly size="small" />
+                          <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
+                            ({course.rating?.count || 0})
+                          </Typography>
+                        </Box>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <AccessTime sx={{ fontSize: 16, mr: 0.5 }} />
+                            <Typography variant="body2">
+                              {Math.floor((course.duration || 0) / 60)}h {(course.duration || 0) % 60}m
+                            </Typography>
+                          </Box>
+                          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                            <People sx={{ fontSize: 16, mr: 0.5 }} />
+                            <Typography variant="body2">
+                              {course.enrollmentCount || 0}
+                            </Typography>
+                          </Box>
+                        </Box>
+                        <Button
+                          component={Link}
+                          to={`/course/${course._id}`}
+                          variant="contained"
+                          fullWidth
+                          sx={{ mt: 'auto' }}
+                        >
+                          {t('academy.viewCourse')}
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
         </Box>
       )}
 
-      {isAuthorized && !isLoading && (
-        <>
-          <Container maxWidth="lg" sx={{ py: 8 }}>
-            <Typography variant="h3" align="center" sx={{ mb: 6 }}>
-              {t('academy.allCourses')}
-            </Typography>
+      {/* Search and Filter */}
+      <Container maxWidth="lg" sx={{ py: 8 }}>
+        <Typography variant="h3" align="center" sx={{ mb: 6 }}>
+          {t('academy.allCourses')}
+        </Typography>
 
-            {/* Courses Grid */}
-            <Grid container spacing={4} justifyContent="center">
-              <Grid item xs={12} sm={8} md={6}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
+        <Grid container spacing={3} sx={{ mb: 4 }}>
+          <Grid item xs={12} md={6}>
+            <TextField
+              fullWidth
+              placeholder={t('academy.search.placeholder')}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Search />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <FormControl fullWidth>
+              <InputLabel>{t('academy.category')}</InputLabel>
+              <Select
+                value={categoryFilter}
+                label={t('academy.category')}
+                onChange={(e) => setCategoryFilter(e.target.value)}
+              >
+                <MenuItem value="">{t('academy.filters.allCategories')}</MenuItem>
+                {categories.map((category) => (
+                  <MenuItem key={category} value={category}>
+                    {t(`academy.categories.${category}`)}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} md={3}>
+            <FormControl fullWidth>
+              <InputLabel>{t('academy.level')}</InputLabel>
+              <Select
+                value={levelFilter}
+                label={t('academy.level')}
+                onChange={(e) => setLevelFilter(e.target.value)}
+              >
+                <MenuItem value="">{t('academy.filters.allLevels')}</MenuItem>
+                {levels.map((level) => (
+                  <MenuItem key={level} value={level}>
+                    {t(`academy.levels.${level}`)}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+        </Grid>
+
+        {/* Courses Grid */}
+        <Grid container spacing={4}>
+          {coursesData?.courses?.map((course, index) => (
+            <Grid item xs={12} sm={6} md={4} key={course._id}>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <Card
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0 10px 20px rgba(11, 11, 11, 0.3)',
+                    },
+                  }}
                 >
-                  <Card
+                  <CardMedia
+                    component="div"
                     sx={{
-                      height: '100%',
+                      height: 160,
+                      backgroundColor: 'rgb(230, 126, 34)',
                       display: 'flex',
-                      flexDirection: 'column',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-4px)',
-                        boxShadow: '0 10px 20px rgba(11, 11, 11, 0.3)',
-                      },
+                      alignItems: 'center',
+                      justifyContent: 'center',
                     }}
                   >
-                    <CardMedia
-                      component="div"
-                      sx={{
-                        height: 180,
-                        backgroundColor: 'rgb(230, 126, 34)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
+                    <PlayArrow sx={{ fontSize: 40, color: 'rgb(245, 243, 238)' }} />
+                  </CardMedia>
+                  <CardContent sx={{ flexGrow: 1, p: 2 }}>
+                    <Chip
+                      label={course.level?.toUpperCase()}
+                      size="small"
+                      sx={{ mb: 1 }}
+                      color={
+                        course.level === 'beginner' ? 'success' :
+                        course.level === 'intermediate' ? 'warning' : 'error'
+                      }
+                    />
+                    <Typography variant="h6" sx={{ mb: 1, fontSize: '1rem' }}>
+                      {course.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                      {course.shortDescription || course.description?.substring(0, 80) + '...'}
+                    </Typography>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                      <Rating value={course.rating?.average || 4.5} readOnly size="small" />
+                      <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
+                        ({course.rating?.count || 0})
+                      </Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                      <Typography variant="body2">
+                        {Math.floor((course.duration || 0) / 60)}h {(course.duration || 0) % 60}m
+                      </Typography>
+                      <Typography variant="body2">
+                        {course.enrollmentCount || 0} {t('academy.students')}
+                      </Typography>
+                    </Box>
+                    <Button
+                      component={Link}
+                      to={`/course/${course._id}`}
+                      variant="outlined"
+                      fullWidth
+                      size="small"
                     >
-                      <PlayArrow sx={{ fontSize: 44, color: 'rgb(245, 243, 238)' }} />
-                    </CardMedia>
-                    <CardContent sx={{ flexGrow: 1, p: 3 }}>
-                      <Chip label={courseCard.level} size="small" sx={{ mb: 1 }} />
-                      <Typography variant="h6" sx={{ mb: 1 }}>
-                        {courseCard.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                        {courseCard.description}
-                      </Typography>
-                      <Button
-                        component="a"
-                        href={courseCard.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        variant="outlined"
-                        fullWidth
-                        size="small"
-                      >
-                        {t('academy.openCourse')}
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
+                      {t('academy.viewCourse')}
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </Grid>
-          </Container>
-        </>
-      )}
+          ))}
+        </Grid>
+
+        {coursesData?.courses?.length === 0 && (
+          <Box sx={{ textAlign: 'center', py: 8 }}>
+            <Typography variant="h6" color="text.secondary">
+              {t('academy.noCourses')}
+            </Typography>
+          </Box>
+        )}
+      </Container>
     </Box>
   );
 };
