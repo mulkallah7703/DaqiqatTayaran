@@ -4,23 +4,15 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useRTL } from '../../hooks/useRTL';
+import logodaq from '../../images/logodaq.png';
 
 const ExecutiveHero = () => {
   const { t } = useTranslation();
   const { isRTL } = useRTL();
-  const containerRef = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-
   // AI Sky Background Component
   const AISkySphere = () => (
     <Box
@@ -182,13 +174,13 @@ const ExecutiveHero = () => {
 
   return (
     <Box
-      ref={containerRef}
       sx={{
-        minHeight: '100vh',
+        minHeight: { xs: 'auto', md: '80vh' },
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
+        pb: { xs: 3, md: 5 },
       }}
     >
       <AISkySphere />
@@ -197,7 +189,7 @@ const ExecutiveHero = () => {
         maxWidth="xl"
         sx={{ position: 'relative', zIndex: 2, px: { xs: 2, sm: 3, md: 4 } }}
       >
-        <motion.div style={{ y, opacity }}>
+        <motion.div>
           <Grid
             container
             spacing={{ xs: 4, md: 8 }}
@@ -379,17 +371,26 @@ const ExecutiveHero = () => {
                 >
                   <Box sx={{
                     display: 'flex',
-                    gap: 8,
-                    flexWrap: 'wrap',
+                    gap: { xs: 4, md: 6 },
+                    flexWrap: { xs: 'wrap', md: 'nowrap' },
                     flexDirection: isRTL ? 'row-reverse' : 'row',
-                    justifyContent: isRTL ? 'flex-end' : 'flex-start',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    width: '100%',
                   }}>
                     {[
                       { label: t('hero.metrics.aiSystems'), value: '4M+' },
                       { label: t('hero.metrics.aviationPartners'), value: '50K+' },
                       { label: t('hero.metrics.successRate'), value: '60%' },
                     ].map((metric) => (
-                      <Box key={metric.label} sx={{ textAlign: isRTL ? 'right' : 'left' }}>
+                      <Box
+                        key={metric.label}
+                        sx={{
+                          flex: 1,
+                          minWidth: { xs: 160, md: 0 },
+                          textAlign: 'center',
+                        }}
+                      >
                         <Typography
                           variant="h3"
                           sx={{
@@ -464,31 +465,29 @@ const ExecutiveHero = () => {
                       },
                     }}
                   >
-                    <Typography
-                      variant="h5"
+                    <Box
+                      component="img"
+                      src={logodaq}
+                      alt="Daqiqat Tayaran"
                       sx={{
-                        color: 'rgb(245, 243, 238)',
-                        fontWeight: 700,
-                        textAlign: 'center',
-                        letterSpacing: '2px',
+                        width: { xs: '65%', md: '70%' },
+                        height: 'auto',
+                        display: 'block',
+                        borderRadius: '50%',
                         animation: 'counterRotate 30s linear infinite',
                         '@keyframes counterRotate': {
                           '0%': { transform: 'rotate(0deg)' },
                           '100%': { transform: 'rotate(-360deg)' },
                         },
                       }}
-                    >
-                      DAQIQAT
-                      <br />
-                      TAYARAN
-                    </Typography>
+                    />
                   </Box>
 
                   {/* Orbiting Intelligence Nodes */}
                   {[
-                    { label: 'Tech Division', angle: 0, radius: 180, color: 'rgb(245, 243, 238)' },
-                    { label: 'Media Division', angle: 120, radius: 180, color: 'rgb(245, 243, 238)' },
-                    { label: 'Academy Division', angle: 240, radius: 180, color: 'rgb(245, 243, 238)' },
+                    { label: t('pages.home.divisions.tech'), angle: 0, radius: 180, color: 'rgb(245, 243, 238)' },
+                    { label: t('pages.home.divisions.media'), angle: 120, radius: 180, color: 'rgb(245, 243, 238)' },
+                    { label: t('pages.home.divisions.academy'), angle: 240, radius: 180, color: 'rgb(245, 243, 238)' },
                   ].map((node, index) => (
                     <Box
                       key={node.label}
@@ -531,7 +530,13 @@ const ExecutiveHero = () => {
                           fontSize: { xs: '0.65rem', md: '0.75rem' },
                           textAlign: 'center',
                           lineHeight: 1.2,
-                          letterSpacing: '1px',
+                          letterSpacing: isRTL ? '0' : '1px',
+                          width: '100%',
+                          px: 3,
+                          direction: isRTL ? 'rtl' : 'ltr',
+                          fontFamily: isRTL
+                            ? '"DIN Next Arabic", "Cairo", "29LT Bukra", "Tajawal", "Noto Sans Arabic", sans-serif'
+                            : '"SF Pro Display", "Inter", "Segoe UI", system-ui, -apple-system, sans-serif',
                         }}
                       >
                         {node.label}

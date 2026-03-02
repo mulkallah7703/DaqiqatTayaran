@@ -184,19 +184,6 @@ const AvTechSection = () => {
       ],
       color: 'rgb(230, 126, 34)',
       progress: 92
-    },
-    {
-      title: t('avtech.tools.operationsDashboard.title'),
-      description: t('avtech.tools.operationsDashboard.description'),
-      icon: <Analytics />,
-      features: [
-        t('avtech.tools.operationsDashboard.features.realTimeMonitoring'),
-        t('avtech.tools.operationsDashboard.features.performanceMetrics'),
-        t('avtech.tools.operationsDashboard.features.customReports'),
-        t('avtech.tools.operationsDashboard.features.dataVisualization')
-      ],
-      color: 'rgb(230, 126, 34)',
-      progress: 90
     }
   ];
 
@@ -247,40 +234,6 @@ const AvTechSection = () => {
     }
   ];
 
-  const promptEngineering = {
-    title: t('avtech.promptEngineering.title'),
-    description: t('avtech.promptEngineering.description'),
-    benefits: [
-      t('avtech.promptEngineering.benefits.productivity'),
-      t('avtech.promptEngineering.benefits.manualWork'),
-      t('avtech.promptEngineering.benefits.accuracy'),
-      t('avtech.promptEngineering.benefits.decisionMaking')
-    ],
-    examples: [
-      {
-        category: t('avtech.promptEngineering.examples.flightOperations.category'),
-        prompt: t('avtech.promptEngineering.examples.flightOperations.prompt')
-      },
-      {
-        category: t('avtech.promptEngineering.examples.maintenance.category'),
-        prompt: t('avtech.promptEngineering.examples.maintenance.prompt')
-      },
-      {
-        category: t('avtech.promptEngineering.examples.safety.category'),
-        prompt: t('avtech.promptEngineering.examples.safety.prompt')
-      }
-    ]
-  };
-
-  const technologies = [
-    { name: t('avtech.technologies.machineLearning'), level: 95, color: 'rgb(230, 126, 34)' },
-    { name: t('avtech.technologies.nlp'), level: 88, color: 'rgb(230, 126, 34)' },
-    { name: t('avtech.technologies.computerVision'), level: 85, color: 'rgb(230, 126, 34)' },
-    { name: t('avtech.technologies.predictiveAnalytics'), level: 92, color: 'rgb(230, 126, 34)' },
-    { name: t('avtech.technologies.cloudComputing'), level: 90, color: 'rgb(230, 126, 34)' },
-    { name: t('avtech.technologies.iotIntegration'), level: 87, color: 'rgb(230, 126, 34)' }
-  ];
-
   if (loading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>
@@ -298,16 +251,40 @@ const AvTechSection = () => {
           minHeight: '60vh',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           position: 'relative',
+          textAlign: 'center',
+          width: '100%',
         }}
       >
-        <Container maxWidth="lg">
+        <Container
+          maxWidth="lg"
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            style={{ width: '100%' }}
           >
-            <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <Box
+              sx={{
+                textAlign: 'center',
+                mb: 6,
+                width: '100%',
+                maxWidth: 900,
+                mx: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                direction: isRTL ? 'rtl' : 'ltr',
+              }}
+            >
               <Psychology sx={{ fontSize: 80, color: 'rgb(230, 126, 34)', mb: 3 }} />
               <Typography
                 variant="h1"
@@ -317,17 +294,18 @@ const AvTechSection = () => {
                   backgroundClip: 'text',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
+                  textAlign: 'center',
                 }}
               >
                 {content.hero?.title || t('avtech.hero.title')}
               </Typography>
-              <Typography variant="h4" color="text.secondary" sx={{ mb: 4 }}>
+              <Typography variant="h4" color="text.secondary" sx={{ mb: 4, textAlign: 'center' }}>
                 {content.hero?.subtitle || t('avtech.hero.subtitle')}
               </Typography>
               <Typography
                 variant="h6"
                 color="text.secondary"
-                sx={{ maxWidth: 800, mx: 'auto', lineHeight: 1.6 }}
+                sx={{ maxWidth: 800, mx: 'auto', lineHeight: 1.6, textAlign: 'center' }}
               >
                 {content.hero?.content}
               </Typography>
@@ -371,161 +349,60 @@ const AvTechSection = () => {
           <Typography variant="h3" align="center" sx={{ mb: 6 }}>
             {t('avtech.aiUseCases')}
           </Typography>
-          <Grid container spacing={4}>
-            {useCases.map((useCase, index) => (
-              <Grid item xs={12} md={6} key={useCase.title}>
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.2 }}
-                >
-                  <Card sx={{ height: '100%' }}>
-                    <CardContent sx={{ p: 4 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
-                        <Box sx={{ color: 'rgb(230, 126, 34)', mr: 2 }}>
-                          {useCase.icon}
-                        </Box>
-                        <Typography variant="h5">
-                          {useCase.title}
-                        </Typography>
-                      </Box>
-                      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-                        {useCase.description}
-                      </Typography>
-                      <List dense>
-                        {useCase.examples.map((example, idx) => (
-                          <ListItem key={idx} sx={{ px: 0 }}>
-                            <ListItemIcon sx={{ minWidth: 32 }}>
-                              <CheckCircle sx={{ fontSize: 16, color: 'rgb(230, 126, 34)' }} />
-                            </ListItemIcon>
-                            <ListItemText
-                              primary={example}
-                              primaryTypographyProps={{
-                                variant: 'body2',
-                                color: 'text.secondary'
-                              }}
-                            />
-                          </ListItem>
-                        ))}
-                      </List>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Prompt Engineering Section */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Typography variant="h3" align="center" sx={{ mb: 2 }}>
-            {promptEngineering.title}
-          </Typography>
-          <Typography
-            variant="h6"
-            align="center"
-            color="text.secondary"
-            sx={{ mb: 6, maxWidth: 800, mx: 'auto' }}
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' },
+              gap: { xs: 3, md: 4 },
+              alignItems: 'stretch',
+              width: '100%',
+              maxWidth: 1200,
+              mx: 'auto',
+            }}
           >
-            {promptEngineering.description}
-          </Typography>
-        </motion.div>
-
-        <Grid container spacing={6}>
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h5" sx={{ mb: 3 }}>
-                  {t('avtech.promptEngineering.benefitsTitle')}
-                </Typography>
-                <List>
-                  {promptEngineering.benefits.map((benefit, index) => (
-                    <ListItem key={index} sx={{ px: 0 }}>
-                      <ListItemIcon>
-                        <CheckCircle sx={{ color: 'rgb(230, 126, 34)' }} />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={benefit}
-                        primaryTypographyProps={{ variant: 'body1' }}
-                      />
-                    </ListItem>
-                  ))}
-                </List>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent sx={{ p: 4 }}>
-                <Typography variant="h5" sx={{ mb: 3 }}>
-                  {t('avtech.promptEngineering.examplesTitle')}
-                </Typography>
-                {promptEngineering.examples.map((example, index) => (
-                  <Paper
-                    key={index}
-                    sx={{
-                      p: 3,
-                      mb: 2,
-                      backgroundColor: 'rgba(230, 126, 34, 0.05)',
-                      border: '1px solid rgba(230, 126, 34, 0.2)',
-                    }}
-                  >
-                    <Typography variant="subtitle2" color="primary" sx={{ mb: 1 }}>
-                      {example.category}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      "{example.prompt}"
-                    </Typography>
-                  </Paper>
-                ))}
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
-
-      {/* Technologies Section */}
-      <Box sx={{ backgroundColor: 'rgba(11, 11, 11, 0.02)', py: 8 }}>
-        <Container maxWidth="lg">
-          <Typography variant="h3" align="center" sx={{ mb: 6 }}>
-            {t('avtech.coreTechnologies')}
-          </Typography>
-          <Grid container spacing={4}>
-            {technologies.map((tech, index) => (
-              <Grid item xs={12} md={6} key={tech.name}>
-                <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <Box sx={{ mb: 3 }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                      <Typography variant="h6">{tech.name}</Typography>
-                      <Typography variant="body2">{tech.level}%</Typography>
+            {useCases.map((useCase, index) => (
+              <Box
+                key={useCase.title}
+                component={motion.div}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                sx={{ display: 'flex' }}
+              >
+                <Card sx={{ height: '100%', width: '100%' }}>
+                  <CardContent sx={{ p: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+                      <Box sx={{ color: 'rgb(230, 126, 34)', mr: 2 }}>
+                        {useCase.icon}
+                      </Box>
+                      <Typography variant="h5">
+                        {useCase.title}
+                      </Typography>
                     </Box>
-                    <LinearProgress
-                      variant="determinate"
-                      value={tech.level}
-                      sx={{
-                        height: 8,
-                        borderRadius: 4,
-                        backgroundColor: 'rgba(11, 11, 11, 0.1)',
-                        '& .MuiLinearProgress-bar': {
-                          backgroundColor: tech.color,
-                        },
-                      }}
-                    />
-                  </Box>
-                </motion.div>
-              </Grid>
+                    <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
+                      {useCase.description}
+                    </Typography>
+                    <List dense>
+                      {useCase.examples.map((example, idx) => (
+                        <ListItem key={idx} sx={{ px: 0 }}>
+                          <ListItemIcon sx={{ minWidth: 32 }}>
+                            <CheckCircle sx={{ fontSize: 16, color: 'rgb(230, 126, 34)' }} />
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={example}
+                            primaryTypographyProps={{
+                              variant: 'body2',
+                              color: 'text.secondary'
+                            }}
+                          />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </CardContent>
+                </Card>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </Container>
       </Box>
 

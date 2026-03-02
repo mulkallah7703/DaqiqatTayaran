@@ -220,12 +220,15 @@ const LuxuryNavbar = () => {
                 component={Link}
                 to="/"
                 sx={{
-                  display: 'flex',
+                  display: isRTL ? 'inline-flex' : 'flex',
                   alignItems: 'center',
-                  gap: 2,
+                  gap: isRTL ? 0.5 : 2,
                   textDecoration: 'none',
                   color: 'inherit',
                   flexDirection: isRTL ? 'row-reverse' : 'row',
+                  width: 'auto',
+                  justifyContent: 'flex-start',
+                  px: 0,
                 }}
               >
                 <Box
@@ -233,19 +236,28 @@ const LuxuryNavbar = () => {
                   src={logo}
                   alt="Brand logo"
                   sx={{
-                    width: 28,
-                    height: 28,
+                    width: isRTL ? 'auto' : 100,
+                    height: 50,
                     borderRadius: '50%',
                     objectFit: 'contain',
                     boxShadow: '0 8px 24px rgba(11, 11, 11, 0.35)',
+                    overflow: 'hidden',
+                    ml: 0,
+                    mr: 0,
+                    p: 0,
+                    minWidth: 0,
                   }}
                 />
                 <Box
                   sx={{
                     textAlign: isRTL ? 'right' : 'left',
-                    minWidth: 150,
-                    maxWidth: 150,
+                    minWidth: isRTL ? 'auto' : 150,
+                    maxWidth: isRTL ? 'none' : 150,
                     flexShrink: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    lineHeight: 1.2,
+                    m: 0,
                   }}
                 >
                   <Typography
@@ -308,6 +320,12 @@ const LuxuryNavbar = () => {
                       alignItems: 'center',
                       gap: 1,
                       flexDirection: isRTL ? 'row-reverse' : 'row',
+                      ...(isRTL && {
+                        gap: 1.5,
+                        '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+                          margin: 0,
+                        },
+                      }),
                       '&::after': {
                         content: '""',
                         position: 'absolute',

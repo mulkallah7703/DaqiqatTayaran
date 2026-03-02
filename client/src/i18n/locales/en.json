@@ -30,7 +30,7 @@
     "sectionTitle": "Daqiqat Tayaran Ecosystem",
     "mainTitle": "Three Pillars Driving Impact & Leadership",
     "mainTitleHighlight": "Excellence",
-    "description": "Specialized Aviation Media, Premium Creative Production, and Strategic Digital Reach — seamlessly integrated to shape the most influential Arabic aviation content platform, strengthening the Kingdom’s position as a regional leader in aviation knowledge and media innovation, aligned with Saudi Vision 2030.",
+    "description": "Specialized aviation media, premium creative production, and strategic digital reach — seamlessly integrated to shape the most influential Arabic aviation content platform.\n\nWe lead aviation knowledge storytelling through cinematic quality, executive insight, and a precise digital presence that strengthens the Kingdom’s position as a regional leader in aviation media.\n\nAligned with Saudi Vision 2030, this ecosystem elevates industry impact, credibility, and long‑term growth.",
     "bottomDescription": "Discover the integrated power of aviation media, professional production, and strategic digital reach.",
     "accessButton": "Access Platform",
     "exploreButton": "Explore Division",
@@ -107,6 +107,11 @@
         "industryPartners": "Industry Partners",
         "successRate": "Success Rate"
       },
+      "divisions": {
+        "tech": "Tech Division",
+        "media": "Media Division",
+        "academy": "Academy Division"
+      },
       "sectionsTitle": "Platform Sections",
       "sectionsSubtitle": "Three integrated wings designed to elevate your aviation journey",
       "vision2030Title": "Aligned with Saudi Vision 2030",
@@ -171,8 +176,8 @@
     "termsOfService": "Aviation Podcast",
     "cookiePolicy": "Industry Partnerships",
     "gdprCompliance": "Aviation Knowledge Leadership",
-    "email": "info@daqiqattayaran.com",
-    "phone": "+966 11 123 4567",
+    "email": "tariqaleidi@aviationsminute.com",
+    "phone": "+966502900388",
     "location": "Riyadh, Kingdom of Saudi Arabia",
     "copyright": "© {{year}} Daqiqat Tayaran. All Rights Reserved.",
     "builtWith": "Shaping the Future of Aviation Media in the Arab World"
@@ -215,16 +220,6 @@
           "incidentAnalysis": "Targeted Campaign Deployment",
           "safetyScoring": "Performance Monitoring",
           "complianceTracking": "Reach Optimization"
-        }
-      },
-      "operationsDashboard": {
-        "title": "Digital Performance & Optimization",
-        "description": "Continuous digital refinement ensuring sustainable growth, brand authority, and measurable impact.",
-        "features": {
-          "realTimeMonitoring": "Content Performance Analytics",
-          "performanceMetrics": "Conversion Optimization",
-          "customReports": "Platform Enhancements",
-          "dataVisualization": "Strategic Scaling"
         }
       }
     },

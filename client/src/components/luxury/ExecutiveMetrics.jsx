@@ -111,10 +111,12 @@ const ExecutiveMetrics = () => {
     <Box
       ref={ref}
       sx={{
-        py: 12,
+        mt: { xs: 2, md: 3 },
+        py: { xs: 3, sm: 4, md: 5 },
         position: 'relative',
         background: 'linear-gradient(180deg, rgba(11, 11, 11, 1) 0%, rgba(11, 11, 11, 1) 100%)',
         overflow: 'hidden',
+        zIndex: 1,
       }}
     >
       {/* Background Elements */}
@@ -160,27 +162,35 @@ const ExecutiveMetrics = () => {
         >
           <Box sx={{
             textAlign: 'center',
-            mb: 10,
+            mb: { xs: 5, md: 6 },
             direction: isRTL ? 'rtl' : 'ltr',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}>
-            <Typography
-              variant="h6"
+            <Box
               sx={{
-                color: 'rgb(245, 243, 238)',
-                fontWeight: 600,
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                mb: 2,
+                position: 'absolute',
+                inset: 0,
+                mx: 'auto',
+                maxWidth: 720,
+                background: 'radial-gradient(circle at top center, rgba(230, 126, 34, 0.18) 0%, transparent 65%)',
+                filter: 'blur(24px)',
+                zIndex: 0,
               }}
-            >
-              {t('executiveMetrics.sectionTitle')}
-            </Typography>
+            />
             <Typography
               variant="h2"
               sx={{
                 mb: 3,
-                maxWidth: 800,
+                maxWidth: 820,
                 mx: 'auto',
+                fontWeight: 700,
+                lineHeight: 1.15,
+                position: 'relative',
+                zIndex: 1,
+                textAlign: 'center',
               }}
             >
               {t('executiveMetrics.mainTitle')}
@@ -189,18 +199,34 @@ const ExecutiveMetrics = () => {
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                ml: 2,
+                ml: isRTL ? 0 : 2,
+                mr: isRTL ? 2 : 0,
+                display: 'inline-block',
               }}>
                 {t('executiveMetrics.mainTitleHighlight')}
               </Box>
             </Typography>
+            <Box
+              sx={{
+                width: 140,
+                height: 2,
+                mx: 'auto',
+                mb: 3,
+                background: 'linear-gradient(90deg, rgba(230, 126, 34, 0.9) 0%, transparent 100%)',
+                position: 'relative',
+                zIndex: 1,
+              }}
+            />
             <Typography
               variant="h6"
               sx={{
-                color: 'rgb(245, 243, 238)',
-                maxWidth: 600,
+                color: '#EAEAEA',
+                maxWidth: 640,
                 mx: 'auto',
-                lineHeight: 1.6,
+                lineHeight: 1.85,
+                position: 'relative',
+                zIndex: 1,
+                textAlign: 'center',
               }}
             >
               {t('executiveMetrics.description')}
@@ -209,133 +235,147 @@ const ExecutiveMetrics = () => {
         </motion.div>
 
         {/* Metrics Grid */}
-        <Grid container spacing={4}>
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2, minmax(0, 1fr))',
+              lg: 'repeat(3, minmax(0, 1fr))',
+            },
+            gap: { xs: 3, sm: 3, md: 4 },
+            maxWidth: 1200,
+            mx: 'auto',
+          }}
+        >
           {metrics.map((metric, index) => (
-            <Grid item xs={12} sm={6} lg={4} key={metric.label}>
-              <motion.div
-                initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
-                transition={{
-                  duration: 0.8,
-                  ease: "easeOut",
-                  delay: index * 0.1
+            <Box
+              key={metric.label}
+              component={motion.div}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut",
+                delay: index * 0.1
+              }}
+              sx={{ display: 'flex' }}
+            >
+              <Box
+                sx={{
+                  p: { xs: 3, md: 4 },
+                  height: '100%',
+                  width: '100%',
+                  background: 'linear-gradient(145deg, rgba(11, 11, 11, 0.8) 0%, rgba(11, 11, 11, 0.6) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(230, 126, 34, 0.2)',
+                  borderRadius: 3,
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '3px',
+                    background: 'linear-gradient(90deg, rgb(230, 126, 34) 0%, transparent 100%)',
+                  },
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    border: '1px solid rgba(230, 126, 34, 0.4)',
+                    boxShadow: '0 20px 40px rgba(230, 126, 34, 0.2)',
+                    '&::after': {
+                      opacity: 1,
+                    },
+                  },
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'radial-gradient(circle at center, rgba(230, 126, 34, 0.1) 0%, transparent 70%)',
+                    opacity: 0,
+                    transition: 'opacity 0.4s ease',
+                  },
                 }}
               >
-                <Box
-                  sx={{
-                    p: 4,
-                    height: '100%',
-                    background: 'linear-gradient(145deg, rgba(11, 11, 11, 0.8) 0%, rgba(11, 11, 11, 0.6) 100%)',
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(230, 126, 34, 0.2)',
-                    borderRadius: 3,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    '&::before': {
-                      content: '""',
+                <Box sx={{ position: 'relative', zIndex: 1 }}>
+                  {/* Metric Value */}
+                  <Box sx={{
+                    mb: 2,
+                    textAlign: isRTL ? 'right' : 'left',
+                  }}>
+                    <AnimatedCounter
+                      value={metric.value}
+                      suffix={metric.suffix}
+                      isVisible={isInView}
+                      delay={index * 100}
+                    />
+                  </Box>
+
+                  {/* Metric Label */}
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      mb: 1,
+                      fontWeight: 600,
+                      color: 'rgb(245, 243, 238)',
+                    }}
+                  >
+                    {metric.label}
+                  </Typography>
+
+                  {/* Metric Description */}
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: '#EAEAEA',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {metric.description}
+                  </Typography>
+
+                  {/* Decorative Element */}
+                  <Box
+                    sx={{
                       position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '3px',
-                      background: 'linear-gradient(90deg, rgb(230, 126, 34) 0%, transparent 100%)',
-                    },
-                    '&:hover': {
-                      transform: 'translateY(-8px)',
+                      top: 16,
+                      right: isRTL ? 'auto' : 16,
+                      left: isRTL ? 16 : 'auto',
+                      width: 40,
+                      height: 40,
+                      borderRadius: '50%',
+                      background: 'radial-gradient(circle, rgba(230, 126, 34, 0.3) 0%, transparent 70%)',
                       border: '1px solid rgba(230, 126, 34, 0.4)',
-                      boxShadow: '0 20px 40px rgba(230, 126, 34, 0.2)',
-                      '&::after': {
-                        opacity: 1,
-                      },
-                    },
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'radial-gradient(circle at center, rgba(230, 126, 34, 0.1) 0%, transparent 70%)',
-                      opacity: 0,
-                      transition: 'opacity 0.4s ease',
-                    },
-                  }}
-                >
-                  <Box sx={{ position: 'relative', zIndex: 1 }}>
-                    {/* Metric Value */}
-                    <Box sx={{
-                      mb: 2,
-                      textAlign: isRTL ? 'right' : 'left',
-                    }}>
-                      <AnimatedCounter
-                        value={metric.value}
-                        suffix={metric.suffix}
-                        isVisible={isInView}
-                        delay={index * 100}
-                      />
-                    </Box>
-
-                    {/* Metric Label */}
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        mb: 1,
-                        fontWeight: 600,
-                        color: 'rgb(245, 243, 238)',
-                      }}
-                    >
-                      {metric.label}
-                    </Typography>
-
-                    {/* Metric Description */}
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: 'rgb(245, 243, 238)',
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {metric.description}
-                    </Typography>
-
-                    {/* Decorative Element */}
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
                     <Box
                       sx={{
-                        position: 'absolute',
-                        top: 16,
-                        right: isRTL ? 'auto' : 16,
-                        left: isRTL ? 16 : 'auto',
-                        width: 40,
-                        height: 40,
+                        width: 8,
+                        height: 8,
                         borderRadius: '50%',
-                        background: 'radial-gradient(circle, rgba(230, 126, 34, 0.3) 0%, transparent 70%)',
-                        border: '1px solid rgba(230, 126, 34, 0.4)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
+                        background: 'rgb(230, 126, 34)',
+                        animation: 'pulse 2s infinite',
+                        '@keyframes pulse': {
+                          '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+                          '50%': { opacity: 0.7, transform: 'scale(1.2)' },
+                        },
                       }}
-                    >
-                      <Box
-                        sx={{
-                          width: 8,
-                          height: 8,
-                          borderRadius: '50%',
-                          background: 'rgb(230, 126, 34)',
-                          animation: 'pulse 2s infinite',
-                          '@keyframes pulse': {
-                            '0%, 100%': { opacity: 1, transform: 'scale(1)' },
-                            '50%': { opacity: 0.7, transform: 'scale(1.2)' },
-                          },
-                        }}
-                      />
-                    </Box>
+                    />
                   </Box>
                 </Box>
-              </motion.div>
-            </Grid>
+              </Box>
+            </Box>
           ))}
-        </Grid>
+        </Box>
 
         {/* Bottom Insight */}
         <motion.div

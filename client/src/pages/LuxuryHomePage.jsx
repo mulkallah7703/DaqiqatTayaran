@@ -8,7 +8,7 @@ const ExecutiveMetrics = React.lazy(() => import('../components/luxury/Executive
 
 const LuxuryHomePage = () => {
   return (
-    <Box sx={{ overflow: 'hidden' }}>
+    <Box sx={{ overflowX: 'hidden' }}>
       <Suspense fallback={<MinimalLoader />}>
         <ExecutiveHero />
         <PlatformDivisions />

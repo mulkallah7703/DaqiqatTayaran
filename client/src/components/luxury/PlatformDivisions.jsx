@@ -15,7 +15,7 @@ import School from '@mui/icons-material/School';
 const PlatformDivisions = () => {
   const { t } = useTranslation();
   const { isRTL } = useRTL();
-  
+
   const divisions = useMemo(() => ([
     {
       title: t('platformDivisions.avtech.title'),
@@ -52,7 +52,7 @@ const PlatformDivisions = () => {
   return (
     <Box
       sx={{
-        py: 12,
+        py: { xs: 3, sm: 4, md: 5 },
         position: 'relative',
         background: 'linear-gradient(180deg, rgba(11, 11, 11, 1) 0%, rgba(11, 11, 11, 1) 100%)',
       }}
@@ -81,49 +81,57 @@ const PlatformDivisions = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <Box sx={{ 
-            textAlign: 'center', 
-            mb: 8,
+          <Box sx={{
+            textAlign: 'center',
+            mb: { xs: 5, md: 6 },
             direction: isRTL ? 'rtl' : 'ltr',
+            ...(isRTL && {
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }),
           }}>
-            <Typography
-              variant="h6"
-              sx={{
-                color: 'rgb(245, 243, 238)',
-                fontWeight: 600,
-                letterSpacing: '2px',
-                textTransform: 'uppercase',
-                mb: 2,
-              }}
-            >
-              {t('platformDivisions.sectionTitle')}
-            </Typography>
             <Typography
               variant="h2"
               sx={{
                 mb: 3,
-                maxWidth: 800,
+                maxWidth: 900,
                 mx: 'auto',
+                fontWeight: 700,
+                lineHeight: 1.15,
+                textAlign: isRTL ? 'center' : 'center',
+                alignSelf: isRTL ? 'center' : undefined,
               }}
             >
               {t('platformDivisions.mainTitle')}
-              <Box component="span" sx={{ 
+              <Box component="span" sx={{
                 background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 100%)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                ml: 2,
+                display: 'block',
+                mt: 1,
               }}>
                 {t('platformDivisions.mainTitleHighlight')}
               </Box>
             </Typography>
+            <Box
+              sx={{
+                width: 120,
+                height: 2,
+                mx: 'auto',
+                mb: 3,
+                background: 'linear-gradient(90deg, rgba(230, 126, 34, 0.8) 0%, transparent 100%)',
+              }}
+            />
             <Typography
               variant="h6"
               sx={{
-                color: 'rgb(245, 243, 238)',
-                maxWidth: 600,
+                color: 'rgba(245, 243, 238, 0.85)',
+                maxWidth: 680,
                 mx: 'auto',
-                lineHeight: 1.6,
+                lineHeight: 1.9,
+                whiteSpace: 'pre-line',
               }}
             >
               {t('platformDivisions.description')}
@@ -184,127 +192,137 @@ const PlatformDivisions = () => {
                   },
                 }}
               >
-                  <CardContent sx={{ 
-                    p: 4, 
-                    height: '100%', 
-                    display: 'flex', 
-                    flexDirection: 'column',
-                    textAlign: isRTL ? 'right' : 'left',
-                    direction: isRTL ? 'rtl' : 'ltr',
-                  }}>
-                    {/* Icon */}
-                    <Box
-                      className="division-icon"
+                <CardContent sx={{
+                  p: 4,
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  textAlign: isRTL ? 'right' : 'left',
+                  direction: isRTL ? 'rtl' : 'ltr',
+                }}>
+                  {/* Icon */}
+                  <Box
+                    className="division-icon"
+                    sx={{
+                      color: division.borderColor.replace('0.2', '0.8'),
+                      mb: 3,
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                  >
+                    {division.icon}
+                  </Box>
+
+                  {/* Content */}
+                  <Box sx={{ flexGrow: 1 }}>
+                    <Typography
+                      variant="body2"
                       sx={{
-                        color: division.borderColor.replace('0.2', '0.8'),
-                        mb: 3,
-                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                        color: 'rgb(245, 243, 238)',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        mb: 1,
+                        fontSize: '0.875rem',
                       }}
                     >
-                      {division.icon}
-                    </Box>
+                      {division.subtitle}
+                    </Typography>
 
-                    {/* Content */}
-                    <Box sx={{ flexGrow: 1 }}>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: 'rgb(245, 243, 238)',
-                          textTransform: 'uppercase',
-                          letterSpacing: '1px',
-                          mb: 1,
-                          fontSize: '0.875rem',
-                        }}
-                      >
-                        {division.subtitle}
-                      </Typography>
-                      
-                      <Typography
-                        variant="h4"
-                        sx={{
-                          mb: 3,
-                          fontWeight: 600,
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {division.title}
-                      </Typography>
+                    <Typography
+                      variant="h4"
+                      sx={{
+                        mb: 3,
+                        fontWeight: 600,
+                        lineHeight: 1.3,
+                      }}
+                    >
+                      {division.title}
+                    </Typography>
 
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          mb: 4,
-                          color: 'rgb(245, 243, 238)',
-                          lineHeight: 1.7,
-                        }}
-                      >
-                        {division.description}
-                      </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        mb: 4,
+                        color: 'rgb(245, 243, 238)',
+                        lineHeight: 1.7,
+                      }}
+                    >
+                      {division.description}
+                    </Typography>
 
-                      {/* Features */}
-                      <Box
-                        className="division-features"
-                        sx={{
-                          transform: 'translateY(20px)',
-                          opacity: 0,
-                          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                          mb: 4,
-                        }}
-                      >
-                        {division.features.map((feature, idx) => (
+                    {/* Features */}
+                    <Box
+                      className="division-features"
+                      sx={{
+                        transform: 'translateY(20px)',
+                        opacity: 0,
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                        mb: 4,
+                        ...(isRTL && {
+                          direction: 'rtl',
+                          textAlign: 'right',
+                          pr: 0,
+                          pl: 0,
+                        }),
+                      }}
+                    >
+                      {division.features.map((feature, idx) => (
+                        <Box
+                          key={idx}
+                          sx={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            mb: 2,
+                            flexDirection: isRTL ? 'row-reverse' : 'row',
+                            width: '100%',
+                          }}
+                        >
                           <Box
-                            key={idx}
                             sx={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              mb: 1.5,
-                              flexDirection: isRTL ? 'row-reverse' : 'row',
+                              width: 6,
+                              height: 6,
+                              borderRadius: '50%',
+                              background: division.borderColor.replace('0.2', '0.6'),
+                              mr: isRTL ? 0 : 2,
+                              ml: isRTL ? 2 : 0,
+                              flexShrink: 0,
+                              mt: 0.6,
+                            }}
+                          />
+                          <Typography
+                            variant="body2"
+                            sx={{
+                              color: 'rgb(245, 243, 238)',
+                              fontSize: '0.95rem',
+                              lineHeight: 1.9,
+                              textAlign: isRTL ? 'right' : 'left',
                             }}
                           >
-                            <Box
-                              sx={{
-                                width: 6,
-                                height: 6,
-                                borderRadius: '50%',
-                                background: division.borderColor.replace('0.2', '0.6'),
-                                mr: isRTL ? 0 : 2,
-                                ml: isRTL ? 2 : 0,
-                                flexShrink: 0,
-                              }}
-                            />
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                color: 'rgb(245, 243, 238)',
-                                fontSize: '0.95rem',
-                              }}
-                            >
-                              {feature}
-                            </Typography>
-                          </Box>
-                        ))}
-                      </Box>
+                            {feature}
+                          </Typography>
+                        </Box>
+                      ))}
                     </Box>
+                  </Box>
 
-                    {/* CTA Button */}
-                    <Button
-                      component={Link}
-                      to={division.path}
-                      variant="outlined"
-                      fullWidth
-                      sx={{
-                        mt: 'auto',
-                        borderColor: division.borderColor,
-                        color: division.borderColor.replace('0.2', '0.8'),
-                        '&:hover': {
-                          borderColor: division.borderColor.replace('0.2', '0.6'),
-                          background: division.borderColor.replace('0.2', '0.1'),
-                        },
-                      }}
-                    >
-                      {t('platformDivisions.exploreButton')}
-                    </Button>
-                  </CardContent>
+                  {/* CTA Button */}
+                  <Button
+                    component={Link}
+                    to={division.path}
+                    variant="outlined"
+                    fullWidth
+                    sx={{
+                      mt: 'auto',
+                      borderColor: division.borderColor,
+                      color: division.borderColor.replace('0.2', '0.8'),
+                      '&:hover': {
+                        borderColor: division.borderColor.replace('0.2', '0.6'),
+                        background: division.borderColor.replace('0.2', '0.1'),
+                      },
+                    }}
+                  >
+                    {t('platformDivisions.exploreButton')}
+                  </Button>
+                </CardContent>
               </Card>
             </Box>
           ))}
@@ -317,8 +335,8 @@ const PlatformDivisions = () => {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
           viewport={{ once: true }}
         >
-          <Box sx={{ 
-            textAlign: 'center', 
+          <Box sx={{
+            textAlign: 'center',
             mt: 10,
             direction: isRTL ? 'rtl' : 'ltr',
           }}>

@@ -38,7 +38,7 @@ const Footer = () => {
     ],
     [t('footer.legal')]: [
       { label: t('footer.privacyPolicy'), path: '#' },
-      { label: t('footer.termsOfService'), path: '#' },
+      { label: t('footer.termsOfService'), path: 'http://www.youtube.com/@AvSahaab' },
       { label: t('footer.cookiePolicy'), path: '#' },
       { label: t('footer.gdprCompliance'), path: '#' },
     ],
@@ -106,9 +106,14 @@ const Footer = () => {
                   ml: isRTL ? 1 : 0,
                   color: 'text.secondary'
                 }} />
-                <Typography variant="body2" color="text.secondary">
+                <Link
+                  href="mailto:tariqaleidi@aviationsminute.com"
+                  underline="none"
+                  color="text.secondary"
+                  variant="body2"
+                >
                   {t('footer.email')}
-                </Typography>
+                </Link>
               </Box>
               <Box sx={{
                 display: 'flex',
@@ -122,9 +127,14 @@ const Footer = () => {
                   ml: isRTL ? 1 : 0,
                   color: 'text.secondary'
                 }} />
-                <Typography variant="body2" color="text.secondary">
+                <Link
+                  href="tel:+966502900388"
+                  underline="none"
+                  color="text.secondary"
+                  variant="body2"
+                >
                   {t('footer.phone')}
-                </Typography>
+                </Link>
               </Box>
               <Box sx={{
                 display: 'flex',
@@ -220,9 +230,11 @@ const Footer = () => {
                 {links.map((link, index) => (
                   <Link
                     key={index}
-                    component={link.path.startsWith('#') ? 'a' : RouterLink}
-                    to={link.path.startsWith('#') ? undefined : link.path}
-                    href={link.path.startsWith('#') ? link.path : undefined}
+                    component={link.path.startsWith('http') || link.path.startsWith('#') ? 'a' : RouterLink}
+                    to={link.path.startsWith('http') || link.path.startsWith('#') ? undefined : link.path}
+                    href={link.path.startsWith('http') || link.path.startsWith('#') ? link.path : undefined}
+                    target={link.path.startsWith('http') ? '_blank' : undefined}
+                    rel={link.path.startsWith('http') ? 'noopener noreferrer' : undefined}
                     sx={{
                       display: 'block',
                       color: 'text.secondary',
