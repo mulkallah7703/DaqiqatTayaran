@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import FlightTakeoff from '@mui/icons-material/FlightTakeoff';
 import Email from '@mui/icons-material/Email';
-import Phone from '@mui/icons-material/Phone';
+import WhatsApp from '@mui/icons-material/WhatsApp';
 import LocationOn from '@mui/icons-material/LocationOn';
 import LinkedIn from '@mui/icons-material/LinkedIn';
 import Twitter from '@mui/icons-material/Twitter';
@@ -99,6 +99,7 @@ const Footer = () => {
                 alignItems: 'center',
                 mb: 1,
                 flexDirection: isRTL ? 'row-reverse' : 'row',
+                gap: 1,
               }}>
                 <Email sx={{
                   fontSize: 16,
@@ -107,7 +108,7 @@ const Footer = () => {
                   color: 'text.secondary'
                 }} />
                 <Link
-                  href="mailto:tariqaleidi@aviationsminute.com"
+                  href="mailto:info@aviationsminute.com"
                   underline="none"
                   color="text.secondary"
                   variant="body2"
@@ -120,8 +121,9 @@ const Footer = () => {
                 alignItems: 'center',
                 mb: 1,
                 flexDirection: isRTL ? 'row-reverse' : 'row',
+                gap: 1,
               }}>
-                <Phone sx={{
+                <WhatsApp sx={{
                   fontSize: 16,
                   mr: isRTL ? 0 : 1,
                   ml: isRTL ? 1 : 0,
@@ -140,6 +142,7 @@ const Footer = () => {
                 display: 'flex',
                 alignItems: 'center',
                 flexDirection: isRTL ? 'row-reverse' : 'row',
+                gap: 1,
               }}>
                 <LocationOn sx={{
                   fontSize: 16,
