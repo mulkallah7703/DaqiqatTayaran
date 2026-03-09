@@ -262,9 +262,8 @@ const LuxuryNavbar = () => {
                   </motion.div>
                 ))}
               </Box>
-              {/* Arabic: Left section — Language + Login (fixed to left edge) */}
+              {/* Arabic: Left section — Login + Language (fixed to left edge) */}
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: { xs: 2, md: 2.5 }, flexDirection: 'row-reverse' }}>
-                <LanguageSwitcher />
                 {!isMobile && (
                   isAuthenticated ? (
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -287,6 +286,7 @@ const LuxuryNavbar = () => {
                     </Button>
                   )
                 )}
+                <LanguageSwitcher />
               </Box>
             </>
           ) : (
@@ -326,7 +326,6 @@ const LuxuryNavbar = () => {
               )}
               {/* English: Actions Section */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, md: 2.5 }, flexDirection: 'row' }}>
-                <LanguageSwitcher />
                 {isAuthenticated ? (
                   <>
                     <IconButton
@@ -444,6 +443,7 @@ const LuxuryNavbar = () => {
                     </Box>
                   )
                 )}
+                <LanguageSwitcher />
               </Box>
             </>
           )}
