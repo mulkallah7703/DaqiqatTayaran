@@ -36,7 +36,7 @@ const Footer = () => {
     ],
     [t('footer.legal')]: [
       { label: t('footer.privacyPolicy'), path: '#' },
-      { label: t('footer.termsOfService'), path: 'http://www.youtube.com/@AvSahaab' },
+      { label: t('footer.termsOfService'), path: 'https://www.youtube.com/watch?v=fxA1PuoQLsQ&list=PL9NlbH_3GufXDwq7vSXoNurvWEYqmVrOf' },
       { label: t('footer.cookiePolicy'), path: '#' },
       { label: t('footer.gdprCompliance'), path: '#' },
     ],
