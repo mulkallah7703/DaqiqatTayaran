@@ -14,7 +14,7 @@
     "signOut": "Sign Out"
   },
   "hero": {
-    "badge": "Saudi Vision 2030 • The Kingdom’s Leading Aviation Media Platform",
+    "badge": "We innovate in three solutions: business content, technical, and artistic production",
     "title": "Daqiqat",
     "titleHighlight": "Tayaran",
     "subtitle": "The Kingdom’s leading aviation media platform, delivering specialized industry content, cinematic production, and strategic storytelling that supports the transformation of Saudi Arabia’s aviation sector in alignment with Vision 2030.",
@@ -28,8 +28,8 @@
   },
   "platformDivisions": {
     "sectionTitle": "Daqiqat Tayaran Ecosystem",
-    "mainTitle": "Three Pillars Driving Impact & Leadership",
-    "mainTitleHighlight": "Excellence",
+    "mainTitle": "Three Pillars Driving Impact & Leadership Excellence",
+    "mainTitleHighlight": "",
     "description": "Specialized aviation media, premium creative production, and strategic digital reach — seamlessly integrated to shape the most influential Arabic aviation content platform.\n\nWe lead aviation knowledge storytelling through cinematic quality, executive insight, and a precise digital presence that strengthens the Kingdom’s position as a regional leader in aviation media.\n\nAligned with Saudi Vision 2030, this ecosystem elevates industry impact, credibility, and long‑term growth.",
     "bottomDescription": "Discover the integrated power of aviation media, professional production, and strategic digital reach.",
     "accessButton": "Access Platform",
@@ -77,6 +77,64 @@
     "digitalSolutions": "Monthly Growth Rate",
     "solutionsDescription": "Sustained digital expansion"
   },
+  "brandIdentity": {
+    "title": "Business Content Solutions",
+    "description": "At Daqiqat Tayaran, we lead brand identity marketing solutions by specializing in the creation, production, and publishing of creative content.\n\nWe closely follow the major transformations taking place in Saudi Arabia’s aviation sector and related industries, documenting this rapidly evolving landscape through inspiring storytelling across our flagship programs: Daqiqat Tayaran and the Happiness Corridor Podcast.\n\nOur solutions are designed to provide more distinctive, faster, and easier ways to help you succeed.",
+    "cta": "Contact Us"
+  },
+  "contactPanel": {
+    "title": "Contact Us",
+    "subtitle": "Fill out the form and let’s work together to drive your vision forward.",
+    "locate": "Locate us",
+    "submit": "Submit",
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully.",
+    "errors": {
+      "required": "This field is required.",
+      "email": "Please enter a valid email address.",
+      "phone": "Please enter a valid phone number.",
+      "sendFailed": "Failed to send message. Please try again."
+    },
+    "fields": {
+      "fullName": {
+        "label": "Full name *",
+        "placeholder": "Full Name *"
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "Email *"
+      },
+      "countryCode": {
+        "label": "Code",
+        "placeholder": "Code"
+      },
+      "phone": {
+        "placeholder": "Phone Number *"
+      },
+      "referral": {
+        "label": "How did you hear about us?",
+        "placeholder": "How did you hear about us?",
+        "options": {
+          "google": "Google",
+          "linkedin": "LinkedIn",
+          "instagram": "Instagram",
+          "recommendation": "Recommendation",
+          "other": "Other"
+        }
+      },
+      "company": {
+        "placeholder": "Company Name *"
+      },
+      "subject": {
+        "label": "Subject *",
+        "placeholder": "Subject *"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Write your notes"
+      }
+    }
+  },
   "aiAssistant": {
     "title": "Aviation AI Assistant",
     "status": "Executive Intelligence Active",
@@ -108,14 +166,22 @@
         "successRate": "Success Rate"
       },
       "divisions": {
-        "tech": "Tech Division",
-        "media": "Media Division",
-        "academy": "Academy Division"
+        "tech": "Programming sector ",
+        "media": "Artistic production ",
+        "academy": "Business content "
       },
       "sectionsTitle": "Platform Sections",
       "sectionsSubtitle": "Three integrated wings designed to elevate your aviation journey",
       "vision2030Title": "Aligned with Saudi Vision 2030",
-      "vision2030Description": "Our platform embodies the principles of digital transformation, innovation, and excellence that drive the Kingdom's ambitious vision for the future."
+      "vision2030Description": "Our platform embodies the principles of digital transformation, innovation, and excellence that drive the Kingdom's ambitious vision for the future.",
+      "programmingSolutions": {
+        "title": "Programming Solutions",
+        "description": "Design and development of professional landing pages and integrated technical solutions that strengthen the organization’s digital presence and enhance user experience. This includes building custom landing pages for campaigns, developing user interfaces, and optimizing technical performance in alignment with organizational goals."
+      },
+      "creativeProduction": {
+        "title": "Creative Production",
+        "description": "Providing comprehensive creative production solutions starting from identifying organizational objectives and crafting key messages, through script writing and creative direction, to full preparation and production of specialized publishable content aligned with the organization’s identity and communication goals."
+      }
     },
     "simple": {
       "title": "Aviation AI Platform",

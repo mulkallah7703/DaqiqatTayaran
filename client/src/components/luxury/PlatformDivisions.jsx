@@ -104,16 +104,6 @@ const PlatformDivisions = () => {
               }}
             >
               {t('platformDivisions.mainTitle')}
-              <Box component="span" sx={{
-                background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 100%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'block',
-                mt: 1,
-              }}>
-                {t('platformDivisions.mainTitleHighlight')}
-              </Box>
             </Typography>
             <Box
               sx={{

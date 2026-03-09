@@ -7,9 +7,6 @@ import Link from '@mui/material/Link';
 import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 import FlightTakeoff from '@mui/icons-material/FlightTakeoff';
-import Email from '@mui/icons-material/Email';
-import WhatsApp from '@mui/icons-material/WhatsApp';
-import LocationOn from '@mui/icons-material/LocationOn';
 import LinkedIn from '@mui/icons-material/LinkedIn';
 import Twitter from '@mui/icons-material/Twitter';
 import Facebook from '@mui/icons-material/Facebook';
@@ -21,8 +18,9 @@ import { useTranslation } from 'react-i18next';
 import { useRTL } from '../../hooks/useRTL';
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { isRTL } = useRTL();
+  const isArabic = i18n.language === 'ar';
   const currentYear = new Date().getFullYear();
 
   const footerLinks = {
@@ -63,105 +61,48 @@ const Footer = () => {
     >
       <Container maxWidth="lg" sx={{ py: 6 }}>
         <Grid container spacing={4}>
-          {/* Brand Section */}
+          {/* Brand Section - Daqiqat Tayaran introduction */}
           <Grid item xs={12} md={4}>
-            <Box sx={{
-              display: 'flex',
-              alignItems: 'center',
-              mb: 2,
-              flexDirection: isRTL ? 'row-reverse' : 'row',
-            }}>
-              <FlightTakeoff sx={{
-                color: 'primary.main',
-                mr: isRTL ? 0 : 1,
-                ml: isRTL ? 1 : 0,
-              }} />
-              <Typography variant="h6" sx={{
-                color: 'primary.main',
-                fontWeight: 700,
-                textAlign: isRTL ? 'right' : 'left',
-              }}>
-                {t('nav.brand')}
-              </Typography>
-            </Box>
-            <Typography variant="body2" color="text.secondary" sx={{
-              mb: 3,
-              lineHeight: 1.6,
-              textAlign: isRTL ? 'right' : 'left',
-            }}>
-              {t('footer.description')}
-            </Typography>
-
-            {/* Contact Info */}
-            <Box sx={{ mb: 2 }}>
+            <Box
+              sx={{
+                direction: isArabic ? 'rtl' : 'ltr',
+                textAlign: isArabic ? 'right' : 'left',
+              }}
+            >
               <Box sx={{
                 display: 'flex',
                 alignItems: 'center',
-                mb: 1,
+                mb: 2,
                 flexDirection: isRTL ? 'row-reverse' : 'row',
-                gap: 1,
+                justifyContent: isArabic ? 'flex-end' : 'flex-start',
               }}>
-                <Email sx={{
-                  fontSize: 16,
+                <FlightTakeoff sx={{
+                  color: 'primary.main',
                   mr: isRTL ? 0 : 1,
                   ml: isRTL ? 1 : 0,
-                  color: 'text.secondary'
                 }} />
-                <Link
-                  href="mailto:info@aviationsminute.com"
-                  underline="none"
-                  color="text.secondary"
-                  variant="body2"
-                >
-                  {t('footer.email')}
-                </Link>
-              </Box>
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                mb: 1,
-                flexDirection: isRTL ? 'row-reverse' : 'row',
-                gap: 1,
-              }}>
-                <WhatsApp sx={{
-                  fontSize: 16,
-                  mr: isRTL ? 0 : 1,
-                  ml: isRTL ? 1 : 0,
-                  color: 'text.secondary'
-                }} />
-                <Link
-                  href="tel:+966502900388"
-                  underline="none"
-                  color="text.secondary"
-                  variant="body2"
-                >
-                  {t('footer.phone')}
-                </Link>
-              </Box>
-              <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: isRTL ? 'row-reverse' : 'row',
-                gap: 1,
-              }}>
-                <LocationOn sx={{
-                  fontSize: 16,
-                  mr: isRTL ? 0 : 1,
-                  ml: isRTL ? 1 : 0,
-                  color: 'text.secondary'
-                }} />
-                <Typography variant="body2" color="text.secondary">
-                  {t('footer.location')}
+                <Typography variant="h6" sx={{
+                  color: 'primary.main',
+                  fontWeight: 700,
+                  textAlign: 'inherit',
+                }}>
+                  {t('nav.brand')}
                 </Typography>
               </Box>
-            </Box>
+              <Typography variant="body2" color="text.secondary" sx={{
+                mb: 3,
+                lineHeight: 1.6,
+                textAlign: 'inherit',
+              }}>
+                {t('footer.description')}
+              </Typography>
 
-            {/* Social Links */}
-            <Box sx={{
-              display: 'flex',
-              flexDirection: isRTL ? 'row-reverse' : 'row',
-              justifyContent: isRTL ? 'flex-end' : 'flex-start',
-            }}>
+              {/* Social Links */}
+              <Box sx={{
+                display: 'flex',
+                flexDirection: isRTL ? 'row-reverse' : 'row',
+                justifyContent: isRTL ? 'flex-end' : 'flex-start',
+              }}>
               {socialLinks.map((social, index) => (
                 <IconButton
                   key={index}
@@ -216,6 +157,7 @@ const Footer = () => {
               >
                 <FaTiktok size={20} />
               </IconButton>
+            </Box>
             </Box>
           </Grid>
 
