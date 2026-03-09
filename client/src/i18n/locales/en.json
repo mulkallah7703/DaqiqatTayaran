@@ -230,6 +230,7 @@
     }
   },
   "footer": {
+    "subBrand": "Sahab Platform",
     "platform": "Platform",
     "resources": "Resources",
     "legal": "Media Production",
@@ -291,18 +292,19 @@
     },
     "useCases": {
       "designCreativity": {
-        "title": "Specialized Aviation Media",
-        "description": "Professional content delivering deep aviation insights through powerful storytelling.",
+        "title": "Specialized Aviation Content and Related Industries",
+        "description": "Producing professional aviation content that explores industry topics with deep insight and impactful storytelling.",
         "examples": {
-          "liveryDesign": "Executive aviation interviews",
-          "interiorLayout": "Industry-focused coverage",
-          "marketingMaterial": "Market transformation analysis",
-          "technicalDocumentation": "Highlighting sector success stories"
+          "liveryDesign": "Economic analyses directly and indirectly related to aviation",
+          "interiorLayout": "Connecting diverse ideas and presenting them in innovative ways to explore previously uncovered perspectives",
+          "marketingMaterial": "Highlighting success stories in the aviation sector",
+          "technicalDocumentation": "Documenting the transformation of the aviation sector in Saudi Arabia",
+          "stakeholderExperience": "Sharing experiences and expertise from multiple industry stakeholders"
         }
       },
       "analysisInsights": {
-        "title": "Cinematic Production Excellence",
-        "description": "High-quality aviation programs and media productions executed to premium standards.",
+        "title": "Cinematic Production",
+        "description": "Delivering high-quality artistic production based on professional production standards.",
         "examples": {
           "performanceTrends": "Daqiqat Tayaran Program Production",
           "marketResearch": "Happiness Corridor Podcast",
@@ -312,7 +314,7 @@
       },
       "problemSolving": {
         "title": "Strategic Digital Expansion",
-        "description": "Development and management of specialized aviation digital platforms.",
+        "description": "Managing and developing specialized digital platforms to reach the target audience.",
         "examples": {
           "technicalDiagnosis": "Sahaab Channel management",
           "maintenanceScheduling": "Multi-platform distribution",

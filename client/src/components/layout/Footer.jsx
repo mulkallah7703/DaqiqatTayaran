@@ -89,6 +89,18 @@ const Footer = () => {
                   {t('nav.brand')}
                 </Typography>
               </Box>
+              <Typography
+                variant="subtitle2"
+                sx={{
+                  color: 'primary.main',
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  mb: 1,
+                  textAlign: 'inherit',
+                }}
+              >
+                {t('footer.subBrand')}
+              </Typography>
               <Typography variant="body2" color="text.secondary" sx={{
                 mb: 3,
                 lineHeight: 1.6,

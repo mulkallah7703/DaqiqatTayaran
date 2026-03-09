@@ -8,7 +8,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import LinearProgress from '@mui/material/LinearProgress';
-import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -20,7 +19,6 @@ import Analytics from '@mui/icons-material/Analytics';
 import Rocket from '@mui/icons-material/Rocket';
 import CheckCircle from '@mui/icons-material/CheckCircle';
 import ArrowForward from '@mui/icons-material/ArrowForward';
-import Code from '@mui/icons-material/Code';
 import SmartToy from '@mui/icons-material/SmartToy';
 import Engineering from '@mui/icons-material/Engineering';
 import Psychology from '@mui/icons-material/Psychology';
@@ -196,7 +194,8 @@ const AvTechSection = () => {
         t('avtech.useCases.designCreativity.examples.liveryDesign'),
         t('avtech.useCases.designCreativity.examples.interiorLayout'),
         t('avtech.useCases.designCreativity.examples.marketingMaterial'),
-        t('avtech.useCases.designCreativity.examples.technicalDocumentation')
+        t('avtech.useCases.designCreativity.examples.technicalDocumentation'),
+        t('avtech.useCases.designCreativity.examples.stakeholderExperience')
       ]
     },
     {
@@ -405,49 +404,6 @@ const AvTechSection = () => {
           </Box>
         </Container>
       </Box>
-
-      {/* CTA Section */}
-      <Container maxWidth="lg" sx={{ py: 8 }}>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Paper
-            sx={{
-              p: 6,
-              textAlign: 'center',
-              background: 'linear-gradient(135deg, rgb(230, 126, 34) 0%, rgb(230, 126, 34) 100%)',
-              color: 'rgb(245, 243, 238)',
-            }}
-          >
-            <Code sx={{ fontSize: 60, mb: 3 }} />
-            <Typography variant="h3" sx={{ mb: 2 }}>
-              {t('avtech.cta.title')}
-            </Typography>
-            <Typography variant="h6" sx={{ mb: 4, opacity: 0.9 }}>
-              {t('avtech.cta.subtitle')}
-            </Typography>
-            <Button
-              variant="contained"
-              size="large"
-              endIcon={<ArrowForward />}
-              sx={{
-                backgroundColor: 'rgb(11, 11, 11)',
-                color: 'rgb(245, 243, 238)',
-                px: 4,
-                py: 1.5,
-                fontSize: '1.1rem',
-                '&:hover': {
-                  backgroundColor: 'rgba(11, 11, 11, 0.9)',
-                },
-              }}
-            >
-              {t('avtech.cta.button')}
-            </Button>
-          </Paper>
-        </motion.div>
-      </Container>
     </Box>
   );
 };
