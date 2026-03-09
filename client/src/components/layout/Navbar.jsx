@@ -178,309 +178,238 @@ const LuxuryNavbar = () => {
           px: { xs: 2.5, md: 5 },
           py: { xs: 0.25, md: 0.5 },
           minHeight: { xs: 56, md: 64 },
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexDirection: isRTL ? 'row-reverse' : 'row',
+          ...(isRTL
+            ? {
+                display: 'grid',
+                gridTemplateColumns: '1fr auto 1fr',
+                alignItems: 'center',
+                direction: 'rtl',
+                width: '100%',
+              }
+            : {
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+              }
+          ),
         }}>
-          {/* Brand Section */}
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 2,
-              flexDirection: isRTL ? 'row-reverse' : 'row',
-              marginInlineEnd: { xs: 2, md: 5 },
-            }}
-          >
-            {isMobile && (
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{
-                  color: 'rgb(245, 243, 238)',
-                  '&:hover': {
-                    background: 'rgba(230, 126, 34, 0.1)',
-                  },
-                }}
-              >
-                <MenuIcon sx={{ fontSize: 20 }} />
-              </IconButton>
-            )}
-
-            <motion.div
-              initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              style={{}}
-            >
-              <Box
-                component={Link}
-                to="/"
-                sx={{
-                  display: isRTL ? 'inline-flex' : 'flex',
-                  alignItems: 'center',
-                  gap: isRTL ? 0.5 : 2,
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  flexDirection: isRTL ? 'row-reverse' : 'row',
-                  width: 'auto',
-                  justifyContent: 'flex-start',
-                  px: 0,
-                }}
-              >
-                <Box
-                  component="img"
-                  src={logo}
-                  alt="Brand logo"
-                  sx={{
-                    width: isRTL ? 'auto' : 100,
-                    height: 50,
-                    borderRadius: '50%',
-                    objectFit: 'contain',
-                    boxShadow: '0 8px 24px rgba(11, 11, 11, 0.35)',
-                    overflow: 'hidden',
-                    ml: 0,
-                    mr: 0,
-                    p: 0,
-                    minWidth: 0,
-                  }}
-                />
-                <Box
-                  sx={{
-                    textAlign: isRTL ? 'right' : 'left',
-                    minWidth: isRTL ? 'auto' : 150,
-                    maxWidth: isRTL ? 'none' : 150,
-                    flexShrink: 0,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    lineHeight: 1.2,
-                    m: 0,
-                  }}
-                >
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: 700,
-                      fontSize: '1.1rem',
-                      background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 100%)',
-                      backgroundClip: 'text',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      lineHeight: 1.2,
-                    }}
-                  >
-                    {t('nav.brand')}
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      color: 'rgb(245, 243, 238)',
-                      fontSize: '0.75rem',
-                      letterSpacing: '1px',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    {t('nav.tagline')}
-                  </Typography>
+          {isRTL ? (
+            <>
+              {/* Arabic: Right section — Logo + Text (fixed to right edge) */}
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 2, flexDirection: 'row-reverse' }}>
+                {isMobile && (
+                  <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ color: 'rgb(245, 243, 238)', '&:hover': { background: 'rgba(230, 126, 34, 0.1)' } }}>
+                    <MenuIcon sx={{ fontSize: 20 }} />
+                  </IconButton>
+                )}
+                <Box component={Link} to="/" sx={{ display: 'flex', alignItems: 'center', gap: 2, flexDirection: 'row-reverse', textDecoration: 'none', color: 'inherit' }}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.1rem', background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: 1.2 }}>
+                      {t('nav.brand')}
+                    </Typography>
+                    <Typography variant="caption" sx={{ color: 'rgb(245, 243, 238)', fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                      {t('nav.tagline')}
+                    </Typography>
+                  </Box>
+                  <Box component="img" src={logo} alt="Brand logo" sx={{ width: 'auto', height: 50, borderRadius: '50%', objectFit: 'contain', boxShadow: '0 8px 24px rgba(11, 11, 11, 0.35)' }} />
                 </Box>
               </Box>
-            </motion.div>
-          </Box>
-
-          {/* Links Section */}
-          {!isMobile && (
-            <Box sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: { xs: 2, md: 3.5 },
-              flexDirection: isRTL ? 'row-reverse' : 'row',
-            }}>
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <Button
-                    component={Link}
-                    to={item.path}
-                    startIcon={item.icon}
-                    sx={{
-                      color: isActive(item.path) ? 'rgb(230, 126, 34)' : 'rgb(245, 243, 238)',
-                      fontWeight: isActive(item.path) ? 600 : 400,
-                      px: { md: 2, lg: 2.5 },
-                      py: { md: 0.3, lg: 0.35 },
-                      borderRadius: 2,
-                      position: 'relative',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1,
-                      flexDirection: isRTL ? 'row-reverse' : 'row',
-                      ...(isRTL && {
-                        gap: 1.5,
-                        '& .MuiButton-startIcon, & .MuiButton-endIcon': {
-                          margin: 0,
-                        },
-                      }),
-                      '&::after': {
-                        content: '""',
-                        position: 'absolute',
-                        bottom: 0,
-                        left: '50%',
-                        width: isActive(item.path) ? '80%' : '0%',
-                        height: '2px',
-                        background: 'linear-gradient(90deg, rgb(230, 126, 34) 0%, rgb(230, 126, 34) 100%)',
-                        transform: 'translateX(-50%)',
-                        transition: 'width 0.3s ease',
-                      },
-                      '&:hover': {
-                        backgroundColor: 'rgba(230, 126, 34, 0.1)',
-                        color: 'rgb(245, 243, 238)',
-                        '&::after': {
-                          width: '80%',
-                        },
-                      },
-                      transition: 'all 0.3s ease',
-                    }}
-                  >
-                    {item.label}
-                  </Button>
-                </motion.div>
-              ))}
-            </Box>
-          )}
-
-          {/* Actions Section */}
-          <Box sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: { xs: 2, md: 2.5 },
-            flexDirection: isRTL ? 'row-reverse' : 'row',
-          }}>
-            <LanguageSwitcher />
-
-            {isAuthenticated ? (
-              <>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  sx={{
-                    color: 'rgb(245, 243, 238)',
-                    '&:hover': {
-                      background: 'rgba(230, 126, 34, 0.1)',
-                    },
-                  }}
-                >
-                  {user?.avatar ? (
-                    <Avatar
-                      src={user.avatar}
-                      alt={user.name}
-                      sx={{
-                        width: 36,
-                        height: 36,
-                        border: '2px solid rgba(230, 126, 34, 0.3)',
-                      }}
-                    />
+              {/* Arabic: Center section — Nav links (perfectly centered) */}
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: { xs: 2, md: 3.5 }, flexDirection: 'row-reverse' }}>
+                {!isMobile && navItems.map((item, index) => (
+                  <motion.div key={item.label} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }}>
+                    <Button component={Link} to={item.path} startIcon={item.icon} sx={{ color: isActive(item.path) ? 'rgb(230, 126, 34)' : 'rgb(245, 243, 238)', fontWeight: isActive(item.path) ? 600 : 400, px: { md: 2, lg: 2.5 }, py: { md: 0.3, lg: 0.35 }, borderRadius: 2, position: 'relative', display: 'flex', alignItems: 'center', gap: 1.5, flexDirection: 'row', '& .MuiButton-startIcon, & .MuiButton-endIcon': { margin: 0 }, '&::after': { content: '""', position: 'absolute', bottom: 0, left: '50%', width: isActive(item.path) ? '80%' : '0%', height: '2px', background: 'linear-gradient(90deg, rgb(230, 126, 34) 0%, rgb(230, 126, 34) 100%)', transform: 'translateX(-50%)', transition: 'width 0.3s ease' }, '&:hover': { backgroundColor: 'rgba(230, 126, 34, 0.1)', color: 'rgb(245, 243, 238)', '&::after': { width: '80%' } }, transition: 'all 0.3s ease' }}>
+                      {item.label}
+                    </Button>
+                  </motion.div>
+                ))}
+              </Box>
+              {/* Arabic: Left section — Language + Login (fixed to left edge) */}
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', gap: { xs: 2, md: 2.5 }, flexDirection: 'row-reverse' }}>
+                <LanguageSwitcher />
+                {!isMobile && (
+                  isAuthenticated ? (
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <IconButton size="large" aria-label="account of current user" aria-controls="primary-search-account-menu" aria-haspopup="true" onClick={handleProfileMenuOpen} sx={{ color: 'rgb(245, 243, 238)', '&:hover': { background: 'rgba(230, 126, 34, 0.1)' } }}>
+                        {user?.avatar ? <Avatar src={user.avatar} alt={user.name} sx={{ width: 36, height: 36, border: '2px solid rgba(230, 126, 34, 0.3)' }} /> : <AccountCircle sx={{ fontSize: 36 }} />}
+                      </IconButton>
+                      <Menu anchorEl={anchorEl} anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} keepMounted transformOrigin={{ vertical: 'top', horizontal: 'right' }} open={Boolean(anchorEl)} onClose={handleMenuClose} PaperProps={{ sx: { mt: 1, background: 'linear-gradient(145deg, rgba(11, 11, 11, 0.95) 0%, rgba(11, 11, 11, 0.95) 100%)', backdropFilter: 'blur(20px)', border: '1px solid rgba(230, 126, 34, 0.2)', borderRadius: 2, minWidth: 200 } }}>
+                        <MenuItem onClick={handleMenuClose} sx={{ color: 'rgb(245, 243, 238)', '&:hover': { background: 'rgba(230, 126, 34, 0.1)' } }}>
+                          <Box><Typography variant="body2" sx={{ fontWeight: 600 }}>{user?.name}</Typography><Typography variant="caption" sx={{ color: 'rgb(245, 243, 238)' }}>Executive Access</Typography></Box>
+                        </MenuItem>
+                        {(user?.role === 'admin' || user?.role === 'editor') && (
+                          <MenuItem onClick={() => { navigate('/admin'); handleMenuClose(); }} sx={{ color: 'rgb(245, 243, 238)', '&:hover': { background: 'rgba(230, 126, 34, 0.1)' } }}>Executive Dashboard</MenuItem>
+                        )}
+                        <MenuItem onClick={handleLogout} sx={{ color: 'rgb(245, 243, 238)', '&:hover': { background: 'rgba(230, 126, 34, 0.1)' } }}>Sign Out</MenuItem>
+                      </Menu>
+                    </Box>
                   ) : (
-                    <AccountCircle sx={{ fontSize: 36 }} />
-                  )}
-                </IconButton>
-                <Menu
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleMenuClose}
-                  PaperProps={{
-                    sx: {
-                      mt: 1,
-                      background: 'linear-gradient(145deg, rgba(11, 11, 11, 0.95) 0%, rgba(11, 11, 11, 0.95) 100%)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(230, 126, 34, 0.2)',
-                      borderRadius: 2,
-                      minWidth: 200,
-                    },
-                  }}
-                >
-                  <MenuItem
-                    onClick={handleMenuClose}
-                    sx={{
-                      color: 'rgb(245, 243, 238)',
-                      '&:hover': { background: 'rgba(230, 126, 34, 0.1)' },
-                    }}
-                  >
-                    <Box>
-                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                        {user?.name}
+                    <Button component={Link} to="/login" variant="outlined" size="small" sx={{ borderColor: 'rgba(230, 126, 34, 0.3)', color: 'rgb(245, 243, 238)', py: 0.35, '&:hover': { borderColor: 'rgba(230, 126, 34, 0.6)', background: 'rgba(230, 126, 34, 0.1)' } }}>
+                      {t('nav.login')}
+                    </Button>
+                  )
+                )}
+              </Box>
+            </>
+          ) : (
+            <>
+              {/* English: Brand Section (unchanged) */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexDirection: 'row', marginInlineEnd: { xs: 2, md: 5 } }}>
+                {isMobile && (
+                  <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={handleDrawerToggle} sx={{ color: 'rgb(245, 243, 238)', '&:hover': { background: 'rgba(230, 126, 34, 0.1)' } }}>
+                    <MenuIcon sx={{ fontSize: 20 }} />
+                  </IconButton>
+                )}
+                <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
+                  <Box component={Link} to="/" sx={{ display: 'flex', alignItems: 'center', gap: 2, textDecoration: 'none', color: 'inherit', flexDirection: 'row' }}>
+                    <Box component="img" src={logo} alt="Brand logo" sx={{ width: 100, height: 50, borderRadius: '50%', objectFit: 'contain', boxShadow: '0 8px 24px rgba(11, 11, 11, 0.35)' }} />
+                    <Box sx={{ textAlign: 'left', minWidth: 150, maxWidth: 150, flexShrink: 0, display: 'flex', flexDirection: 'column', lineHeight: 1.2 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.1rem', background: 'linear-gradient(135deg, rgb(245, 243, 238) 0%, rgb(245, 243, 238) 100%)', backgroundClip: 'text', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', lineHeight: 1.2 }}>
+                        {t('nav.brand')}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: 'rgb(245, 243, 238)' }}>
-                        Executive Access
+                      <Typography variant="caption" sx={{ color: 'rgb(245, 243, 238)', fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase' }}>
+                        {t('nav.tagline')}
                       </Typography>
                     </Box>
-                  </MenuItem>
-                  {(user?.role === 'admin' || user?.role === 'editor') && (
-                    <MenuItem
-                      onClick={() => {
-                        navigate('/admin');
-                        handleMenuClose();
-                      }}
+                  </Box>
+                </motion.div>
+              </Box>
+              {/* English: Links Section */}
+              {!isMobile && (
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, md: 3.5 }, flexDirection: 'row' }}>
+                  {navItems.map((item, index) => (
+                    <motion.div key={item.label} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }}>
+                      <Button component={Link} to={item.path} startIcon={item.icon} sx={{ color: isActive(item.path) ? 'rgb(230, 126, 34)' : 'rgb(245, 243, 238)', fontWeight: isActive(item.path) ? 600 : 400, px: { md: 2, lg: 2.5 }, py: { md: 0.3, lg: 0.35 }, borderRadius: 2, position: 'relative', display: 'flex', alignItems: 'center', gap: 1, flexDirection: 'row', '&::after': { content: '""', position: 'absolute', bottom: 0, left: '50%', width: isActive(item.path) ? '80%' : '0%', height: '2px', background: 'linear-gradient(90deg, rgb(230, 126, 34) 0%, rgb(230, 126, 34) 100%)', transform: 'translateX(-50%)', transition: 'width 0.3s ease' }, '&:hover': { backgroundColor: 'rgba(230, 126, 34, 0.1)', color: 'rgb(245, 243, 238)', '&::after': { width: '80%' } }, transition: 'all 0.3s ease' }}>
+                        {item.label}
+                      </Button>
+                    </motion.div>
+                  ))}
+                </Box>
+              )}
+              {/* English: Actions Section */}
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 2, md: 2.5 }, flexDirection: 'row' }}>
+                <LanguageSwitcher />
+                {isAuthenticated ? (
+                  <>
+                    <IconButton
+                      size="large"
+                      aria-label="account of current user"
+                      aria-controls="primary-search-account-menu"
+                      aria-haspopup="true"
+                      onClick={handleProfileMenuOpen}
                       sx={{
                         color: 'rgb(245, 243, 238)',
-                        '&:hover': { background: 'rgba(230, 126, 34, 0.1)' },
+                        '&:hover': {
+                          background: 'rgba(230, 126, 34, 0.1)',
+                        },
                       }}
                     >
-                      Executive Dashboard
-                    </MenuItem>
-                  )}
-                  <MenuItem
-                    onClick={handleLogout}
-                    sx={{
-                      color: 'rgb(245, 243, 238)',
-                      '&:hover': { background: 'rgba(230, 126, 34, 0.1)' },
-                    }}
-                  >
-                    Sign Out
-                  </MenuItem>
-                </Menu>
-              </>
-            ) : (
-              !isMobile && (
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Button
-                    component={Link}
-                    to="/login"
-                    variant="outlined"
-                    size="small"
-                    sx={{
-                      borderColor: 'rgba(230, 126, 34, 0.3)',
-                      color: 'rgb(245, 243, 238)',
-                      py: 0.35,
-                      '&:hover': {
-                        borderColor: 'rgba(230, 126, 34, 0.6)',
-                        background: 'rgba(230, 126, 34, 0.1)',
-                      },
-                    }}
-                  >
-                    {t('nav.login')}
-                  </Button>
-                </Box>
-              )
-            )}
-          </Box>
+                      {user?.avatar ? (
+                        <Avatar
+                          src={user.avatar}
+                          alt={user.name}
+                          sx={{
+                            width: 36,
+                            height: 36,
+                            border: '2px solid rgba(230, 126, 34, 0.3)',
+                          }}
+                        />
+                      ) : (
+                        <AccountCircle sx={{ fontSize: 36 }} />
+                      )}
+                    </IconButton>
+                    <Menu
+                      anchorEl={anchorEl}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'right',
+                      }}
+                      keepMounted
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                      }}
+                      open={Boolean(anchorEl)}
+                      onClose={handleMenuClose}
+                      PaperProps={{
+                        sx: {
+                          mt: 1,
+                          background: 'linear-gradient(145deg, rgba(11, 11, 11, 0.95) 0%, rgba(11, 11, 11, 0.95) 100%)',
+                          backdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(230, 126, 34, 0.2)',
+                          borderRadius: 2,
+                          minWidth: 200,
+                        },
+                      }}
+                    >
+                      <MenuItem
+                        onClick={handleMenuClose}
+                        sx={{
+                          color: 'rgb(245, 243, 238)',
+                          '&:hover': { background: 'rgba(230, 126, 34, 0.1)' },
+                        }}
+                      >
+                        <Box>
+                          <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                            {user?.name}
+                          </Typography>
+                          <Typography variant="caption" sx={{ color: 'rgb(245, 243, 238)' }}>
+                            Executive Access
+                          </Typography>
+                        </Box>
+                      </MenuItem>
+                      {(user?.role === 'admin' || user?.role === 'editor') && (
+                        <MenuItem
+                          onClick={() => {
+                            navigate('/admin');
+                            handleMenuClose();
+                          }}
+                          sx={{
+                            color: 'rgb(245, 243, 238)',
+                            '&:hover': { background: 'rgba(230, 126, 34, 0.1)' },
+                          }}
+                        >
+                          Executive Dashboard
+                        </MenuItem>
+                      )}
+                      <MenuItem
+                        onClick={handleLogout}
+                        sx={{
+                          color: 'rgb(245, 243, 238)',
+                          '&:hover': { background: 'rgba(230, 126, 34, 0.1)' },
+                        }}
+                      >
+                        Sign Out
+                      </MenuItem>
+                    </Menu>
+                  </>
+                ) : (
+                  !isMobile && (
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                      <Button
+                        component={Link}
+                        to="/login"
+                        variant="outlined"
+                        size="small"
+                        sx={{
+                          borderColor: 'rgba(230, 126, 34, 0.3)',
+                          color: 'rgb(245, 243, 238)',
+                          py: 0.35,
+                          '&:hover': {
+                            borderColor: 'rgba(230, 126, 34, 0.6)',
+                            background: 'rgba(230, 126, 34, 0.1)',
+                          },
+                        }}
+                      >
+                        {t('nav.login')}
+                      </Button>
+                    </Box>
+                  )
+                )}
+              </Box>
+            </>
+          )}
         </Toolbar>
       </AppBar>
 
