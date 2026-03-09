@@ -70,9 +70,9 @@ const LuxuryNavbar = () => {
   };
 
   const navItems = [
-    { label: t('nav.home'), path: '/', icon: <FlightTakeoff fontSize="small" /> },
-    { label: t('nav.avtech'), path: '/avtech', icon: <Psychology fontSize="small" /> },
     { label: t('nav.academy'), path: '/academy', icon: <School fontSize="small" /> },
+    { label: t('nav.avtech'), path: '/avtech', icon: <Psychology fontSize="small" /> },
+    { label: t('nav.home'), path: '/', icon: <FlightTakeoff fontSize="small" /> },
   ];
 
   const isActive = (path) => {
@@ -112,6 +112,7 @@ const LuxuryNavbar = () => {
             component={Link}
             to={item.path}
             onClick={handleDrawerToggle}
+            className="drawer-nav-item"
             sx={{
               mx: 2,
               mb: 1,
@@ -125,9 +126,8 @@ const LuxuryNavbar = () => {
               transition: 'all 0.3s ease',
             }}
           >
-            <Box sx={{ marginInlineEnd: 2, display: 'flex', alignItems: 'center' }}>{item.icon}</Box>
-            <ListItemText
-              primary={item.label}
+            <Box className="nav-icon" sx={{ marginInlineEnd: 2, display: 'flex', alignItems: 'center', flexShrink: 0 }}>{item.icon}</Box>
+            <ListItemText className="nav-text" primary={item.label}
               primaryTypographyProps={{
                 fontWeight: isActive(item.path) ? 600 : 400,
               }}
@@ -219,9 +219,46 @@ const LuxuryNavbar = () => {
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: { xs: 2, md: 3.5 }, flexDirection: 'row-reverse' }}>
                 {!isMobile && navItems.map((item, index) => (
                   <motion.div key={item.label} initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.1 }}>
-                    <Button component={Link} to={item.path} startIcon={item.icon} sx={{ color: isActive(item.path) ? 'rgb(230, 126, 34)' : 'rgb(245, 243, 238)', fontWeight: isActive(item.path) ? 600 : 400, px: { md: 2, lg: 2.5 }, py: { md: 0.3, lg: 0.35 }, borderRadius: 2, position: 'relative', display: 'flex', alignItems: 'center', gap: 1.5, flexDirection: 'row', '& .MuiButton-startIcon, & .MuiButton-endIcon': { margin: 0 }, '&::after': { content: '""', position: 'absolute', bottom: 0, left: '50%', width: isActive(item.path) ? '80%' : '0%', height: '2px', background: 'linear-gradient(90deg, rgb(230, 126, 34) 0%, rgb(230, 126, 34) 100%)', transform: 'translateX(-50%)', transition: 'width 0.3s ease' }, '&:hover': { backgroundColor: 'rgba(230, 126, 34, 0.1)', color: 'rgb(245, 243, 238)', '&::after': { width: '80%' } }, transition: 'all 0.3s ease' }}>
-                      {item.label}
-                    </Button>
+                    <Box
+                      component={Link}
+                      to={item.path}
+                      className="nav-item"
+                      sx={{
+                        color: isActive(item.path) ? 'rgb(230, 126, 34)' : 'rgb(245, 243, 238)',
+                        fontWeight: isActive(item.path) ? 600 : 400,
+                        px: { md: 2, lg: 2.5 },
+                        py: { md: 0.3, lg: 0.35 },
+                        borderRadius: 2,
+                        position: 'relative',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 1.5,
+                        flexDirection: 'row',
+                        textDecoration: 'none',
+                        '&::after': {
+                          content: '""',
+                          position: 'absolute',
+                          bottom: 0,
+                          left: '50%',
+                          width: isActive(item.path) ? '80%' : '0%',
+                          height: '2px',
+                          background: 'linear-gradient(90deg, rgb(230, 126, 34) 0%, rgb(230, 126, 34) 100%)',
+                          transform: 'translateX(-50%)',
+                          transition: 'width 0.3s ease',
+                        },
+                        '&:hover': {
+                          backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                          color: 'rgb(245, 243, 238)',
+                          '&::after': { width: '80%' },
+                        },
+                        transition: 'all 0.3s ease',
+                      }}
+                    >
+                      <Box component="span" className="nav-icon" sx={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
+                        {item.icon}
+                      </Box>
+                      <Box component="span" className="nav-text">{item.label}</Box>
+                    </Box>
                   </motion.div>
                 ))}
               </Box>

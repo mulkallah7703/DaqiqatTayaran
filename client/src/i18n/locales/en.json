@@ -1,7 +1,7 @@
 {
   "nav": {
     "home": "Home",
-    "avtech": "Technology Division",
+    "avtech": "Technology Sector",
     "academy": "Daqiqat Tayaran Academy",
     "login": "Login",
     "register": "Register",
@@ -35,9 +35,9 @@
     "accessButton": "Access Platform",
     "exploreButton": "Explore Division",
     "avtech": {
-      "title": "Technology Division",
+      "title": "Technology Sector",
       "subtitle": "Digital Platform Management & Strategic Growth",
-      "description": "The Technology Division delivers integrated digital solutions, including platform development and management, audience analytics, targeted distribution strategies, and automated content deployment. We empower aviation media with scalable digital infrastructure that enhances reach, performance, and long-term growth in alignment with Saudi Vision 2030.",
+      "description": "The Technology Sector delivers integrated digital solutions, including platform development and management, audience analytics, targeted distribution strategies, and automated content deployment. We empower aviation media with scalable digital infrastructure that enhances reach, performance, and long-term growth in alignment with Saudi Vision 2030.",
       "features": {
         "platforms": "Digital Platform Development & Management",
         "analytics": "Audience Data & Growth Analytics",

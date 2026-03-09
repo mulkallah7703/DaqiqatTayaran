@@ -94,6 +94,18 @@ html[dir="ltr"] body {
   flex-direction: row-reverse;
 }
 
+/* Navbar nav items: icon must appear before text in RTL */
+[dir="rtl"] .nav-item {
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: row !important;
+}
+
+/* Drawer nav items: icon must appear before text in RTL */
+[dir="rtl"] .drawer-nav-item {
+  flex-direction: row !important;
+}
+
 [dir="rtl"] .MuiButton-startIcon {
   margin-left: 8px;
   margin-right: -4px;
