@@ -10,8 +10,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 const AUTH_KEY = 'academyAuth';
-const USERNAME = 'Tariq';
-const PASSWORD = 'Tariq1234';
+const USERNAME = 'AviationNCM';
+const PASSWORD = 'AviationsminuteNC@M';
 
 const AcademyLogin = () => {
   const { t } = useTranslation();

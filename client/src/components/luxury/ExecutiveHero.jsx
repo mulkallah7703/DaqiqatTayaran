@@ -2,10 +2,8 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useRTL } from '../../hooks/useRTL';
 import logodaq from '../../images/logodaq.png';
@@ -13,8 +11,8 @@ import logodaq from '../../images/logodaq.png';
 const ExecutiveHero = () => {
   const { t } = useTranslation();
   const { isRTL } = useRTL();
-  // AI Sky Background Component
-  const AISkySphere = () => (
+  // Hero section background with subtle cinematic motion
+  const HeroBackground = () => (
     <Box
       sx={{
         position: 'absolute',
@@ -26,7 +24,6 @@ const ExecutiveHero = () => {
         zIndex: 0,
       }}
     >
-      {/* Aviation Sky Gradient */}
       <Box
         sx={{
           position: 'absolute',
@@ -34,138 +31,18 @@ const ExecutiveHero = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: `
-            radial-gradient(ellipse at top center, rgba(230, 126, 34, 0.15) 0%, transparent 50%),
-            linear-gradient(180deg, 
-              rgba(11, 11, 11, 0.9) 0%, 
-              rgba(11, 11, 11, 0.7) 30%, 
-              rgba(11, 11, 11, 0.5) 60%, 
-              rgba(11, 11, 11, 0.8) 90%, 
-              rgba(11, 11, 11, 1) 100%
-            )
-          `,
-        }}
-      />
-
-      {/* Neural Network SVG */}
-      <svg
-        width="100%"
-        height="100%"
-        style={{ position: 'absolute', top: 0, left: 0 }}
-        viewBox="0 0 1920 1080"
-        preserveAspectRatio="xMidYMid slice"
-      >
-        <defs>
-          <linearGradient id="neuralGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(230, 126, 34, 0.2)" />
-            <stop offset="50%" stopColor="rgba(230, 126, 34, 0.15)" />
-            <stop offset="100%" stopColor="rgba(230, 126, 34, 0.1)" />
-          </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
-        {/* Slow-moving neural pathways */}
-        <motion.path
-          d="M-200,400 Q400,200 800,300 T1600,250 Q1800,200 2200,300"
-          stroke="url(#neuralGradient)"
-          strokeWidth="2"
-          fill="none"
-          filter="url(#glow)"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.7 }}
-          transition={{
-            duration: 8,
-            ease: "easeInOut",
-            repeat: Infinity,
-            repeatType: "reverse"
-          }}
-        />
-        <motion.path
-          d="M-100,600 Q600,400 1200,500 T2400,450"
-          stroke="url(#neuralGradient)"
-          strokeWidth="1.5"
-          fill="none"
-          filter="url(#glow)"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.5 }}
-          transition={{
-            duration: 12,
-            ease: "easeInOut",
-            repeat: Infinity,
-            repeatType: "reverse",
-            delay: 2
-          }}
-        />
-        <motion.path
-          d="M0,800 Q300,600 600,700 T1200,650 Q1500,600 1920,700"
-          stroke="url(#neuralGradient)"
-          strokeWidth="1"
-          fill="none"
-          filter="url(#glow)"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ pathLength: 1, opacity: 0.3 }}
-          transition={{
-            duration: 15,
-            ease: "easeInOut",
-            repeat: Infinity,
-            repeatType: "reverse",
-            delay: 4
-          }}
-        />
-      </svg>
-
-      {/* Floating AI Particles */}
-      {[...Array(15)].map((_, i) => (
-        <motion.div
-          key={i}
-          style={{
-            position: 'absolute',
-            width: Math.random() * 6 + 3,
-            height: Math.random() * 6 + 3,
-            background: `radial-gradient(circle, ${Math.random() > 0.5 ? 'rgba(230, 126, 34, 0.8)' : 'rgba(230, 126, 34, 0.6)'
-              } 0%, transparent 70%)`,
-            borderRadius: '50%',
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            filter: 'blur(1px)',
-          }}
-          animate={{
-            y: [0, -40, 0],
-            x: [0, Math.random() * 20 - 10, 0],
-            opacity: [0.3, 1, 0.3],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: Math.random() * 8 + 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: Math.random() * 5,
-          }}
-        />
-      ))}
-
-      {/* Data Wave Overlay */}
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: `
-            radial-gradient(ellipse at 20% 50%, rgba(230, 126, 34, 0.08) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 30%, rgba(230, 126, 34, 0.06) 0%, transparent 50%)
-          `,
-          animation: 'dataWave 20s ease-in-out infinite',
-          '@keyframes dataWave': {
-            '0%, 100%': { opacity: 0.5, transform: 'scale(1)' },
-            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+          width: '100%',
+          height: '100%',
+          backgroundImage: "url('/background for first section.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          transform: 'scale(1.05)',
+          willChange: 'transform',
+          animation: 'heroBgMotion 25s ease-in-out infinite',
+          '@keyframes heroBgMotion': {
+            '0%, 100%': { transform: 'scale(1.03)' },
+            '50%': { transform: 'scale(1.06)' },
           },
         }}
       />
@@ -183,7 +60,20 @@ const ExecutiveHero = () => {
         pb: { xs: 3, md: 5 },
       }}
     >
-      <AISkySphere />
+      <HeroBackground />
+
+      {/* Dark overlay for text readability and cinematic look */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1,
+        }}
+      />
 
       <Container
         maxWidth="xl"
@@ -314,53 +204,6 @@ const ExecutiveHero = () => {
                   >
                     {t('hero.subtitle')}
                   </Typography>
-                </motion.div>
-
-                {/* Executive Actions */}
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, ease: "easeOut", delay: 0.9 }}
-                >
-                  <Box sx={{
-                    display: 'flex',
-                    gap: 4,
-                    flexWrap: 'wrap',
-                    mb: 8,
-                    flexDirection: isRTL ? 'row-reverse' : 'row',
-                    justifyContent: isRTL ? 'flex-end' : 'flex-start',
-                  }}>
-                    <Button
-                      component={Link}
-                      to="/avtech"
-                      variant="contained"
-                      size="large"
-                      sx={{
-                        px: 5,
-                        py: 2.5,
-                        fontSize: '1.15rem',
-                        fontWeight: 600,
-                        minWidth: 200,
-                      }}
-                    >
-                      {t('hero.exploreButton')}
-                    </Button>
-                    <Button
-                      component={Link}
-                      to="/avtech"
-                      variant="outlined"
-                      size="large"
-                      sx={{
-                        px: 5,
-                        py: 2.5,
-                        fontSize: '1.15rem',
-                        fontWeight: 600,
-                        minWidth: 180,
-                      }}
-                    >
-                      {t('hero.aiSolutionsButton')}
-                    </Button>
-                  </Box>
                 </motion.div>
 
                 {/* Executive Metrics */}

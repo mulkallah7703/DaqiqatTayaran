@@ -28,6 +28,7 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.13.0",
     "recharts": "^3.7.0",
+    "three": "^0.183.2",
     "yup": "^1.7.1"
   },
   "scripts": {
