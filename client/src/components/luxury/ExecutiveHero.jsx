@@ -33,7 +33,7 @@ const ExecutiveHero = () => {
           bottom: 0,
           width: '100%',
           height: '100%',
-          backgroundImage: "url('/background for first section.png')",
+          backgroundImage: "url('/hero-background.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
