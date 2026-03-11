@@ -22,9 +22,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^[0-9+\-()\s]{7,}$/;
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_contact';
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_contact';
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'public_key_here';
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactPanel = ({ open, onClose, container }) => {
   const { t } = useTranslation();
@@ -85,12 +85,26 @@ const ContactPanel = ({ open, onClose, container }) => {
       setIsSending(true);
       setSendError('');
       try {
-        await emailjs.sendForm(
+        const templateParams = {
+          full_name: values.fullName || '',
+          email: values.email || '',
+          phone: `${values.countryCode || ''}${values.contactNo || ''}`,
+          company: values.companyName || '',
+          referral: values.referral || '',
+          subject: values.subject || '',
+          message: values.message || '',
+        };
+
+        console.log('Sending EmailJS message...');
+        console.log(templateParams);
+
+        await emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
-          formRef.current,
+          templateParams,
           EMAILJS_PUBLIC_KEY
         );
+
         setSubmitted(true);
         formRef.current?.reset();
         setValues({
@@ -104,7 +118,8 @@ const ContactPanel = ({ open, onClose, container }) => {
           message: '',
         });
       } catch (error) {
-        setSendError(t('contactPanel.errors.sendFailed'));
+        console.error('EmailJS Error:', error);
+        setSendError('Failed to send message. Please try again.');
       } finally {
         setIsSending(false);
       }
